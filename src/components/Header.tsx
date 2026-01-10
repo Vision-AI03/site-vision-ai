@@ -40,15 +40,16 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3 group cursor-pointer">
+          <div className="flex items-center space-x-2 group cursor-pointer">
             <img 
               alt="Vision AI Logo" 
-              className="h-10 w-auto transition-transform duration-300 group-hover:scale-110" 
+              className="h-8 w-auto transition-transform duration-300 group-hover:scale-110" 
               src={logoVisionAI}
+              style={{ background: 'transparent' }}
             />
             <span className="font-bold text-xl">
               <span className="text-gray-900">VISION</span>{" "}
-              <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">AI</span>
+              <span className="text-indigo-600">AI</span>
             </span>
           </div>
 

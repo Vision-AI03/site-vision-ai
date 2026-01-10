@@ -122,12 +122,14 @@ const Services = () => {
             <p className="text-gray-600 mb-8 max-w-2xl">
               Entre em contato e descubra como nossas soluções podem revolucionar seu negócio
             </p>
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            <a 
+              href="https://wa.me/message/UMOFX66X4CY2K1"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Falar com Especialista
-            </button>
+            </a>
           </div>
         </div>
       </div>
