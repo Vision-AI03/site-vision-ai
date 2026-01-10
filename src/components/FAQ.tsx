@@ -138,7 +138,7 @@ const FAQ = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
-                href="https://api.whatsapp.com/message/UMOFX66X4CY2K1?autoload=1&app_absent=0"
+                href="https://wa.me/message/UMOFX66X4CY2K1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg"

@@ -21,15 +21,16 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-2">
               {/* Logo */}
-              <div className="flex items-center space-x-3 mb-6 group">
+              <div className="flex items-center space-x-2 mb-6 group">
                 <img 
                   src={logoVisionAI}
                   alt="Vision AI Logo" 
-                  className="h-10 w-auto filter brightness-0 invert group-hover:scale-110 transition-transform" 
+                  className="h-8 w-auto group-hover:scale-110 transition-transform" 
+                  style={{ background: 'transparent' }}
                 />
                 <span className="font-bold text-2xl">
                   <span className="text-white">VISION</span>{" "}
-                  <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">AI</span>
+                  <span className="text-indigo-400">AI</span>
                 </span>
               </div>
               

@@ -1,5 +1,8 @@
 import { Clock, DollarSign, Users, TrendingUp, Shield, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import exampleAtendimento from "@/assets/example-atendimento.png";
+import exampleLeads from "@/assets/example-leads.png";
+import exampleIntegracoes from "@/assets/example-integracoes.png";
 
 interface AnimatedCounterProps {
   value: string;
@@ -203,24 +206,33 @@ const Benefits = () => {
                 {
                   title: "Automação de Atendimento",
                   description: "Implementamos agentes que atendem clientes de forma natural e instantânea, reduzindo a carga da equipe humana.",
-                  gradient: "from-blue-500 to-indigo-600"
+                  gradient: "from-blue-500 to-indigo-600",
+                  image: exampleAtendimento
                 },
                 {
                   title: "Geração e Qualificação de Leads",
                   description: "Captura dados, qualifica oportunidades e direciona os leads prontos para o seu time comercial ou CRM.",
-                  gradient: "from-purple-500 to-pink-600"
+                  gradient: "from-purple-500 to-pink-600",
+                  image: exampleLeads
                 },
                 {
                   title: "Integrações Inteligentes",
                   description: "Conectamos agentes a plataformas como WhatsApp, Google Sheets, CRMs e agendas, criando fluxos automatizados de ponta a ponta.",
-                  gradient: "from-cyan-500 to-blue-600"
+                  gradient: "from-cyan-500 to-blue-600",
+                  image: exampleIntegracoes
                 }
               ].map((example, idx) => (
                 <div 
                   key={idx} 
                   className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
                 >
-                  <div className={`w-12 h-12 bg-gradient-to-br ${example.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform`}></div>
+                  <div className="w-full h-40 mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                    <img 
+                      src={example.image} 
+                      alt={example.title}
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                   <h4 className="text-xl font-semibold mb-4 text-gray-900">{example.title}</h4>
                   <p className="text-gray-600 leading-relaxed">{example.description}</p>
                 </div>
