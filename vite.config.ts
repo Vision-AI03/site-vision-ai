@@ -23,5 +23,6 @@ export default defineConfig(({ mode }) => ({
     port: Number(process.env.PORT) || 4173,
     host: '0.0.0.0',
     strictPort: true,
+    allowedHosts: ['agenciavisionai.com', '.railway.app'],
   },
 }));
