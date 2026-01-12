@@ -25,8 +25,7 @@ const Footer = () => {
                 <img 
                   src={logoVisionAI}
                   alt="Vision AI Logo" 
-                  className="h-8 w-auto group-hover:scale-110 transition-transform brightness-0 invert" 
-                  style={{ background: 'none' }}
+                  className="h-8 w-auto group-hover:scale-110 transition-transform" 
                 />
                 <span className="font-bold text-2xl">
                   <span className="text-white">VISION</span>{" "}
