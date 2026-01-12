@@ -45,7 +45,7 @@ const Header = () => {
               alt="Vision AI Logo" 
               className="h-8 w-auto transition-transform duration-300 group-hover:scale-110" 
               src={logoVisionAI}
-              style={{ background: 'transparent' }}
+              style={{ background: 'none', mixBlendMode: 'multiply' }}
             />
             <span className="font-bold text-xl">
               <span className="text-gray-900">VISION</span>{" "}
