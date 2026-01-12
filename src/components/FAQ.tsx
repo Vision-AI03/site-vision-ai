@@ -6,38 +6,38 @@ const FAQ = () => {
 
   const faqData = [
     {
-      question: "Posso substituir totalmente minha equipe de vendas e atendimento por Agentes IA?",
+      question: "Posso substituir totalmente minha equipe de vendas e atendimento por Agentes de IA?",
       answer: "Embora seja possível, recomendamos usar a IA para otimizar seus atendimentos e vendas, sem substituir totalmente a equipe humana. O equilíbrio entre agentes IA e humanos geralmente oferece os melhores resultados. A IA cuida das consultas iniciais, qualificação de leads e atendimento 24/7, enquanto humanos focam em negociações complexas e relacionamentos estratégicos.",
       icon: <Users className="h-5 w-5" />,
       gradient: "from-blue-500 to-indigo-600"
     },
     {
-      question: "É fácil treinar um Agente IA?",
-      answer: "Sim! Nossos agentes IA são projetados para serem facilmente treinados. Você pode configurar respostas, definir fluxos de conversação e personalizar o comportamento através de uma interface intuitiva. Não é necessário conhecimento técnico avançado - nossa equipe oferece suporte completo durante todo o processo de implementação.",
+      question: "Quem configura e treina o Agente de IA para o meu negócio?",
+      answer: "A Vision AI é responsável por todo o processo. Nós entendemos seu negócio, seu funil e seu atendimento, e entregamos um Agente de IA já treinado para falar com seus clientes e vender do jeito certo.",
       icon: <Bot className="h-5 w-5" />,
       gradient: "from-indigo-500 to-purple-600"
     },
     {
-      question: "Vocês podem me ajudar a treinar os Agentes IA e configurar outros recursos?",
-      answer: "Claro! Oferecemos suporte técnico e comercial integrado. Nossa equipe especializada ajuda no treinamento personalizado dos agentes, configuração de fluxos automatizados, integração com seus sistemas existentes e otimização contínua para melhor performance. Você não fica sozinho nesse processo.",
+      question: "O Agente já vem pronto para atender ou preciso montar algo?",
+      answer: "Sim. O Agente já chega totalmente configurado, pronto para responder clientes, apresentar seus serviços, qualificar leads e iniciar vendas desde o primeiro dia.",
       icon: <Code className="h-5 w-5" />,
       gradient: "from-purple-500 to-pink-600"
     },
     {
-      question: "Preciso de conhecimentos técnicos ou de programação?",
-      answer: "Não é necessário! Desenvolvemos nossas soluções pensando na simplicidade. A interface é visual e intuitiva, permitindo que você configure e gerencie seus agentes IA sem conhecimento de programação. Para customizações mais avançadas, nossa equipe técnica está disponível para apoiar.",
+      question: "Vou precisar mexer em sistemas, tecnologia ou integrações?",
+      answer: "Não. Todas as integrações, como WhatsApp, site, agenda e outros canais, são feitas pela Vision AI. Você não precisa lidar com ferramentas técnicas.",
       icon: <Sparkles className="h-5 w-5" />,
       gradient: "from-cyan-500 to-blue-600"
     },
     {
-      question: "Nossas vendas são complexas, o Agente IA conseguirá aprender?",
+      question: "Meu processo de vendas é complexo. O Agente de IA consegue aprender e se adaptar?",
       answer: "Sim! Nossos agentes IA são desenvolvidos para lidar com vendas complexas e processos específicos de cada negócio. Eles aprendem com cada interação e podem ser treinados com cenários específicos do seu setor. Para situações muito complexas, o agente pode transferir automaticamente para um especialista humano.",
       icon: <BarChart className="h-5 w-5" />,
       gradient: "from-emerald-500 to-teal-600"
     },
     {
-      question: "Posso atender clientes em inglês e outras línguas com IA?",
-      answer: "Perfeitamente! Nossos agentes IA suportam múltiplos idiomas, incluindo português, inglês, espanhol e outros. Eles mantêm o contexto e personalidade da marca independente do idioma usado pelo cliente, permitindo expandir seu atendimento globalmente sem barreiras linguísticas.",
+      question: "O Agente de IA consegue vender, qualificar leads e agendar automaticamente?",
+      answer: "Sim. Ele conduz conversas, entende o interesse do cliente, filtra oportunidades reais e pode agendar ou encaminhar para fechamento, mesmo em processos de venda mais complexos.",
       icon: <Globe className="h-5 w-5" />,
       gradient: "from-orange-500 to-red-600"
     }
