@@ -13,7 +13,7 @@ const Hero = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Experimente você mesmo: converse com nossa consultora Sophia, um agente de IA que tira sua dúvidas e traz soluções certeiras para seu negócio!",
+      text: "Experimente você mesmo: Converse com nossa consultora Sophia, um agente de IA que tira suas dúvidas e traz soluções certeiras para seu negócio!",
       isBot: true,
       timestamp: new Date()
     }
