@@ -31,7 +31,7 @@ const Contact = () => {
     };
 
     try {
-      const response = await fetch("https://n8n.agenciavisionai.com/webhook/contact-form"), {
+      const response = await fetch("https://n8n.agenciavisionai.com/webhook/contact-form", {
         method: "POST",
         mode: "cors",
         headers: {
