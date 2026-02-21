@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { createClient } from "@supabase/supabase-js";
+
+// ⚠️ Substitua pelos seus valores reais do Supabase
+// Painel Supabase → Settings → API
+const SUPABASE_URL = "https://SEU_PROJECT_ID.supabase.co";
+const SUPABASE_ANON_KEY = "SUA_ANON_KEY_AQUI";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,47 +28,36 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const payload = {
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      phone: formData.phone,
-      message: formData.message,
-      timestamp: new Date().toISOString(),
-      source: "Vision AI Website"
-    };
-
     try {
-      const response = await fetch("https://n8n.agenciavisionai.com/webhook/contact-form", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+      const { error } = await supabase.from("leads").insert({
+        nome: formData.name,
+        email: formData.email,
+        empresa: formData.company,
+        telefone: formData.phone,
+        mensagem_original: formData.message,
+        status: "novo",
+        origem: "Vision AI Website",
       });
 
-      if (response.ok) {
-        toast({
-          title: "Mensagem enviada!",
-          description: "Seus dados foram enviados com sucesso. Entraremos em contato em breve."
-        });
+      if (error) throw error;
 
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          phone: "",
-          message: ""
-        });
-      } else {
-        throw new Error(`Erro HTTP: ${response.status}`);
-      }
+      toast({
+        title: "Mensagem enviada!",
+        description: "Recebemos seu contato. Em breve nossa equipe vai falar com você."
+      });
 
-    } catch (error) {
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        message: ""
+      });
+
+    } catch (error: any) {
       toast({
         title: "Erro ao enviar",
-        description: error instanceof Error ? error.message : "Houve um problema ao enviar seus dados. Tente novamente.",
+        description: error?.message || "Houve um problema ao enviar seus dados. Tente novamente.",
         variant: "destructive"
       });
     } finally {
@@ -158,9 +155,7 @@ const Contact = () => {
             </p>
           </div>
 
-          {/* Contact Form with Modern Design */}
           <div className="relative">
-            {/* Glow Effect */}
             <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-3xl opacity-20 blur-2xl"></div>
             
             <div className="relative glass rounded-3xl p-8 md:p-12 border border-white/50 shadow-2xl">
