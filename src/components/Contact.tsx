@@ -8,8 +8,8 @@ import { createClient } from "@supabase/supabase-js";
 
 // ⚠️ Substitua pelos seus valores reais do Supabase
 // Painel Supabase → Settings → API
-const SUPABASE_URL = "https://SEU_PROJECT_ID.supabase.co";
-const SUPABASE_ANON_KEY = "SUA_ANON_KEY_AQUI";
+const SUPABASE_URL = "https://sfezwprbanvxsnwgvkhh.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_GDZ255pc90qDwnv0ZGRtzQ_-my10uHe";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
