@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { createClient } from "@supabase/supabase-js";
 
-// ⚠️ Substitua pelos seus valores reais do Supabase
-// Painel Supabase → Settings → API
-const SUPABASE_URL = "https://sfezwprbanvxsnwgvkhh.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_GDZ255pc90qDwnv0ZGRtzQ_-my10uHe";
+// URL da Edge Function do sistema central Vision AI
+// Substitua pelo seu PROJECT_REF real do Supabase do sistema central
+const WEBHOOK_URL = "https://sfezwprbanvxsnwgvkhh.supabase.co/functions/v1/capture-lead-website";
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Token de segurança para validar que a requisição vem do site
+// Defina esse mesmo token nos secrets da Edge Function: WEBHOOK_API_TOKEN
+const WEBHOOK_TOKEN = "visionai_site_webhook_2026";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +22,7 @@ const Contact = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,17 +30,28 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("leads").insert({
-        nome: formData.name,
-        email: formData.email,
-        empresa: formData.company,
-        telefone: formData.phone,
-        mensagem_original: formData.message,
-        status: "novo",
-        origem: "Vision AI Website",
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: formData.name,
+          email: formData.email,
+          empresa: formData.company,
+          telefone: formData.phone,
+          mensagem: formData.message,
+          origem: "site-visionai",
+          api_token: WEBHOOK_TOKEN,
+        }),
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error || "Falha ao enviar dados");
+      }
+
+      setIsSuccess(true);
 
       toast({
         title: "Mensagem enviada!",
@@ -53,6 +65,9 @@ const Contact = () => {
         phone: "",
         message: ""
       });
+
+      // Reset do estado de sucesso após 3 segundos
+      setTimeout(() => setIsSuccess(false), 3000);
 
     } catch (error: any) {
       toast({
@@ -250,12 +265,17 @@ const Contact = () => {
                 <Button 
                   type="submit" 
                   className="w-full bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white py-6 px-8 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || isSuccess}
                 >
                   {isSubmitting ? (
                     <>
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                       Enviando...
+                    </>
+                  ) : isSuccess ? (
+                    <>
+                      <CheckCircle className="h-5 w-5" />
+                      Enviado com Sucesso!
                     </>
                   ) : (
                     <>
