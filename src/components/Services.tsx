@@ -6,7 +6,7 @@ const Services = () => {
       icon: MessageSquare,
       title: "Agentes de Atendimento",
       description: "Seu negócio atendendo 24/7, sem equipe adicional",
-      features: ["Responde dúvidas automaticamente", "Agenda reuniões e consultas", "Integra com WhatsApp e Instagram"],
+      features: ["Responde dúvidas automaticamente", "Agenda reuniões e consultas", "Integra com WhatsApp"],
       gradient: "from-blue-500 to-indigo-600"
     },
     {

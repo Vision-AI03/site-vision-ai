@@ -1,4 +1,4 @@
-import { Clock, DollarSign, Users, TrendingUp, Shield, Zap, MessageSquare, Target } from "lucide-react";
+import { Clock, DollarSign, Users, TrendingUp, Shield, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface AnimatedCounterProps {
@@ -204,40 +204,132 @@ const Benefits = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Automação de Atendimento",
-                  description: "Implementamos agentes que atendem clientes de forma natural e instantânea, reduzindo a carga da equipe humana.",
-                  gradient: "from-blue-500 to-indigo-600",
-                  icon: MessageSquare
-                },
-                {
-                  title: "Geração e Qualificação de Leads",
-                  description: "Captura dados, qualifica oportunidades e direciona os leads prontos para o seu time comercial ou CRM.",
-                  gradient: "from-purple-500 to-pink-600",
-                  icon: Target
-                },
-                {
-                  title: "Integrações Inteligentes",
-                  description: "Conectamos agentes a plataformas como WhatsApp, Google Sheets, CRMs e agendas, criando fluxos automatizados de ponta a ponta.",
-                  gradient: "from-cyan-500 to-blue-600",
-                  icon: Zap
-                }
-              ].map((example, idx) => {
-                const Icon = example.icon;
-                return (
+
+              {/* Card 1: Automação de Atendimento — Phone/WhatsApp mockup */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
                 <div
-                  key={idx}
-                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
+                  className="w-full h-44 mb-6 rounded-xl overflow-hidden relative flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #0f172a 0%, #312e81 100%)' }}
                 >
-                  <div className={`w-full h-40 mb-6 rounded-xl bg-gradient-to-br ${example.gradient} flex items-center justify-center`}>
-                    <Icon className="h-20 w-20 text-white opacity-90 group-hover:scale-110 transition-transform duration-500" />
+                  <svg viewBox="0 0 120 192" width="90" height="144" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4" width="112" height="184" rx="14" fill="#1e293b" stroke="#475569" strokeWidth="1.5"/>
+                    <rect x="8" y="20" width="104" height="148" fill="#0f1923"/>
+                    <rect x="44" y="8" width="32" height="8" rx="4" fill="#334155"/>
+                    <rect x="44" y="170" width="32" height="8" rx="4" fill="#334155"/>
+                    <rect x="8" y="20" width="104" height="24" fill="#075e54"/>
+                    <circle cx="22" cy="32" r="9" fill="#128C7E"/>
+                    <text x="22" y="36" textAnchor="middle" fill="white" fontSize="7" fontFamily="sans-serif" fontWeight="bold">IA</text>
+                    <text x="36" y="29" fill="white" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">Assistente Vision AI</text>
+                    <text x="36" y="37" fill="rgba(255,255,255,0.55)" fontSize="5.5" fontFamily="sans-serif">● Online</text>
+                    <rect x="8" y="44" width="104" height="116" fill="#0b141a"/>
+                    <rect x="10" y="50" width="84" height="26" rx="5" fill="#202c33"/>
+                    <text x="16" y="61" fill="rgba(255,255,255,0.85)" fontSize="6" fontFamily="sans-serif">Qual o horário de</text>
+                    <text x="16" y="70" fill="rgba(255,255,255,0.85)" fontSize="6" fontFamily="sans-serif">funcionamento?</text>
+                    <rect x="18" y="84" width="92" height="52" rx="5" fill="#005c4b"/>
+                    <text x="24" y="96" fill="rgba(255,255,255,0.9)" fontSize="6" fontFamily="sans-serif">Olá! Funcionamos de</text>
+                    <text x="24" y="105" fill="rgba(255,255,255,0.9)" fontSize="6" fontFamily="sans-serif">seg a sex, 8h às 18h.</text>
+                    <text x="24" y="114" fill="rgba(255,255,255,0.9)" fontSize="6" fontFamily="sans-serif">Posso ajudar? 😊</text>
+                    <text x="86" y="129" fill="rgba(255,255,255,0.35)" fontSize="5" fontFamily="sans-serif">10:24 ✓✓</text>
+                    <rect x="8" y="152" width="104" height="12" fill="#1f2c34"/>
+                    <rect x="13" y="154" width="72" height="8" rx="4" fill="#2a3942"/>
+                    <circle cx="105" cy="158" r="5" fill="#00a884"/>
+                  </svg>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm px-2.5 py-1 rounded-full flex items-center gap-1 whitespace-nowrap">
+                    <span className="text-yellow-400 text-[10px]">⚡</span>
+                    <span className="text-white text-[10px] font-medium">Respondido em 2 segundos</span>
                   </div>
-                  <h4 className="text-xl font-semibold mb-4 text-gray-900">{example.title}</h4>
-                  <p className="text-gray-600 leading-relaxed">{example.description}</p>
                 </div>
-                );
-              })}
+                <h4 className="text-xl font-semibold mb-4 text-gray-900">Automação de Atendimento</h4>
+                <p className="text-gray-600 leading-relaxed">Implementamos agentes que atendem clientes de forma natural e instantânea, reduzindo a carga da equipe humana.</p>
+              </div>
+
+              {/* Card 2: Geração e Qualificação de Leads — Sales funnel */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+                <div
+                  className="w-full h-44 mb-6 rounded-xl overflow-hidden relative flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #4c1d95 0%, #be185d 100%)' }}
+                >
+                  <svg viewBox="0 0 200 158" width="200" height="158" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14,12 L186,12 L156,52 L44,52 Z" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                    <text x="100" y="30" textAnchor="middle" fill="white" fontSize="10" fontFamily="sans-serif">👥</text>
+                    <text x="100" y="46" textAnchor="middle" fill="white" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">Leads Captados</text>
+                    <path d="M44,55 L156,55 L130,97 L70,97 Z" fill="rgba(255,255,255,0.28)" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                    <text x="100" y="72" textAnchor="middle" fill="white" fontSize="10" fontFamily="sans-serif">⚙️</text>
+                    <text x="100" y="88" textAnchor="middle" fill="white" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">Qualificação Automática</text>
+                    <path d="M70,100 L130,100 L113,140 L87,140 Z" fill="rgba(255,255,255,0.38)" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                    <text x="100" y="115" textAnchor="middle" fill="white" fontSize="10" fontFamily="sans-serif">🎯</text>
+                    <text x="100" y="133" textAnchor="middle" fill="white" fontSize="7.5" fontFamily="sans-serif" fontWeight="700">Prontos para Venda</text>
+                    <path d="M93,143 L100,153 L107,143 Z" fill="rgba(255,255,255,0.7)"/>
+                  </svg>
+                </div>
+                <h4 className="text-xl font-semibold mb-4 text-gray-900">Geração e Qualificação de Leads</h4>
+                <p className="text-gray-600 leading-relaxed">Captura dados, qualifica oportunidades e direciona os leads prontos para o seu time comercial ou CRM.</p>
+              </div>
+
+              {/* Card 3: Integrações Inteligentes — Hub diagram */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+                <div
+                  className="w-full h-44 mb-6 rounded-xl overflow-hidden relative flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #0e7490 0%, #1e40af 100%)' }}
+                >
+                  <svg viewBox="0 0 200 160" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="100" y1="80" x2="44" y2="30" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                    <line x1="100" y1="80" x2="156" y2="30" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                    <line x1="100" y1="80" x2="156" y2="130" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                    <line x1="100" y1="80" x2="44" y2="130" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                    <circle cx="72" cy="55" r="3.5" fill="rgba(255,255,255,0.8)">
+                      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="128" cy="55" r="3.5" fill="rgba(255,255,255,0.8)">
+                      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="128" cy="105" r="3.5" fill="rgba(255,255,255,0.8)">
+                      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" begin="1s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="72" cy="105" r="3.5" fill="rgba(255,255,255,0.8)">
+                      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="100" cy="80" r="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.5)" strokeWidth="2"/>
+                    <circle cx="100" cy="80" r="17" fill="rgba(255,255,255,0.2)"/>
+                    <path d="M104,67 L96,80 L103,80 L96,93 L108,77 L101,77 Z" fill="white"/>
+                    {/* WhatsApp */}
+                    <circle cx="44" cy="28" r="18" fill="#25D366"/>
+                    <rect x="36" y="21" width="16" height="12" rx="4" fill="white" opacity="0.9"/>
+                    <path d="M37,33 L35,40 L43,36 Z" fill="white" opacity="0.9"/>
+                    <circle cx="41" cy="27" r="1.5" fill="#25D366"/>
+                    <circle cx="44" cy="27" r="1.5" fill="#25D366"/>
+                    <circle cx="47" cy="27" r="1.5" fill="#25D366"/>
+                    <text x="44" y="54" textAnchor="middle" fill="white" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">WhatsApp</text>
+                    {/* Google Sheets */}
+                    <rect x="138" y="12" width="36" height="32" rx="5" fill="#0F9D58"/>
+                    <rect x="142" y="17" width="28" height="4" rx="1.5" fill="rgba(255,255,255,0.9)"/>
+                    <rect x="142" y="23" width="28" height="4" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+                    <rect x="142" y="29" width="20" height="4" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+                    <rect x="142" y="35" width="14" height="4" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+                    <rect x="150" y="17" width="1.5" height="22" fill="rgba(255,255,255,0.35)"/>
+                    <text x="156" y="54" textAnchor="middle" fill="white" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">G. Sheets</text>
+                    {/* Google Calendar */}
+                    <rect x="138" y="116" width="36" height="30" rx="5" fill="#4285F4"/>
+                    <rect x="138" y="116" width="36" height="12" rx="5" fill="#1967D2"/>
+                    <rect x="138" y="122" width="36" height="6" fill="#1967D2"/>
+                    <rect x="142" y="131" width="7" height="5" rx="1" fill="rgba(255,255,255,0.85)"/>
+                    <rect x="151" y="131" width="7" height="5" rx="1" fill="rgba(255,255,255,0.85)"/>
+                    <rect x="160" y="131" width="7" height="5" rx="1" fill="rgba(255,255,255,0.85)"/>
+                    <rect x="142" y="138" width="7" height="5" rx="1" fill="rgba(255,255,255,0.85)"/>
+                    <rect x="151" y="138" width="7" height="5" rx="1" fill="#E8453C"/>
+                    <rect x="160" y="138" width="7" height="5" rx="1" fill="rgba(255,255,255,0.85)"/>
+                    <text x="156" y="156" textAnchor="middle" fill="white" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">Calendar</text>
+                    {/* CRM */}
+                    <circle cx="44" cy="130" r="18" fill="#F97316"/>
+                    <circle cx="44" cy="123" r="6" fill="white" opacity="0.85"/>
+                    <path d="M32,140 Q32,132 44,132 Q56,132 56,140" fill="white" opacity="0.85"/>
+                    <text x="44" y="156" textAnchor="middle" fill="white" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">CRM</text>
+                  </svg>
+                </div>
+                <h4 className="text-xl font-semibold mb-4 text-gray-900">Integrações Inteligentes</h4>
+                <p className="text-gray-600 leading-relaxed">Conectamos agentes a plataformas como WhatsApp, Google Sheets, CRMs e agendas, criando fluxos automatizados de ponta a ponta.</p>
+              </div>
+
             </div>
           </div>
         </div>
