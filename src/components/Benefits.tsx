@@ -1,8 +1,5 @@
-import { Clock, DollarSign, Users, TrendingUp, Shield, Zap } from "lucide-react";
+import { Clock, DollarSign, Users, TrendingUp, Shield, Zap, MessageSquare, Target } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import exampleAtendimento from "@/assets/example-atendimento.png";
-import exampleLeads from "@/assets/example-leads.png";
-import exampleIntegracoes from "@/assets/example-integracoes.png";
 
 interface AnimatedCounterProps {
   value: string;
@@ -38,25 +35,29 @@ const AnimatedCounter = ({ value, suffix = "", prefix = "", gradient }: Animated
   }, []);
 
   useEffect(() => {
-    if (isVisible && value !== "∞") {
-      let start = 0;
-      const end = parseInt(value);
-      const duration = 2000;
-      const increment = end / (duration / 16);
+    if (isVisible) {
+      const parsed = parseInt(value);
+      const isAnimatable = !isNaN(parsed) && String(parsed) === value;
+      if (isAnimatable) {
+        let start = 0;
+        const end = parsed;
+        const duration = 2000;
+        const increment = end / (duration / 16);
 
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= end) {
+            setCount(end);
+            clearInterval(timer);
+          } else {
+            setCount(Math.floor(start));
+          }
+        }, 16);
 
-      return () => clearInterval(timer);
-    } else if (value === "∞") {
-      setCount(value);
+        return () => clearInterval(timer);
+      } else {
+        setCount(value);
+      }
     }
   }, [isVisible, value]);
 
@@ -73,32 +74,33 @@ const Benefits = () => {
       icon: Clock,
       title: "Disponibilidade 24/7",
       description: "Seus agentes IA trabalham sem parar, oferecendo suporte e atendimento a qualquer hora do dia.",
-      stats: "100",
+      stats: "9",
       suffix: "% uptime",
+      prefix: "99,",
       gradient: "from-blue-500 to-indigo-600"
     },
     {
       icon: DollarSign,
       title: "Redução de Custos",
       description: "Diminua significativamente os custos operacionais enquanto aumenta a eficiência do atendimento.",
-      stats: "70",
+      stats: "60",
       suffix: "% economia",
+      prefix: "Até ",
       gradient: "from-emerald-500 to-teal-600"
     },
     {
       icon: TrendingUp,
       title: "Aumento de Conversões",
       description: "Melhore suas taxas de conversão com qualificação inteligente e acompanhamento personalizado.",
-      stats: "45",
-      suffix: "% conversões",
-      prefix: "+",
+      stats: "2",
+      suffix: "x mais conversões",
       gradient: "from-purple-500 to-pink-600"
     },
     {
       icon: Zap,
       title: "Resposta Instantânea",
       description: "Elimine o tempo de espera com respostas imediatas e precisas para todas as consultas.",
-      stats: "10",
+      stats: "30",
       suffix: " segundos",
       prefix: "< ",
       gradient: "from-yellow-500 to-orange-600"
@@ -107,16 +109,16 @@ const Benefits = () => {
       icon: Users,
       title: "Experiência Personalizada",
       description: "Ofereça atendimento personalizado baseado no histórico e preferências de cada cliente.",
-      stats: "100",
-      suffix: "% personalizado",
+      stats: "Sob medida",
+      suffix: "",
       gradient: "from-cyan-500 to-blue-600"
     },
     {
       icon: Shield,
       title: "Escalabilidade Garantida",
       description: "Cresça sem limites. Nossos agentes se adaptam automaticamente ao volume de demanda.",
-      stats: "∞",
-      suffix: " crescimento",
+      stats: "Escala ilimitada",
+      suffix: "",
       gradient: "from-indigo-500 to-purple-600"
     }
   ];
@@ -207,36 +209,35 @@ const Benefits = () => {
                   title: "Automação de Atendimento",
                   description: "Implementamos agentes que atendem clientes de forma natural e instantânea, reduzindo a carga da equipe humana.",
                   gradient: "from-blue-500 to-indigo-600",
-                  image: exampleAtendimento
+                  icon: MessageSquare
                 },
                 {
                   title: "Geração e Qualificação de Leads",
                   description: "Captura dados, qualifica oportunidades e direciona os leads prontos para o seu time comercial ou CRM.",
                   gradient: "from-purple-500 to-pink-600",
-                  image: exampleLeads
+                  icon: Target
                 },
                 {
                   title: "Integrações Inteligentes",
                   description: "Conectamos agentes a plataformas como WhatsApp, Google Sheets, CRMs e agendas, criando fluxos automatizados de ponta a ponta.",
                   gradient: "from-cyan-500 to-blue-600",
-                  image: exampleIntegracoes
+                  icon: Zap
                 }
-              ].map((example, idx) => (
-                <div 
-                  key={idx} 
+              ].map((example, idx) => {
+                const Icon = example.icon;
+                return (
+                <div
+                  key={idx}
                   className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
                 >
-                  <div className="w-full h-40 mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-                    <img 
-                      src={example.image} 
-                      alt={example.title}
-                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                    />
+                  <div className={`w-full h-40 mb-6 rounded-xl bg-gradient-to-br ${example.gradient} flex items-center justify-center`}>
+                    <Icon className="h-20 w-20 text-white opacity-90 group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <h4 className="text-xl font-semibold mb-4 text-gray-900">{example.title}</h4>
                   <p className="text-gray-600 leading-relaxed">{example.description}</p>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

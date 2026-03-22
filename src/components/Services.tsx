@@ -5,43 +5,43 @@ const Services = () => {
     {
       icon: MessageSquare,
       title: "Agentes de Atendimento",
-      description: "Atendimento 24/7 com IA que compreende e responde suas dúvidas de forma natural e eficiente.",
-      features: ["Respostas instantâneas", "Multilíngue", "Integração com sistemas"],
+      description: "Seu negócio atendendo 24/7, sem equipe adicional",
+      features: ["Responde dúvidas automaticamente", "Agenda reuniões e consultas", "Integra com WhatsApp e Instagram"],
       gradient: "from-blue-500 to-indigo-600"
     },
     {
       icon: TrendingUp,
       title: "Agentes de Vendas",
-      description: "Qualifique leads e conduza vendas automaticamente com nossa IA especializada em conversão.",
-      features: ["Qualificação de leads", "Follow-up automático", "CRM integrado"],
+      description: "IA que aborda, qualifica e encaminha leads para você fechar",
+      features: ["Qualificação automática de prospects", "Follow-up sem esforço manual", "Integração com seu CRM"],
       gradient: "from-indigo-500 to-purple-600"
     },
     {
       icon: Users,
       title: "Agentes de Suporte",
-      description: "Resolva problemas técnicos e dúvidas dos clientes com agilidade e precisão.",
-      features: ["Diagnóstico automático", "Base de conhecimento", "Escalação inteligente"],
+      description: "Resolva 80% dos chamados sem intervenção humana",
+      features: ["Base de conhecimento personalizada", "Escalação inteligente para humanos", "Histórico de atendimentos"],
       gradient: "from-purple-500 to-pink-600"
     },
     {
       icon: Bot,
       title: "Qualificação de Leads",
-      description: "Identifique e qualifique automaticamente os melhores prospects para sua equipe de vendas.",
-      features: ["Scoring automático", "Segmentação inteligente", "Relatórios detalhados"],
+      description: "Pare de perder tempo com leads frios",
+      features: ["Scoring automático por perfil", "Segmentação por interesse e momento", "Relatórios de conversão"],
       gradient: "from-cyan-500 to-blue-600"
     },
     {
       icon: Zap,
       title: "Automações com IA",
-      description: "Otimize processos repetitivos com automações inteligentes que aprendem e se adaptam.",
-      features: ["Workflows personalizados", "Integração de sistemas", "Otimização contínua"],
+      description: "Elimine tarefas repetitivas do seu time",
+      features: ["Fluxos automáticos entre sistemas", "Notificações e alertas inteligentes", "Integração com ferramentas existentes"],
       gradient: "from-emerald-500 to-teal-600"
     },
     {
       icon: Settings,
       title: "Soluções Personalizadas",
-      description: "Desenvolvemos soluções de IA sob medida para as necessidades específicas do seu negócio.",
-      features: ["Análise personalizada", "Desenvolvimento customizado", "Suporte dedicado"],
+      description: "Construímos do zero para o seu processo específico",
+      features: ["Diagnóstico gratuito do seu negócio", "Desenvolvimento sob medida", "Suporte e evolução contínua"],
       gradient: "from-orange-500 to-red-600"
     }
   ];
@@ -122,14 +122,12 @@ const Services = () => {
             <p className="text-gray-600 mb-8 max-w-2xl">
               Entre em contato e descubra como nossas soluções podem revolucionar seu negócio
             </p>
-            <a 
-              href="https://wa.me/message/UMOFX66X4CY2K1"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              Falar com Especialista
-            </a>
+              Quero Automatizar Meu Negócio
+            </button>
           </div>
         </div>
       </div>

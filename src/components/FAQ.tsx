@@ -137,14 +137,12 @@ const FAQ = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href="https://wa.me/message/UMOFX66X4CY2K1"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg"
               >
-                Falar com Especialista
-              </a>
+                Quero Automatizar Meu Negócio
+              </button>
               <p className="text-sm text-gray-500">
                 Atendimento personalizado • Consultoria gratuita
               </p>

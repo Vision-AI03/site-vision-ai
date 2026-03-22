@@ -81,7 +81,7 @@ const Footer = () => {
               </h3>
               <div className="space-y-4">
                 {[
-                  { icon: Mail, text: 'agenciavisionai@gmail.com' },
+                  { icon: Mail, text: 'visionaicontato@gmail.com' },
                   { icon: Phone, text: '(19) 99794-8118' },
                   { icon: MapPin, text: 'Ipeúna, SP' }
                 ].map((item, idx) => (

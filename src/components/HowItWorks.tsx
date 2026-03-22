@@ -147,7 +147,7 @@ const HowItWorks = () => {
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-2xl transform hover:scale-105"
               >
-                Fale Conosco Agora
+                Quero Automatizar Meu Negócio
               </button>
             </div>
           </div>
