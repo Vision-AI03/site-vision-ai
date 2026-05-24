@@ -1,14 +1,14 @@
 import { Clock, DollarSign, Users, TrendingUp, Shield, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-/* ─── Animated Counter ─── */
 interface AnimatedCounterProps {
   value: string;
   suffix?: string;
   prefix?: string;
+  color: string;
 }
 
-const AnimatedCounter = ({ value, suffix = "", prefix = "" }: AnimatedCounterProps) => {
+const AnimatedCounter = ({ value, suffix = "", prefix = "", color }: AnimatedCounterProps) => {
   const [count, setCount] = useState<number | string>(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -23,664 +23,556 @@ const AnimatedCounter = ({ value, suffix = "", prefix = "" }: AnimatedCounterPro
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
-    const parsed = parseInt(value);
-    const isAnimatable = !isNaN(parsed) && String(parsed) === value;
-    if (isAnimatable) {
-      let start = 0;
-      const end = parsed;
-      const duration = 1800;
-      const increment = end / (duration / 16);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) { setCount(end); clearInterval(timer); }
-        else setCount(Math.floor(start));
-      }, 16);
-      return () => clearInterval(timer);
-    } else {
-      setCount(value);
+    if (isVisible) {
+      const parsed = parseInt(value);
+      const isAnimatable = !isNaN(parsed) && String(parsed) === value;
+      if (isAnimatable) {
+        let start = 0;
+        const end = parsed;
+        const duration = 2000;
+        const increment = end / (duration / 16);
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= end) { setCount(end); clearInterval(timer); }
+          else setCount(Math.floor(start));
+        }, 16);
+        return () => clearInterval(timer);
+      } else {
+        setCount(value);
+      }
     }
   }, [isVisible, value]);
 
   return (
-    <div ref={ref} className="text-2xl font-bold text-gradient" style={{ fontFamily: "var(--va-font-display)" }}>
+    <div ref={ref} style={{ fontSize: '1.5rem', fontFamily: 'var(--va-font-display)', fontWeight: 700, color }}>
       {prefix}{count}{suffix}
     </div>
   );
 };
 
-/* ─── WhatsApp Mockup SVG ─── */
-const WhatsAppMockup = () => (
-  <svg viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
-    <defs>
-      <linearGradient id="phone-bg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#0E1117" />
-        <stop offset="100%" stopColor="#141921" />
-      </linearGradient>
-      <linearGradient id="msg-out" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#005C4B" />
-        <stop offset="100%" stopColor="#007A63" />
-      </linearGradient>
-      <linearGradient id="header-wpp" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#00875A" />
-        <stop offset="100%" stopColor="#00A36C" />
-      </linearGradient>
-      <filter id="shadow-card">
-        <feDropShadow dx="0" dy="8" stdDeviation="16" floodColor="#000" floodOpacity="0.5" />
-      </filter>
-      <clipPath id="phone-clip">
-        <rect x="60" y="10" width="220" height="260" rx="20" />
-      </clipPath>
-    </defs>
-
-    {/* Phone frame */}
-    <rect x="60" y="10" width="220" height="260" rx="20" fill="#1A1F2A" stroke="rgba(255,255,255,0.1)" strokeWidth="1" filter="url(#shadow-card)" />
-
-    {/* Screen bg */}
-    <rect x="60" y="10" width="220" height="260" rx="20" fill="url(#phone-bg)" clipPath="url(#phone-clip)" />
-
-    {/* Status bar */}
-    <rect x="60" y="10" width="220" height="22" rx="0" fill="rgba(0,0,0,0.3)" />
-    <text x="170" y="24" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8" fontFamily="DM Sans, sans-serif">9:41</text>
-
-    {/* WhatsApp Header */}
-    <rect x="60" y="32" width="220" height="40" fill="url(#header-wpp)" />
-    <circle cx="90" cy="52" r="13" fill="rgba(255,255,255,0.15)" />
-    <text x="90" y="56" textAnchor="middle" fill="white" fontSize="9" fontWeight="700" fontFamily="DM Sans, sans-serif">VA</text>
-    <text x="110" y="48" fill="white" fontSize="8.5" fontWeight="700" fontFamily="DM Sans, sans-serif">Assistente Vision AI</text>
-    <circle cx="112" cy="55" r="3" fill="#7FFFD4" />
-    <text x="117" y="58" fill="rgba(255,255,255,0.7)" fontSize="7" fontFamily="DM Sans, sans-serif">Online agora</text>
-
-    {/* Chat bg texture */}
-    <rect x="60" y="72" width="220" height="168" fill="#0B1117" />
-
-    {/* Message in — cliente */}
-    <rect x="70" y="80" width="120" height="32" rx="8" fill="#1E2733" />
-    <text x="80" y="93" fill="rgba(255,255,255,0.85)" fontSize="7.5" fontFamily="DM Sans, sans-serif">Qual o prazo de entrega</text>
-    <text x="80" y="104" fill="rgba(255,255,255,0.85)" fontSize="7.5" fontFamily="DM Sans, sans-serif">para SP capital?</text>
-    <text x="182" y="109" fill="rgba(255,255,255,0.3)" fontSize="6" fontFamily="DM Sans, sans-serif">10:23</text>
-
-    {/* Message out — IA */}
-    <rect x="100" y="120" width="168" height="52" rx="8" fill="url(#msg-out)" />
-    <text x="110" y="134" fill="rgba(255,255,255,0.9)" fontSize="7.5" fontFamily="DM Sans, sans-serif">Olá! Para SP capital, nosso</text>
-    <text x="110" y="146" fill="rgba(255,255,255,0.9)" fontSize="7.5" fontFamily="DM Sans, sans-serif">prazo é 1–2 dias úteis. 🚀</text>
-    <text x="110" y="158" fill="rgba(255,255,255,0.9)" fontSize="7.5" fontFamily="DM Sans, sans-serif">Posso gerar um orçamento?</text>
-    <text x="250" y="167" fill="rgba(255,255,255,0.45)" fontSize="6" fontFamily="DM Sans, sans-serif">✓✓</text>
-    <text x="222" y="167" fill="rgba(255,255,255,0.35)" fontSize="6" fontFamily="DM Sans, sans-serif">10:23</text>
-
-    {/* Typing indicator */}
-    <rect x="70" y="180" width="62" height="22" rx="11" fill="#1E2733" />
-    <circle cx="87" cy="191" r="4" fill="rgba(255,255,255,0.25)">
-      <animate attributeName="opacity" values="0.25;0.9;0.25" dur="1.2s" begin="0s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="101" cy="191" r="4" fill="rgba(255,255,255,0.25)">
-      <animate attributeName="opacity" values="0.25;0.9;0.25" dur="1.2s" begin="0.3s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="115" cy="191" r="4" fill="rgba(255,255,255,0.25)">
-      <animate attributeName="opacity" values="0.25;0.9;0.25" dur="1.2s" begin="0.6s" repeatCount="indefinite" />
-    </circle>
-
-    {/* Speed badge */}
-    <rect x="80" y="215" width="180" height="22" rx="11" fill="rgba(0,255,133,0.12)" stroke="rgba(0,255,133,0.35)" strokeWidth="0.75" />
-    <circle cx="96" cy="226" r="5" fill="#00FF85" opacity="0.9" />
-    <text x="106" y="230" fill="#00FF85" fontSize="7.5" fontWeight="600" fontFamily="DM Sans, sans-serif">⚡ Respondido em 1.2 segundos</text>
-
-    {/* Input bar */}
-    <rect x="60" y="244" width="220" height="26" rx="0" fill="#1A2026" />
-    <rect x="70" y="249" width="148" height="16" rx="8" fill="#252D35" />
-    <text x="78" y="260" fill="rgba(255,255,255,0.25)" fontSize="7" fontFamily="DM Sans, sans-serif">Digite uma mensagem</text>
-    <circle cx="234" cy="257" r="8" fill="#00FF85" />
-    <text x="234" y="261" textAnchor="middle" fill="#0A0D0F" fontSize="9" fontWeight="700">↑</text>
-
-    {/* Home indicator */}
-    <rect x="140" y="266" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.2)" />
-  </svg>
-);
-
-/* ─── Funil SVG profissional ─── */
-const FunnelMockup = () => (
-  <svg viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
-    <defs>
-      <linearGradient id="funnel-bg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#0D0F14" />
-        <stop offset="100%" stopColor="#111520" />
-      </linearGradient>
-      <linearGradient id="f1" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#1A2035" />
-        <stop offset="100%" stopColor="#1E2640" />
-      </linearGradient>
-      <linearGradient id="f2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#0D2235" />
-        <stop offset="100%" stopColor="#103060" />
-      </linearGradient>
-      <linearGradient id="f3" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#003A30" />
-        <stop offset="100%" stopColor="#005C45" />
-      </linearGradient>
-      <linearGradient id="green-pulse" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#00FF85" stopOpacity="0.9" />
-        <stop offset="100%" stopColor="#00C466" stopOpacity="0.7" />
-      </linearGradient>
-      <filter id="glow-green">
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-      </filter>
-    </defs>
-
-    {/* Background */}
-    <rect width="340" height="280" fill="url(#funnel-bg)" rx="0" />
-
-    {/* Grid sutil */}
-    <g opacity="0.06">
-      <line x1="0" y1="70" x2="340" y2="70" stroke="white" strokeWidth="0.5" />
-      <line x1="0" y1="140" x2="340" y2="140" stroke="white" strokeWidth="0.5" />
-      <line x1="0" y1="210" x2="340" y2="210" stroke="white" strokeWidth="0.5" />
-      <line x1="85" y1="0" x2="85" y2="280" stroke="white" strokeWidth="0.5" />
-      <line x1="170" y1="0" x2="170" y2="280" stroke="white" strokeWidth="0.5" />
-      <line x1="255" y1="0" x2="255" y2="280" stroke="white" strokeWidth="0.5" />
-    </g>
-
-    {/* ── Estágio 1: Leads Captados ── */}
-    {/* Trapézio topo */}
-    <path d="M 34,30 L 306,30 L 270,82 L 70,82 Z" fill="url(#f1)" stroke="rgba(100,120,200,0.25)" strokeWidth="1" />
-    {/* Label esquerda */}
-    <text x="42" y="52" fill="rgba(255,255,255,0.45)" fontSize="9" fontFamily="DM Sans, sans-serif" fontWeight="500">ETAPA 01</text>
-    {/* Número grande */}
-    <text x="60" y="68" fill="white" fontSize="18" fontFamily="Syne, sans-serif" fontWeight="700">1.240</text>
-    {/* Label direita */}
-    <text x="230" y="52" fill="rgba(255,255,255,0.5)" fontSize="8" fontFamily="DM Sans, sans-serif">Leads captados</text>
-    <text x="230" y="64" fill="rgba(255,255,255,0.3)" fontSize="7.5" fontFamily="DM Sans, sans-serif">últimos 30 dias</text>
-    {/* Barra de progresso lateral */}
-    <rect x="312" y="30" width="4" height="52" rx="2" fill="rgba(100,120,200,0.15)" />
-    <rect x="312" y="30" width="4" height="52" rx="2" fill="rgba(100,150,255,0.5)" />
-
-    {/* Divisor animado */}
-    <g opacity="0.6">
-      <line x1="70" y1="88" x2="270" y2="88" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
-      <circle cx="170" cy="88" r="4" fill="#1E2640">
-        <animate attributeName="r" values="4;5.5;4" dur="2s" repeatCount="indefinite" />
-      </circle>
-      <text x="170" y="91.5" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="6">↓</text>
-      <text x="170" y="104" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="DM Sans, sans-serif">Taxa: 48%</text>
-    </g>
-
-    {/* ── Estágio 2: Qualificados ── */}
-    <path d="M 70,108 L 270,108 L 220,162 L 120,162 Z" fill="url(#f2)" stroke="rgba(50,100,200,0.3)" strokeWidth="1" />
-    <text x="82" y="128" fill="rgba(255,255,255,0.45)" fontSize="9" fontFamily="DM Sans, sans-serif" fontWeight="500">ETAPA 02</text>
-    <text x="82" y="145" fill="white" fontSize="18" fontFamily="Syne, sans-serif" fontWeight="700">596</text>
-    <text x="196" y="128" fill="rgba(255,255,255,0.5)" fontSize="8" fontFamily="DM Sans, sans-serif">Qualificados</text>
-    <text x="196" y="140" fill="rgba(100,160,255,0.7)" fontSize="7.5" fontFamily="DM Sans, sans-serif" fontWeight="600">IA Score ≥ 72</text>
-
-    <rect x="312" y="108" width="4" height="54" rx="2" fill="rgba(50,100,200,0.15)" />
-    <rect x="312" y="108" width="4" height="28" rx="2" fill="rgba(80,140,255,0.55)" />
-
-    {/* Divisor */}
-    <g opacity="0.6">
-      <line x1="120" y1="168" x2="220" y2="168" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
-      <circle cx="170" cy="168" r="4" fill="#103060">
-        <animate attributeName="r" values="4;5.5;4" dur="2s" begin="0.5s" repeatCount="indefinite" />
-      </circle>
-      <text x="170" y="171.5" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="6">↓</text>
-      <text x="170" y="185" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="DM Sans, sans-serif">Taxa: 29%</text>
-    </g>
-
-    {/* ── Estágio 3: Prontos p/ Venda ── */}
-    <path d="M 120,190 L 220,190 L 195,240 L 145,240 Z" fill="url(#f3)" stroke="rgba(0,200,100,0.35)" strokeWidth="1" />
-    <text x="170" y="210" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="9" fontFamily="DM Sans, sans-serif" fontWeight="500">ETAPA 03</text>
-    <text x="170" y="230" textAnchor="middle" fill="#00FF85" fontSize="20" fontFamily="Syne, sans-serif" fontWeight="800" filter="url(#glow-green)">174</text>
-
-    <rect x="312" y="190" width="4" height="50" rx="2" fill="rgba(0,200,100,0.1)" />
-    <rect x="312" y="190" width="4" height="14" rx="2" fill="url(#green-pulse)" />
-
-    {/* Badge final */}
-    <rect x="128" y="248" width="84" height="18" rx="9" fill="rgba(0,255,133,0.12)" stroke="rgba(0,255,133,0.4)" strokeWidth="0.75" />
-    <circle cx="140" cy="257" r="3.5" fill="#00FF85">
-      <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-    </circle>
-    <text x="148" y="261" fill="#00FF85" fontSize="7.5" fontWeight="600" fontFamily="DM Sans, sans-serif">Prontos p/ fechar</text>
-
-    {/* Stat chips no topo */}
-    <rect x="34" y="14" width="62" height="13" rx="6.5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-    <text x="65" y="23.5" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="7" fontFamily="DM Sans, sans-serif">14% conversão</text>
-    <rect x="140" y="14" width="60" height="13" rx="6.5" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.2)" strokeWidth="0.5" />
-    <text x="170" y="23.5" textAnchor="middle" fill="#00FF85" fontSize="7" fontFamily="DM Sans, sans-serif">↑ 2.3× vs antes</text>
-    <rect x="244" y="14" width="62" height="13" rx="6.5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-    <text x="275" y="23.5" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="7" fontFamily="DM Sans, sans-serif">0 esforço manual</text>
-  </svg>
-);
-
-/* ─── Hub de Integrações ─── */
-const IntegrationsMockup = () => (
-  <svg viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
-    <defs>
-      <radialGradient id="hub-bg" cx="50%" cy="50%" r="60%">
-        <stop offset="0%" stopColor="#0E1520" />
-        <stop offset="100%" stopColor="#08090F" />
-      </radialGradient>
-      <radialGradient id="hub-glow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(0,255,133,0.12)" />
-        <stop offset="100%" stopColor="rgba(0,255,133,0)" />
-      </radialGradient>
-      <linearGradient id="line-grad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#00FF85" stopOpacity="0.8" />
-        <stop offset="100%" stopColor="#00FF85" stopOpacity="0.1" />
-      </linearGradient>
-      <filter id="hub-shadow">
-        <feDropShadow dx="0" dy="0" stdDeviation="8" floodColor="#00FF85" floodOpacity="0.3" />
-      </filter>
-      <filter id="node-glow">
-        <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#000" floodOpacity="0.6" />
-      </filter>
-    </defs>
-
-    {/* BG */}
-    <rect width="340" height="280" fill="url(#hub-bg)" />
-
-    {/* Glow central */}
-    <ellipse cx="170" cy="140" rx="90" ry="80" fill="url(#hub-glow)" />
-
-    {/* Anéis orbitais */}
-    <circle cx="170" cy="140" r="72" fill="none" stroke="rgba(0,255,133,0.06)" strokeWidth="0.75" strokeDasharray="4 6" />
-    <circle cx="170" cy="140" r="48" fill="none" stroke="rgba(0,255,133,0.09)" strokeWidth="0.75" strokeDasharray="3 5" />
-
-    {/* Linhas de conexão animadas */}
-    {/* WhatsApp → Hub */}
-    <line x1="56" y1="70" x2="138" y2="126" stroke="#25D366" strokeWidth="1" opacity="0.5" strokeDasharray="4 4">
-      <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite" />
-    </line>
-    {/* Sheets → Hub */}
-    <line x1="284" y1="70" x2="202" y2="126" stroke="#0F9D58" strokeWidth="1" opacity="0.5" strokeDasharray="4 4">
-      <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1.3s" repeatCount="indefinite" />
-    </line>
-    {/* CRM → Hub */}
-    <line x1="56" y1="210" x2="138" y2="154" stroke="#F97316" strokeWidth="1" opacity="0.5" strokeDasharray="4 4">
-      <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="0.9s" repeatCount="indefinite" />
-    </line>
-    {/* Calendar → Hub */}
-    <line x1="284" y1="210" x2="202" y2="154" stroke="#4285F4" strokeWidth="1" opacity="0.5" strokeDasharray="4 4">
-      <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1.1s" repeatCount="indefinite" />
-    </line>
-    {/* Supabase → Hub */}
-    <line x1="170" y1="18" x2="170" y2="116" stroke="#3ECF8E" strokeWidth="1" opacity="0.4" strokeDasharray="4 4">
-      <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1.4s" repeatCount="indefinite" />
-    </line>
-
-    {/* ── Hub Central ── */}
-    <circle cx="170" cy="140" r="36" fill="#0A1A14" stroke="rgba(0,255,133,0.4)" strokeWidth="1.5" filter="url(#hub-shadow)" />
-    <circle cx="170" cy="140" r="29" fill="rgba(0,255,133,0.08)" />
-    {/* Ícone raio */}
-    <path d="M175,125 L163,141 L170,141 L163,157 L178,137 L170,137 Z"
-      fill="#00FF85" filter="url(#hub-shadow)" />
-    <text x="170" y="169" textAnchor="middle" fill="rgba(0,255,133,0.7)" fontSize="7" fontFamily="DM Sans, sans-serif" fontWeight="600">VISION AI</text>
-
-    {/* ── Nós satélite ── */}
-
-    {/* WhatsApp */}
-    <circle cx="56" cy="70" r="28" fill="#1A2A1E" stroke="rgba(37,211,102,0.3)" strokeWidth="1" filter="url(#node-glow)" />
-    <circle cx="56" cy="62" r="13" fill="#25D366" />
-    <rect x="49" y="57" width="14" height="10" rx="3.5" fill="white" opacity="0.9" />
-    <path d="M50,67 L48,73 L55,70 Z" fill="white" opacity="0.9" />
-    <circle cx="53" cy="62" r="1.3" fill="#25D366" />
-    <circle cx="56" cy="62" r="1.3" fill="#25D366" />
-    <circle cx="59" cy="62" r="1.3" fill="#25D366" />
-    <text x="56" y="83" textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="8" fontFamily="DM Sans, sans-serif" fontWeight="600">WhatsApp</text>
-    {/* Ping animado */}
-    <circle cx="80" cy="48" r="4" fill="rgba(37,211,102,0.4)">
-      <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="80" cy="48" r="3" fill="#25D366" />
-
-    {/* Google Sheets */}
-    <circle cx="284" cy="70" r="28" fill="#1A251E" stroke="rgba(15,157,88,0.3)" strokeWidth="1" filter="url(#node-glow)" />
-    <rect x="272" y="55" width="24" height="30" rx="4" fill="#0F9D58" />
-    <rect x="276" y="61" width="16" height="3" rx="1.5" fill="rgba(255,255,255,0.9)" />
-    <rect x="276" y="67" width="16" height="3" rx="1.5" fill="rgba(255,255,255,0.7)" />
-    <rect x="276" y="73" width="12" height="3" rx="1.5" fill="rgba(255,255,255,0.5)" />
-    <line x1="284" y1="55" x2="284" y2="85" stroke="rgba(255,255,255,0.2)" strokeWidth="0.75" />
-    <text x="284" y="95" textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="8" fontFamily="DM Sans, sans-serif" fontWeight="600">G. Sheets</text>
-
-    {/* CRM */}
-    <circle cx="56" cy="210" r="28" fill="#251D15" stroke="rgba(249,115,22,0.3)" strokeWidth="1" filter="url(#node-glow)" />
-    <circle cx="56" cy="202" r="9" fill="#F97316" />
-    <path d="M40,222 Q40,210 56,210 Q72,210 72,222" fill="#F97316" opacity="0.85" />
-    <text x="56" y="232" textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="8" fontFamily="DM Sans, sans-serif" fontWeight="600">CRM</text>
-
-    {/* Google Calendar */}
-    <circle cx="284" cy="210" r="28" fill="#151D2A" stroke="rgba(66,133,244,0.3)" strokeWidth="1" filter="url(#node-glow)" />
-    <rect x="271" y="197" width="26" height="24" rx="4" fill="#4285F4" />
-    <rect x="271" y="197" width="26" height="10" rx="4" fill="#1967D2" />
-    <rect x="271" y="203" width="26" height="4" fill="#1967D2" />
-    <rect x="275" y="211" width="5" height="4" rx="1" fill="rgba(255,255,255,0.9)" />
-    <rect x="282" y="211" width="5" height="4" rx="1" fill="rgba(255,255,255,0.9)" />
-    <rect x="289" y="211" width="5" height="4" rx="1" fill="rgba(255,255,255,0.9)" />
-    <rect x="275" y="217" width="5" height="4" rx="1" fill="rgba(255,255,255,0.9)" />
-    <rect x="282" y="217" width="5" height="4" rx="1" fill="#E53935" />
-    <rect x="289" y="217" width="5" height="4" rx="1" fill="rgba(255,255,255,0.9)" />
-    <text x="284" y="232" textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="8" fontFamily="DM Sans, sans-serif" fontWeight="600">Calendar</text>
-
-    {/* Supabase (topo centro) */}
-    <circle cx="170" cy="18" r="20" fill="#0D1F18" stroke="rgba(62,207,142,0.3)" strokeWidth="1" filter="url(#node-glow)" />
-    <path d="M164,12 L176,12 L170,24 Z" fill="#3ECF8E" opacity="0.9" />
-    <path d="M170,14 L178,26 L162,26 Z" fill="#3ECF8E" opacity="0.5" />
-    <text x="170" y="32" textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="7" fontFamily="DM Sans, sans-serif" fontWeight="600">Supabase</text>
-
-    {/* Chip de status no fundo */}
-    <rect x="85" y="258" width="170" height="18" rx="9" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.25)" strokeWidth="0.75" />
-    <circle cx="100" cy="267" r="3.5" fill="#00FF85">
-      <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-    </circle>
-    <text x="108" y="271" fill="rgba(0,255,133,0.85)" fontSize="7.5" fontFamily="DM Sans, sans-serif" fontWeight="500">5 integrações ativas • Tempo real</text>
-  </svg>
-);
-
-/* ─── Benefícios ─── */
 const Benefits = () => {
   const benefits = [
     {
       icon: Clock,
       title: "Disponibilidade 24/7",
-      description: "Seus agentes IA trabalham sem parar, oferecendo atendimento a qualquer hora.",
+      description: "Seus agentes IA trabalham sem parar, oferecendo suporte e atendimento a qualquer hora do dia.",
       stats: "9", suffix: "% uptime", prefix: "99,",
-      color: "#00C4FF",
+      color: "#3B82F6",
     },
     {
       icon: DollarSign,
       title: "Redução de Custos",
-      description: "Diminua custos operacionais enquanto aumenta a eficiência do atendimento.",
+      description: "Diminua significativamente os custos operacionais enquanto aumenta a eficiência do atendimento.",
       stats: "60", suffix: "% economia", prefix: "Até ",
-      color: "#00FF85",
+      color: "#10B981",
     },
     {
       icon: TrendingUp,
-      title: "Mais Conversões",
-      description: "Melhore suas taxas de conversão com qualificação inteligente e acompanhamento.",
-      stats: "2", suffix: "× mais conversões",
-      color: "#FFD700",
+      title: "Aumento de Conversões",
+      description: "Melhore suas taxas de conversão com qualificação inteligente e acompanhamento personalizado.",
+      stats: "2", suffix: "x mais conversões",
+      color: "#8B5CF6",
     },
     {
       icon: Zap,
       title: "Resposta Instantânea",
-      description: "Elimine tempo de espera com respostas imediatas e precisas.",
-      stats: "30", suffix: "s", prefix: "< ",
-      color: "#FF6B35",
+      description: "Elimine o tempo de espera com respostas imediatas e precisas para todas as consultas.",
+      stats: "30", suffix: " segundos", prefix: "< ",
+      color: "#F59E0B",
     },
     {
       icon: Users,
-      title: "Personalizado",
-      description: "Atendimento baseado no histórico e preferências de cada cliente.",
+      title: "Experiência Personalizada",
+      description: "Ofereça atendimento personalizado baseado no histórico e preferências de cada cliente.",
       stats: "Sob medida", suffix: "",
-      color: "#A78BFA",
+      color: "#06B6D4",
     },
     {
       icon: Shield,
-      title: "Escala Ilimitada",
-      description: "Cresça sem limites. Nossos agentes se adaptam ao volume de demanda.",
-      stats: "∞", suffix: " escala",
-      color: "#F472B6",
-    },
-  ];
-
-  const examples = [
-    {
-      label: "Atendimento",
-      title: "Automação de Atendimento",
-      desc: "Respostas instantâneas no WhatsApp, sem equipe adicional. O agente entende contexto, agenda e escalona para humanos só quando necessário.",
-      tags: ["WhatsApp", "24/7", "< 2s"],
-      mockup: <WhatsAppMockup />,
-    },
-    {
-      label: "Qualificação",
-      title: "Funil de Leads com IA",
-      desc: "Captura, pontua e filtra oportunidades automaticamente. Só os leads prontos chegam até o seu time comercial.",
-      tags: ["Score IA", "14% conversão", "0 esforço manual"],
-      mockup: <FunnelMockup />,
-    },
-    {
-      label: "Integrações",
-      title: "Hub de Integrações",
-      desc: "Um agente conectado a todos os seus sistemas: WhatsApp, planilhas, CRM e agenda. Fluxos automáticos de ponta a ponta.",
-      tags: ["WhatsApp", "G. Sheets", "CRM + Calendar"],
-      mockup: <IntegrationsMockup />,
+      title: "Escalabilidade Garantida",
+      description: "Cresça sem limites. Nossos agentes se adaptam automaticamente ao volume de demanda.",
+      stats: "Escala ilimitada", suffix: "",
+      color: "#6366F1",
     },
   ];
 
   return (
-    <>
-      {/* ════════ SEÇÃO DE BENEFÍCIOS (Cards de métricas) ════════ */}
-      <section
-        id="benefits"
-        className="py-24 relative overflow-hidden"
-        style={{ background: "#F7F8FA" }}
-      >
-        {/* Grid bg */}
-        <div className="absolute inset-0 bg-grid-light" />
+    <section id="benefits" className="py-24 relative overflow-hidden" style={{ background: '#F7F8FA' }}>
+      <div className="bg-grid-light absolute inset-0" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <span className="badge-va mb-5 inline-flex">
-              <span className="dot-accent" />
-              Vantagens Competitivas
-            </span>
-            <h2
-              className="text-4xl md:text-5xl text-gray-900 mb-4"
-              style={{ fontFamily: "var(--va-font-display)", letterSpacing: "-0.025em" }}
-            >
-              Por que escolher a{" "}
-              <span className="text-gradient">Vision AI?</span>
-            </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto" style={{ fontFamily: "var(--va-font-body)" }}>
-              Resultados reais para empresas que cansaram de perder tempo com tarefas manuais
-            </p>
-          </div>
-
-          {/* Grid de benefícios */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <div
-                  key={index}
-                  className="group relative bg-white rounded-2xl p-7 border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
-                >
-                  {/* Acento colorido topo */}
-                  <div
-                    className="absolute top-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500"
-                    style={{ background: benefit.color }}
-                  />
-
-                  {/* Ícone */}
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: `${benefit.color}18`, border: `1px solid ${benefit.color}30` }}
-                  >
-                    <Icon className="h-5 w-5" style={{ color: benefit.color }} />
-                  </div>
-
-                  <h3
-                    className="text-gray-900 text-lg mb-2"
-                    style={{ fontFamily: "var(--va-font-display)", fontWeight: 700 }}
-                  >
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-5" style={{ fontFamily: "var(--va-font-body)" }}>
-                    {benefit.description}
-                  </p>
-
-                  <AnimatedCounter
-                    value={benefit.stats}
-                    suffix={benefit.suffix}
-                    prefix={benefit.prefix || ""}
-                  />
-                </div>
-              );
-            })}
-          </div>
-
-          {/* ══════════════════════════════════════════════════════
-               SEÇÃO DE EXEMPLOS — Nova identidade
-          ══════════════════════════════════════════════════════ */}
-          <div
-            className="relative rounded-3xl overflow-hidden"
+      <div className="container mx-auto px-4 relative" style={{ zIndex: 10 }}>
+        {/* Section header */}
+        <div className="text-center mb-16 animate-fade-in-up">
+          <span className="badge-va" style={{ marginBottom: '20px', display: 'inline-flex' }}>
+            🚀 Vantagens Competitivas
+          </span>
+          <h2
             style={{
-              background: "var(--va-dark)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              fontFamily: 'var(--va-font-display)',
+              fontWeight: 700,
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              letterSpacing: '-0.025em',
+              marginBottom: '20px',
+              marginTop: '16px',
             }}
           >
-            {/* Grid dark interno */}
-            <div className="absolute inset-0 bg-grid-dark" />
+            <span className="text-gradient">Por que escolher</span>{" "}
+            <span style={{ color: '#111418' }}>a VISION AI?</span>
+          </h2>
+          <p style={{ fontFamily: 'var(--va-font-body)', fontSize: '1.1rem', color: '#6B7280', maxWidth: '600px', margin: '0 auto', lineHeight: 1.7 }}>
+            Descubra os benefícios transformadores que nossas Automações e Agentes IA podem trazer para o seu negócio
+          </p>
+        </div>
 
-            {/* Glow de canto */}
-            <div
-              className="absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-20 pointer-events-none"
-              style={{ background: "radial-gradient(circle, #00FF85 0%, transparent 70%)" }}
-            />
-            <div
-              className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full opacity-10 pointer-events-none"
-              style={{ background: "radial-gradient(circle, #00C4FF 0%, transparent 70%)" }}
-            />
+        {/* Benefits grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
+            return (
+              <BenefitCard key={index} benefit={benefit} Icon={Icon} index={index} />
+            );
+          })}
+        </div>
 
-            <div className="relative z-10 p-10 md:p-14">
-              {/* Header da seção */}
-              <div className="text-center mb-12">
-                <span className="badge-va mb-5 inline-flex">
-                  <span className="dot-accent" />
-                  Exemplos Reais
-                </span>
-                <h3
-                  className="text-3xl md:text-4xl text-white mb-3"
-                  style={{ fontFamily: "var(--va-font-display)", letterSpacing: "-0.025em" }}
-                >
-                  Veja a IA em ação
-                </h3>
-                <p className="text-gray-400 text-base" style={{ fontFamily: "var(--va-font-body)" }}>
-                  Automações reais que entregamos para nossos clientes
-                </p>
-              </div>
+        {/* Examples section — dark container */}
+        <div
+          style={{
+            background: '#0A0D0F',
+            border: '1px solid rgba(255,255,255,0.06)',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            position: 'relative',
+          }}
+        >
+          {/* Grid inside dark container */}
+          <div className="bg-grid-dark absolute inset-0" />
 
-              {/* Cards de exemplos */}
-              <div className="grid md:grid-cols-3 gap-6">
-                {examples.map((ex, idx) => (
-                  <div
-                    key={idx}
-                    className="group relative rounded-2xl overflow-hidden"
-                    style={{
-                      background: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.07)",
-                      transition: "border-color 0.3s, transform 0.3s",
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,255,133,0.2)";
-                      (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)";
-                      (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    }}
-                  >
-                    {/* Número de ordem */}
-                    <div className="absolute top-4 left-4 z-20">
-                      <span
-                        style={{
-                          fontFamily: "var(--va-font-display)",
-                          fontSize: "11px",
-                          fontWeight: 700,
-                          color: "rgba(0,255,133,0.6)",
-                          letterSpacing: "0.1em",
-                          textTransform: "uppercase" as const,
-                        }}
-                      >
-                        0{idx + 1} — {ex.label}
-                      </span>
-                    </div>
+          {/* Glow top-left green */}
+          <div
+            style={{
+              position: 'absolute', top: 0, left: 0, width: '400px', height: '300px',
+              background: 'radial-gradient(ellipse at top left, rgba(0,255,133,0.08) 0%, transparent 70%)',
+              pointerEvents: 'none',
+            }}
+          />
+          {/* Glow bottom-right blue */}
+          <div
+            style={{
+              position: 'absolute', bottom: 0, right: 0, width: '400px', height: '300px',
+              background: 'radial-gradient(ellipse at bottom right, rgba(0,196,255,0.07) 0%, transparent 70%)',
+              pointerEvents: 'none',
+            }}
+          />
 
-                    {/* Mockup SVG */}
-                    <div
-                      className="w-full overflow-hidden"
-                      style={{
-                        height: "230px",
-                        background: "rgba(0,0,0,0.25)",
-                        borderBottom: "1px solid rgba(255,255,255,0.06)",
-                      }}
-                    >
-                      {ex.mockup}
-                    </div>
+          <div className="relative p-10 lg:p-16" style={{ zIndex: 10 }}>
+            {/* Inner header */}
+            <div className="text-center mb-12">
+              <span className="badge-va" style={{ marginBottom: '16px', display: 'inline-flex' }}>Casos de uso</span>
+              <h3
+                style={{
+                  fontFamily: 'var(--va-font-display)',
+                  fontWeight: 700,
+                  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                  letterSpacing: '-0.025em',
+                  color: '#ffffff',
+                  marginTop: '12px',
+                  marginBottom: '12px',
+                }}
+              >
+                Veja a IA em ação
+              </h3>
+              <p style={{ fontFamily: 'var(--va-font-body)', color: 'rgba(255,255,255,0.45)', fontSize: '1rem' }}>
+                Veja como transformamos negócios com nossas soluções
+              </p>
+            </div>
 
-                    {/* Conteúdo */}
-                    <div className="p-6">
-                      <h4
-                        className="text-white text-lg mb-2"
-                        style={{ fontFamily: "var(--va-font-display)", fontWeight: 700 }}
-                      >
-                        {ex.title}
-                      </h4>
-                      <p
-                        className="text-gray-400 text-sm leading-relaxed mb-5"
-                        style={{ fontFamily: "var(--va-font-body)" }}
-                      >
-                        {ex.desc}
-                      </p>
+            {/* 3 example cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              <ExampleCard1 />
+              <ExampleCard2 />
+              <ExampleCard3 />
+            </div>
 
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
-                        {ex.tags.map((tag, ti) => (
-                          <span
-                            key={ti}
-                            style={{
-                              fontFamily: "var(--va-font-body)",
-                              fontSize: "11px",
-                              fontWeight: 500,
-                              color: "rgba(255,255,255,0.5)",
-                              background: "rgba(255,255,255,0.05)",
-                              border: "1px solid rgba(255,255,255,0.08)",
-                              padding: "3px 10px",
-                              borderRadius: "99px",
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA interno */}
-              <div className="text-center mt-12">
-                <p
-                  className="text-gray-400 text-sm mb-5"
-                  style={{ fontFamily: "var(--va-font-body)" }}
-                >
-                  Quer ver esses resultados no seu negócio?
-                </p>
-                <button
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="btn-shimmer inline-flex items-center gap-3 font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
-                  style={{
-                    background: "var(--va-green)",
-                    color: "#0A0D0F",
-                    fontFamily: "var(--va-font-display)",
-                    fontSize: "15px",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  Quero uma demonstração
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-              </div>
+            {/* CTA */}
+            <div className="text-center mt-8">
+              <button
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                style={{
+                  background: '#00FF85',
+                  color: '#0A0D0F',
+                  fontFamily: 'var(--va-font-display)',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  padding: '14px 32px',
+                  borderRadius: '12px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  letterSpacing: '-0.01em',
+                  transition: 'opacity 0.2s',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.88'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
+              >
+                Quero uma demonstração
+              </button>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
-export default Benefits;
+/* ─── Benefit Card ─── */
+interface BenefitCardProps {
+  benefit: { icon: React.ElementType; title: string; description: string; stats: string; suffix: string; prefix?: string; color: string };
+  Icon: React.ElementType;
+  index: number;
+}
+
+const BenefitCard = ({ benefit, Icon, index }: BenefitCardProps) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: '#ffffff',
+        borderRadius: '20px',
+        padding: '32px',
+        border: '1px solid #F3F4F6',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'box-shadow 0.3s, transform 0.3s',
+        boxShadow: hovered ? '0 20px 60px rgba(0,0,0,0.1)' : '0 2px 12px rgba(0,0,0,0.04)',
+        transform: hovered ? 'translateY(-1px)' : 'translateY(0)',
+        animationDelay: `${index * 100}ms`,
+      }}
+    >
+      {/* Top accent line */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          height: '2px',
+          width: hovered ? '100%' : '0%',
+          background: benefit.color,
+          transition: 'width 0.4s ease',
+          borderRadius: '20px 20px 0 0',
+        }}
+      />
+
+      {/* Icon */}
+      <div
+        style={{
+          width: 52,
+          height: 52,
+          borderRadius: '14px',
+          background: `${benefit.color}18`,
+          border: `1px solid ${benefit.color}33`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '20px',
+        }}
+      >
+        <Icon size={22} style={{ color: benefit.color }} />
+      </div>
+
+      <h3 style={{ fontFamily: 'var(--va-font-display)', fontWeight: 700, fontSize: '1.05rem', color: '#111827', marginBottom: '10px' }}>
+        {benefit.title}
+      </h3>
+      <p style={{ fontFamily: 'var(--va-font-body)', fontSize: '0.9rem', color: '#6B7280', lineHeight: 1.6, marginBottom: '16px' }}>
+        {benefit.description}
+      </p>
+      <AnimatedCounter value={benefit.stats} suffix={benefit.suffix} prefix={benefit.prefix || ""} color={benefit.color} />
+    </div>
+  );
 };
+
+/* ─── Example Card wrapper ─── */
+const ExampleCardWrapper = ({ label, title, description, tags, children }: {
+  label: string; title: string; description: string; tags: string[]; children: React.ReactNode;
+}) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: 'rgba(255,255,255,0.03)',
+        border: `1px solid ${hovered ? 'rgba(0,255,133,0.2)' : 'rgba(255,255,255,0.07)'}`,
+        borderRadius: '16px',
+        overflow: 'hidden',
+        transition: 'border-color 0.3s, transform 0.3s',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+      }}
+    >
+      {/* Label */}
+      <div style={{ padding: '14px 16px 8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <span style={{ fontFamily: 'var(--va-font-display)', fontSize: '11px', fontWeight: 600, color: '#00FF85', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+          {label}
+        </span>
+      </div>
+      {/* Mockup area */}
+      <div style={{ height: '230px', background: 'rgba(0,0,0,0.25)', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+        {children}
+      </div>
+      {/* Text area */}
+      <div style={{ padding: '20px' }}>
+        <h4 style={{ fontFamily: 'var(--va-font-display)', fontWeight: 700, fontSize: '1rem', color: '#ffffff', marginBottom: '8px' }}>{title}</h4>
+        <p style={{ fontFamily: 'var(--va-font-body)', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginBottom: '12px' }}>{description}</p>
+        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+          {tags.map((tag) => (
+            <span key={tag} style={{ fontFamily: 'var(--va-font-body)', fontSize: '11px', color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '999px', padding: '3px 10px' }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ─── Card 1: WhatsApp Mockup ─── */
+const ExampleCard1 = () => (
+  <ExampleCardWrapper
+    label="01 — Atendimento"
+    title="Automação de Atendimento"
+    description="Agentes que atendem clientes de forma natural e instantânea, reduzindo a carga da equipe humana."
+    tags={['WhatsApp', '24/7', 'IA Conversacional']}
+  >
+    <svg viewBox="0 0 200 230" width="160" height="210" xmlns="http://www.w3.org/2000/svg">
+      {/* Phone frame */}
+      <rect x="20" y="4" width="160" height="222" rx="20" fill="#1A1F2A" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5"/>
+      {/* Notch */}
+      <rect x="72" y="8" width="56" height="10" rx="5" fill="#0D1117"/>
+      {/* Status bar */}
+      <rect x="20" y="18" width="160" height="14" fill="#0D1117"/>
+      {/* WA Header */}
+      <defs>
+        <linearGradient id="waHeader" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#00875A"/>
+          <stop offset="100%" stopColor="#00A36C"/>
+        </linearGradient>
+      </defs>
+      <rect x="20" y="32" width="160" height="38" fill="url(#waHeader)"/>
+      {/* Avatar */}
+      <circle cx="42" cy="51" r="13" fill="#005C4B"/>
+      <text x="42" y="56" textAnchor="middle" fill="white" fontSize="9" fontFamily="monospace" fontWeight="bold">VA</text>
+      {/* WA logo */}
+      <image href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" x="77" y="39" width="26" height="26"/>
+      {/* Name + status */}
+      <text x="108" y="48" fill="white" fontSize="8" fontFamily="sans-serif" fontWeight="600">Assistente Vision AI</text>
+      <circle cx="108" cy="57" r="3" fill="#25D366"/>
+      <text x="114" y="60" fill="rgba(255,255,255,0.7)" fontSize="6.5" fontFamily="sans-serif">Online</text>
+      {/* Chat background */}
+      <rect x="20" y="70" width="160" height="152" fill="#0B1117"/>
+      {/* Received message */}
+      <rect x="26" y="78" width="112" height="26" rx="8" fill="#202C33"/>
+      <text x="32" y="89" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">Qual o prazo de entrega para</text>
+      <text x="32" y="98" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">SP capital?</text>
+      {/* Sent message */}
+      <defs>
+        <linearGradient id="sentMsg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#005C4B"/>
+          <stop offset="100%" stopColor="#007A63"/>
+        </linearGradient>
+      </defs>
+      <rect x="52" y="112" width="124" height="36" rx="8" fill="url(#sentMsg)"/>
+      <text x="58" y="123" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">Olá! Para SP capital o prazo</text>
+      <text x="58" y="132" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">é de 2 dias úteis. 🚚✅</text>
+      <text x="148" y="142" fill="rgba(255,255,255,0.4)" fontSize="5.5" fontFamily="sans-serif">✓✓</text>
+      {/* Typing indicator */}
+      <rect x="26" y="156" width="48" height="18" rx="9" fill="#202C33"/>
+      <circle cx="38" cy="165" r="3.5" fill="rgba(255,255,255,0.5)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="49" cy="165" r="3.5" fill="rgba(255,255,255,0.5)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="60" cy="165" r="3.5" fill="rgba(255,255,255,0.5)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
+      </circle>
+      {/* Badge */}
+      <rect x="26" y="180" width="148" height="17" rx="8" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.35)" strokeWidth="0.8"/>
+      <text x="100" y="192" textAnchor="middle" fill="#00FF85" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">⚡ Respondido em 1.2 segundos</text>
+      {/* Input bar */}
+      <rect x="20" y="198" width="160" height="26" fill="#1F2C34"/>
+      <rect x="26" y="203" width="112" height="14" rx="7" fill="#2A3942"/>
+      <circle cx="168" cy="211" r="9" fill="#00A884"/>
+    </svg>
+  </ExampleCardWrapper>
+);
+
+/* ─── Card 2: Lead Funnel ─── */
+const ExampleCard2 = () => (
+  <ExampleCardWrapper
+    label="02 — Funil de Leads"
+    title="Funil de Leads com IA"
+    description="Captura dados, qualifica oportunidades e direciona os leads prontos para o time comercial."
+    tags={['Qualificação IA', 'CRM', 'Pipeline']}
+  >
+    <svg viewBox="0 0 340 230" width="310" height="210" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="340" height="230" fill="#0D0F14"/>
+      {/* Grid */}
+      <defs>
+        <pattern id="funnelGrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+          <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5"/>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="340" height="230" fill="url(#funnelGrid)"/>
+
+      {/* Stat chips top */}
+      <rect x="8" y="8" width="98" height="18" rx="9" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
+      <text x="57" y="20" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="7" fontFamily="sans-serif">14% conversão total</text>
+      <rect x="114" y="8" width="80" height="18" rx="9" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.2)" strokeWidth="0.5"/>
+      <text x="154" y="20" textAnchor="middle" fill="#00FF85" fontSize="7" fontFamily="sans-serif">↑ 2.3× vs antes</text>
+      <rect x="202" y="8" width="90" height="18" rx="9" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
+      <text x="247" y="20" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="7" fontFamily="sans-serif">0 esforço manual</text>
+
+      {/* Stage 1 trapezoid */}
+      <polygon points="20,36 300,36 272,82 48,82" fill="#1A2035" stroke="rgba(100,120,200,0.25)" strokeWidth="1.2"/>
+      <text x="160" y="54" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600" letterSpacing="1">ETAPA 01</text>
+      <text x="160" y="70" textAnchor="middle" fill="white" fontSize="13" fontFamily="sans-serif" fontWeight="700">1.240 leads captados</text>
+
+      {/* Divider + conversion rate 1 */}
+      <circle cx="160" cy="87" r="4" fill="#334155" stroke="rgba(100,150,200,0.3)" strokeWidth="1">
+        <animate attributeName="r" values="3.5;5;3.5" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="200" y="90" fill="rgba(255,255,255,0.35)" fontSize="7" fontFamily="sans-serif">Taxa: 48%</text>
+
+      {/* Stage 2 trapezoid */}
+      <polygon points="48,92 272,92 244,138 76,138" fill="#0D2235" stroke="rgba(50,100,200,0.3)" strokeWidth="1.2"/>
+      <text x="160" y="110" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600" letterSpacing="1">ETAPA 02</text>
+      <text x="160" y="128" textAnchor="middle" fill="white" fontSize="11" fontFamily="sans-serif" fontWeight="700">596 qualificados · IA Score ≥72</text>
+
+      {/* Divider + conversion rate 2 */}
+      <circle cx="160" cy="143" r="4" fill="#334155" stroke="rgba(0,200,100,0.3)" strokeWidth="1">
+        <animate attributeName="r" values="3.5;5;3.5" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+      </circle>
+      <text x="200" y="146" fill="rgba(255,255,255,0.35)" fontSize="7" fontFamily="sans-serif">Taxa: 29%</text>
+
+      {/* Stage 3 trapezoid */}
+      <polygon points="76,148 244,148 220,190 100,190" fill="#003A30" stroke="rgba(0,200,100,0.35)" strokeWidth="1.2"/>
+      <text x="160" y="166" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600" letterSpacing="1">ETAPA 03</text>
+      <text x="160" y="184" textAnchor="middle" fill="#00FF85" fontSize="15" fontFamily="sans-serif" fontWeight="700">174 prontos para fechar</text>
+
+      {/* Side progress bar */}
+      <rect x="312" y="36" width="6" height="154" rx="3" fill="rgba(255,255,255,0.06)"/>
+      <rect x="312" y="36" width="6" height="60" rx="3" fill="#3B82F6" opacity="0.6"/>
+      <rect x="312" y="96" width="6" height="50" rx="3" fill="#6366F1" opacity="0.6"/>
+      <rect x="312" y="146" width="6" height="44" rx="3" fill="#00FF85" opacity="0.8"/>
+
+      {/* Badge footer */}
+      <rect x="90" y="200" width="160" height="18" rx="9" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.25)" strokeWidth="0.8"/>
+      <circle cx="104" cy="209" r="3" fill="#00FF85">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="180" y="213" textAnchor="middle" fill="#00FF85" fontSize="7" fontFamily="sans-serif" fontWeight="600">Prontos p/ fechar</text>
+    </svg>
+  </ExampleCardWrapper>
+);
+
+/* ─── Card 3: Integration Hub ─── */
+const ExampleCard3 = () => (
+  <ExampleCardWrapper
+    label="03 — Integrações"
+    title="Hub de Integrações"
+    description="Conectamos agentes a WhatsApp, Google Sheets, Calendar, Supabase e CRMs em tempo real."
+    tags={['WhatsApp', 'Google', 'Supabase', 'CRM']}
+  >
+    <svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#0E1520"/>
+          <stop offset="100%" stopColor="#08090F"/>
+        </radialGradient>
+        <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(0,255,133,0.12)"/>
+          <stop offset="100%" stopColor="transparent"/>
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="200" height="200" fill="url(#bgGrad)"/>
+
+      {/* Glow behind hub */}
+      <ellipse cx="100" cy="100" rx="48" ry="48" fill="url(#hubGlow)"/>
+
+      {/* Orbital rings */}
+      <circle cx="100" cy="100" r="72" fill="none" stroke="rgba(0,255,133,0.06)" strokeWidth="1" strokeDasharray="4 6"/>
+      <circle cx="100" cy="100" r="48" fill="none" stroke="rgba(0,255,133,0.06)" strokeWidth="1" strokeDasharray="4 6"/>
+
+      {/* Connection lines with animation */}
+      {/* Hub to WhatsApp (top) */}
+      <line x1="100" y1="100" x2="100" y2="22" stroke="rgba(0,255,133,0.15)" strokeWidth="1" strokeDasharray="4 4">
+        <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.5s" repeatCount="indefinite"/>
+      </line>
+      {/* Hub to Sheets (top-right) */}
+      <line x1="100" y1="100" x2="162" y2="38" stroke="rgba(100,200,100,0.12)" strokeWidth="1" strokeDasharray="4 4">
+        <animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite"/>
+      </line>
+      {/* Hub to Calendar (bottom-right) */}
+      <line x1="100" y1="100" x2="162" y2="162" stroke="rgba(66,133,244,0.15)" strokeWidth="1" strokeDasharray="4 4">
+        <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.8s" repeatCount="indefinite"/>
+      </line>
+      {/* Hub to Supabase (bottom-left) */}
+      <line x1="100" y1="100" x2="38" y2="162" stroke="rgba(62,207,142,0.15)" strokeWidth="1" strokeDasharray="4 4">
+        <animate attributeName="stroke-dashoffset" values="0;-16" dur="2.2s" repeatCount="indefinite"/>
+      </line>
+      {/* Hub to CRM (top-left) */}
+      <line x1="100" y1="100" x2="38" y2="38" stroke="rgba(249,115,22,0.15)" strokeWidth="1" strokeDasharray="4 4">
+        <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.6s" repeatCount="indefinite"/>
+      </line>
+
+      {/* Central hub */}
+      <circle cx="100" cy="100" r="30" fill="#0A1A14" stroke="rgba(0,255,133,0.4)" strokeWidth="1.5"/>
+      {/* Lightning bolt icon */}
+      <path d="M104,87 L96,100 L103,100 L96,113 L108,97 L101,97 Z" fill="#00FF85"/>
+      <text x="100" y="120" textAnchor="middle" fill="rgba(0,255,133,0.7)" fontSize="6" fontFamily="sans-serif" fontWeight="700" letterSpacing="0.5">VISION AI</text>
+
+      {/* Satellite nodes */}
+      {/* WhatsApp — top */}
+      <circle cx="100" cy="18" r="18" fill="#0A1A0A" stroke="#25D366" strokeWidth="1.2"/>
+      <image href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" x="88" y="6" width="24" height="24"/>
+      <text x="100" y="42" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">WhatsApp</text>
+      {/* Ping on WhatsApp */}
+      <circle cx="100" cy="18" r="18" fill="none" stroke="#25D366" strokeWidth="1" opacity="0.5">
+        <animate attributeName="r" values="18;26;18" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+      </circle>
+
+      {/* Google Sheets — top-right */}
+      <circle cx="166" cy="34" r="18" fill="#0A150A" stroke="#0F9D58" strokeWidth="1.2"/>
+      <image href="https://upload.wikimedia.org/wikipedia/commons/3/30/Google_Sheets_logo_%282014-2020%29.svg" x="154" y="22" width="24" height="24"/>
+      <text x="166" y="58" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">Sheets</text>
+
+      {/* Google Calendar — bottom-right */}
+      <circle cx="166" cy="166" r="18" fill="#0A0E1A" stroke="#4285F4" strokeWidth="1.2"/>
+      <image href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" x="154" y="154" width="24" height="24"/>
+      <text x="166" y="190" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">Calendar</text>
+
+      {/* Supabase — bottom-left */}
+      <circle cx="34" cy="166" r="18" fill="#0A120F" stroke="#3ECF8E" strokeWidth="1.2"/>
+      <image href="https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg" x="22" y="154" width="24" height="24"/>
+      <text x="34" y="190" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">Supabase</text>
+
+      {/* CRM — top-left */}
+      <circle cx="34" cy="34" r="18" fill="#1A0E0A" stroke="#F97316" strokeWidth="1.2"/>
+      {/* Person icon */}
+      <circle cx="34" cy="28" r="5.5" fill="#F97316" opacity="0.85"/>
+      <path d="M22,44 Q22,36 34,36 Q46,36 46,44" fill="#F97316" opacity="0.85"/>
+      <text x="34" y="58" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">CRM</text>
+
+      {/* Status chip */}
+      <rect x="28" y="185" width="144" height="13" rx="6.5" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.2)" strokeWidth="0.7"/>
+      <circle cx="40" cy="191.5" r="2.5" fill="#00FF85">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="102" y="195" textAnchor="middle" fill="#00FF85" fontSize="6" fontFamily="sans-serif" fontWeight="600">5 integrações ativas · Tempo real</text>
+    </svg>
+  </ExampleCardWrapper>
+);
 
 export default Benefits;
