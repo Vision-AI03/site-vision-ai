@@ -1,295 +1,108 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Bot, Zap, Settings, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
-  const terminalLines = [
-    { text: '> Agente inicializado', color: '#00FF85', delay: '0.4s' },
-    { text: '> Conectando ao WhatsApp...', color: 'rgba(255,255,255,0.5)', delay: '0.9s' },
-    { text: '> 47 leads qualificados hoje', color: '#60A5FA', delay: '1.4s' },
-    { text: '> R$ 12.400 em pipeline', color: '#FBBF24', delay: '1.9s' },
-    { text: '> Status: Trabalhando 24/7', color: '#00FF85', delay: '2.4s' },
+  const valueProps = [
+    {
+      icon: Bot,
+      title: "Agentes que trabalham por você",
+      description: "Atendimento, vendas e suporte rodando 24/7 sem intervenção humana",
+      gradient: "from-indigo-500 to-indigo-600"
+    },
+    {
+      icon: Zap,
+      title: "Automações que eliminam retrabalho",
+      description: "Processos repetitivos automatizados para sua equipe focar no que importa",
+      gradient: "from-cyan-500 to-cyan-600"
+    },
+    {
+      icon: Settings,
+      title: "Integrado ao seu negócio",
+      description: "Conectamos IA aos sistemas que você já usa: WhatsApp, CRM, planilhas e mais",
+      gradient: "from-purple-500 to-purple-600"
+    }
   ];
 
   return (
-    <section
-      style={{
-        position: 'relative',
-        paddingTop: '128px',
-        paddingBottom: '80px',
-        overflow: 'hidden',
-        background: 'var(--va-dark)',
-      }}
-    >
-      {/* Grid pattern */}
-      <div className="bg-grid-dark absolute inset-0 opacity-100" />
+    <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-40"></div>
 
-      {/* Radial green glow center */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '800px',
-          height: '500px',
-          background: 'radial-gradient(ellipse at center, rgba(0,255,133,0.06) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
+      {/* Gradient Orbs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-slow"></div>
+      <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-slow" style={{animationDelay: '1s'}}></div>
+      <div className="absolute -bottom-20 left-1/2 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-slow" style={{animationDelay: '2s'}}></div>
 
-      <div className="container mx-auto px-4 relative" style={{ zIndex: 10 }}>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-          {/* Left column */}
           <div className="space-y-8 animate-fade-in-up">
-            <span className="badge-va">Powered by Artificial Intelligence</span>
+            <div className="inline-flex items-center bg-gradient-to-r from-indigo-100 to-cyan-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <Sparkles className="h-4 w-4 mr-2" />
+              Powered by Artificial Intelligence
+            </div>
 
-            <h1
-              style={{
-                fontFamily: 'var(--va-font-display)',
-                fontWeight: 800,
-                fontSize: 'clamp(2.4rem, 5vw, 3.75rem)',
-                lineHeight: 1.1,
-                letterSpacing: '-0.03em',
-                color: '#ffffff',
-              }}
-            >
-              Seu negócio<br />
-              atendendo{" "}
-              <span className="text-gradient">clientes</span>
-              <br />
-              enquanto você dorme
+            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              Transforme seu negócio com{" "}
+              <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+                Agentes de IA
+              </span>
+              {" "}e Automações
             </h1>
 
-            <p
-              style={{
-                fontFamily: 'var(--va-font-body)',
-                fontWeight: 300,
-                fontSize: '1.125rem',
-                lineHeight: 1.7,
-                color: 'rgba(255,255,255,0.55)',
-                maxWidth: '480px',
-              }}
-            >
-              Agentes de IA personalizados para{" "}
-              <span style={{ color: 'rgba(255,255,255,0.75)' }}>transportadoras, clínicas, imobiliárias e contabilidades</span>
-              {" "}— atendimento, qualificação de leads e automações rodando 24/7.
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Criamos agentes de IA personalizados para atendimento, vendas, suporte e qualificação de leads.
+              Além de automações inteligentes que otimizam seus processos e aumentam sua produtividade.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button
+              <Button
+                size="lg"
                 onClick={scrollToContact}
-                style={{
-                  background: '#00FF85',
-                  color: '#0A0D0F',
-                  fontFamily: 'var(--va-font-display)',
-                  fontWeight: 700,
-                  fontSize: '1rem',
-                  padding: '14px 28px',
-                  borderRadius: '12px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  letterSpacing: '-0.01em',
-                  transition: 'opacity 0.2s',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.88'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
+                className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white btn-shimmer h-14 px-8 text-lg"
               >
                 Quero Automatizar Meu Negócio
-                <ArrowRight size={18} />
-              </button>
-
-              <button
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{
-                  background: 'transparent',
-                  color: 'rgba(255,255,255,0.7)',
-                  fontFamily: 'var(--va-font-body)',
-                  fontSize: '1rem',
-                  padding: '14px 28px',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  cursor: 'pointer',
-                  transition: 'border-color 0.2s, color 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.25)';
-                  (e.currentTarget as HTMLButtonElement).style.color = '#ffffff';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.12)';
-                  (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.7)';
-                }}
+                className="border-2 border-indigo-600 text-indigo-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-cyan-50 h-14 px-8 text-lg"
               >
                 Ver Serviços
-              </button>
-            </div>
-
-            {/* Stat chips */}
-            <div
-              style={{
-                display: 'flex',
-                gap: '24px',
-                paddingTop: '20px',
-                borderTop: '1px solid rgba(255,255,255,0.07)',
-                flexWrap: 'wrap',
-              }}
-            >
-              {[
-                { label: 'Disponibilidade', value: '24/7' },
-                { label: 'Tempo de resposta', value: '< 2s' },
-                { label: 'Economia em custos', value: '60%' },
-              ].map((stat) => (
-                <div key={stat.value}>
-                  <div style={{ fontFamily: 'var(--va-font-display)', fontWeight: 700, fontSize: '1.25rem', color: '#00FF85' }}>
-                    {stat.value}
-                  </div>
-                  <div style={{ fontFamily: 'var(--va-font-body)', fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)', marginTop: '2px' }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+              </Button>
             </div>
           </div>
 
-          {/* Right column — Terminal card */}
-          <div className="relative animate-scale-in">
-            {/* Terminal */}
-            <div
-              style={{
-                background: '#0D1117',
-                borderRadius: '16px',
-                border: '1px solid rgba(255,255,255,0.08)',
-                overflow: 'hidden',
-                boxShadow: '0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,133,0.06)',
-              }}
-            >
-              {/* macOS title bar */}
-              <div
-                style={{
-                  background: '#161B22',
-                  padding: '12px 16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
-                }}
-              >
-                <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FF5F57' }} />
-                <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FEBC2E' }} />
-                <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28C840' }} />
-                <span
-                  style={{
-                    marginLeft: '8px',
-                    fontFamily: 'monospace',
-                    fontSize: '12px',
-                    color: 'rgba(255,255,255,0.35)',
-                  }}
+          {/* Value Proposition Cards */}
+          <div className="relative animate-scale-in space-y-4">
+            {valueProps.map((card, idx) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={idx}
+                  className="group flex items-start gap-5 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
                 >
-                  vision-ai · agente-comercial
-                </span>
-              </div>
-
-              {/* Terminal body */}
-              <div style={{ padding: '24px', fontFamily: 'monospace', fontSize: '14px', lineHeight: '1.8' }}>
-                {terminalLines.map((line, i) => (
-                  <div
-                    key={i}
-                    className="animate-terminal-line"
-                    style={{ color: line.color, animationDelay: line.delay }}
-                  >
-                    {line.text}
+                  <div className={`w-14 h-14 bg-gradient-to-br ${card.gradient} rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className="h-7 w-7 text-white" />
                   </div>
-                ))}
-              </div>
-
-              {/* Status bar */}
-              <div
-                style={{
-                  background: '#161B22',
-                  borderTop: '1px solid rgba(255,255,255,0.06)',
-                  padding: '10px 16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}
-              >
-                <span
-                  style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: '50%',
-                    background: '#00FF85',
-                    display: 'inline-block',
-                    boxShadow: '0 0 6px #00FF85',
-                    animation: 'pulse 2s infinite',
-                  }}
-                />
-                <span style={{ fontFamily: 'var(--va-font-body)', fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>
-                  Agente ativo
-                </span>
-              </div>
-            </div>
-
-            {/* Floating badge top-right */}
-            <div
-              className="animate-float-slow"
-              style={{
-                position: 'absolute',
-                top: '-16px',
-                right: '-16px',
-                background: 'rgba(10,13,15,0.95)',
-                border: '1px solid rgba(0,255,133,0.25)',
-                borderRadius: '12px',
-                padding: '10px 14px',
-                backdropFilter: 'blur(12px)',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-                animationDelay: '0s',
-              }}
-            >
-              <div style={{ fontFamily: 'var(--va-font-display)', fontWeight: 700, fontSize: '13px', color: '#00FF85' }}>+47 leads hoje</div>
-            </div>
-
-            {/* Floating badge bottom-left */}
-            <div
-              className="animate-float-slow"
-              style={{
-                position: 'absolute',
-                bottom: '-16px',
-                left: '-16px',
-                background: 'rgba(10,13,15,0.95)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '12px',
-                padding: '10px 14px',
-                backdropFilter: 'blur(12px)',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-                animationDelay: '1s',
-              }}
-            >
-              <div style={{ fontFamily: 'var(--va-font-display)', fontWeight: 700, fontSize: '13px', color: 'rgba(255,255,255,0.85)' }}>R$ 8.200 economia/mês</div>
-            </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">{card.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{card.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-
-      {/* Gradient transition to next section */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '80px',
-          background: 'linear-gradient(to bottom, transparent, #F7F8FA)',
-          pointerEvents: 'none',
-        }}
-      />
     </section>
   );
 };

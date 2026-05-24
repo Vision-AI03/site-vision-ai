@@ -344,65 +344,88 @@ const ExampleCard1 = () => (
     description="Agentes que atendem clientes de forma natural e instantânea, reduzindo a carga da equipe humana."
     tags={['WhatsApp', '24/7', 'IA Conversacional']}
   >
-    <svg viewBox="0 0 200 230" width="160" height="210" xmlns="http://www.w3.org/2000/svg">
-      {/* Phone frame */}
-      <rect x="20" y="4" width="160" height="222" rx="20" fill="#1A1F2A" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5"/>
-      {/* Notch */}
-      <rect x="72" y="8" width="56" height="10" rx="5" fill="#0D1117"/>
-      {/* Status bar */}
-      <rect x="20" y="18" width="160" height="14" fill="#0D1117"/>
-      {/* WA Header */}
+    <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
       <defs>
-        <linearGradient id="waHeader" x1="0" y1="0" x2="1" y2="0">
+        <clipPath id="screen-clip">
+          <rect x="55" y="8" width="210" height="244" rx="18"/>
+        </clipPath>
+        <linearGradient id="wpp-header" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#00875A"/>
           <stop offset="100%" stopColor="#00A36C"/>
         </linearGradient>
-      </defs>
-      <rect x="20" y="32" width="160" height="38" fill="url(#waHeader)"/>
-      {/* Avatar */}
-      <circle cx="42" cy="51" r="13" fill="#005C4B"/>
-      <text x="42" y="56" textAnchor="middle" fill="white" fontSize="9" fontFamily="monospace" fontWeight="bold">VA</text>
-      {/* WA logo */}
-      <image href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" x="77" y="39" width="26" height="26"/>
-      {/* Name + status */}
-      <text x="108" y="48" fill="white" fontSize="8" fontFamily="sans-serif" fontWeight="600">Assistente Vision AI</text>
-      <circle cx="108" cy="57" r="3" fill="#25D366"/>
-      <text x="114" y="60" fill="rgba(255,255,255,0.7)" fontSize="6.5" fontFamily="sans-serif">Online</text>
-      {/* Chat background */}
-      <rect x="20" y="70" width="160" height="152" fill="#0B1117"/>
-      {/* Received message */}
-      <rect x="26" y="78" width="112" height="26" rx="8" fill="#202C33"/>
-      <text x="32" y="89" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">Qual o prazo de entrega para</text>
-      <text x="32" y="98" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">SP capital?</text>
-      {/* Sent message */}
-      <defs>
-        <linearGradient id="sentMsg" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="msg-sent" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#005C4B"/>
-          <stop offset="100%" stopColor="#007A63"/>
+          <stop offset="100%" stopColor="#017A62"/>
         </linearGradient>
       </defs>
-      <rect x="52" y="112" width="124" height="36" rx="8" fill="url(#sentMsg)"/>
-      <text x="58" y="123" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">Olá! Para SP capital o prazo</text>
-      <text x="58" y="132" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">é de 2 dias úteis. 🚚✅</text>
-      <text x="148" y="142" fill="rgba(255,255,255,0.4)" fontSize="5.5" fontFamily="sans-serif">✓✓</text>
-      {/* Typing indicator */}
-      <rect x="26" y="156" width="48" height="18" rx="9" fill="#202C33"/>
-      <circle cx="38" cy="165" r="3.5" fill="rgba(255,255,255,0.5)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="49" cy="165" r="3.5" fill="rgba(255,255,255,0.5)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="60" cy="165" r="3.5" fill="rgba(255,255,255,0.5)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
-      </circle>
-      {/* Badge */}
-      <rect x="26" y="180" width="148" height="17" rx="8" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.35)" strokeWidth="0.8"/>
-      <text x="100" y="192" textAnchor="middle" fill="#00FF85" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">⚡ Respondido em 1.2 segundos</text>
-      {/* Input bar */}
-      <rect x="20" y="198" width="160" height="26" fill="#1F2C34"/>
-      <rect x="26" y="203" width="112" height="14" rx="7" fill="#2A3942"/>
-      <circle cx="168" cy="211" r="9" fill="#00A884"/>
+
+      {/* Phone shell */}
+      <rect x="55" y="8" width="210" height="244" rx="18" fill="#1A1F2A" stroke="rgba(255,255,255,0.12)" strokeWidth="1"/>
+
+      {/* Screen area */}
+      <g clipPath="url(#screen-clip)">
+        {/* Status bar */}
+        <rect x="55" y="8" width="210" height="20" fill="#0B1117"/>
+        <text x="160" y="21" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="sans-serif">9:41</text>
+
+        {/* WhatsApp header */}
+        <rect x="55" y="28" width="210" height="38" fill="url(#wpp-header)"/>
+        {/* Back arrow */}
+        <text x="68" y="50" fill="rgba(255,255,255,0.8)" fontSize="12" fontFamily="sans-serif">‹</text>
+        {/* Avatar circle */}
+        <circle cx="84" cy="47" r="12" fill="rgba(255,255,255,0.15)"/>
+        {/* Logo oficial WhatsApp no avatar */}
+        <image href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" x="75" y="38" width="18" height="18"/>
+        {/* Contact name */}
+        <text x="102" y="44" fill="white" fontSize="8.5" fontWeight="600" fontFamily="sans-serif">Assistente Vision AI</text>
+        <circle cx="103" cy="52" r="2.5" fill="#7FFFD4"/>
+        <text x="108" y="55" fill="rgba(255,255,255,0.65)" fontSize="6.5" fontFamily="sans-serif">online</text>
+
+        {/* Chat background */}
+        <rect x="55" y="66" width="210" height="160" fill="#0B1117"/>
+
+        {/* Received message */}
+        <rect x="63" y="74" width="118" height="30" rx="8" fill="#1E2733"/>
+        <text x="72" y="86" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">Qual o prazo de entrega</text>
+        <text x="72" y="97" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">para SP capital?</text>
+        <text x="172" y="101" fill="rgba(255,255,255,0.3)" fontSize="5.5" fontFamily="sans-serif">10:23</text>
+
+        {/* Sent message */}
+        <rect x="95" y="112" width="160" height="46" rx="8" fill="url(#msg-sent)"/>
+        <text x="104" y="125" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">Olá! Para SP capital nosso</text>
+        <text x="104" y="136" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">prazo é 1–2 dias úteis. 🚀</text>
+        <text x="104" y="147" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">Posso gerar um orçamento?</text>
+        <text x="237" y="154" fill="rgba(255,255,255,0.4)" fontSize="5.5" fontFamily="sans-serif">✓✓</text>
+
+        {/* Typing indicator */}
+        <rect x="63" y="166" width="56" height="20" rx="10" fill="#1E2733"/>
+        <circle cx="77" cy="176" r="3.5" fill="rgba(255,255,255,0.3)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="89" cy="176" r="3.5" fill="rgba(255,255,255,0.3)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="101" cy="176" r="3.5" fill="rgba(255,255,255,0.3)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
+        </circle>
+
+        {/* Speed badge */}
+        <rect x="68" y="194" width="184" height="18" rx="9" fill="rgba(0,200,100,0.12)" stroke="rgba(0,200,100,0.4)" strokeWidth="0.75"/>
+        <circle cx="81" cy="203" r="3.5" fill="#00C864">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <text x="89" y="207" fill="#00C864" fontSize="7" fontWeight="600" fontFamily="sans-serif">⚡ Respondido em 1.2 segundos</text>
+
+        {/* Input bar */}
+        <rect x="55" y="218" width="210" height="34" fill="#182026"/>
+        <rect x="63" y="224" width="140" height="18" rx="9" fill="#252D35"/>
+        <text x="72" y="235" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="sans-serif">Mensagem</text>
+        <circle cx="224" cy="233" r="9" fill="#00A36C"/>
+        <text x="224" y="237" textAnchor="middle" fill="white" fontSize="10" fontWeight="700" fontFamily="sans-serif">↑</text>
+      </g>
+
+      {/* Home indicator */}
+      <rect x="130" y="247" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/>
     </svg>
   </ExampleCardWrapper>
 );
@@ -415,63 +438,89 @@ const ExampleCard2 = () => (
     description="Captura dados, qualifica oportunidades e direciona os leads prontos para o time comercial."
     tags={['Qualificação IA', 'CRM', 'Pipeline']}
   >
-    <svg viewBox="0 0 340 230" width="310" height="210" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="340" height="230" fill="#0D0F14"/>
-      {/* Grid */}
+    <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
       <defs>
-        <pattern id="funnelGrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-          <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5"/>
-        </pattern>
+        <linearGradient id="stage1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1a2240"/>
+          <stop offset="100%" stopColor="#1e2850"/>
+        </linearGradient>
+        <linearGradient id="stage2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0d2235"/>
+          <stop offset="100%" stopColor="#0f2d50"/>
+        </linearGradient>
+        <linearGradient id="stage3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#003a28"/>
+          <stop offset="100%" stopColor="#005c3a"/>
+        </linearGradient>
       </defs>
-      <rect x="0" y="0" width="340" height="230" fill="url(#funnelGrid)"/>
 
-      {/* Stat chips top */}
-      <rect x="8" y="8" width="98" height="18" rx="9" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
-      <text x="57" y="20" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="7" fontFamily="sans-serif">14% conversão total</text>
-      <rect x="114" y="8" width="80" height="18" rx="9" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.2)" strokeWidth="0.5"/>
-      <text x="154" y="20" textAnchor="middle" fill="#00FF85" fontSize="7" fontFamily="sans-serif">↑ 2.3× vs antes</text>
-      <rect x="202" y="8" width="90" height="18" rx="9" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
-      <text x="247" y="20" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="7" fontFamily="sans-serif">0 esforço manual</text>
+      {/* Background */}
+      <rect width="320" height="260" fill="#0D0F14"/>
 
-      {/* Stage 1 trapezoid */}
-      <polygon points="20,36 300,36 272,82 48,82" fill="#1A2035" stroke="rgba(100,120,200,0.25)" strokeWidth="1.2"/>
-      <text x="160" y="54" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600" letterSpacing="1">ETAPA 01</text>
-      <text x="160" y="70" textAnchor="middle" fill="white" fontSize="13" fontFamily="sans-serif" fontWeight="700">1.240 leads captados</text>
+      {/* Grid sutil */}
+      <line x1="0" y1="65" x2="320" y2="65" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
+      <line x1="0" y1="130" x2="320" y2="130" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
+      <line x1="0" y1="195" x2="320" y2="195" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
+      <line x1="80" y1="0" x2="80" y2="260" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
+      <line x1="160" y1="0" x2="160" y2="260" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
+      <line x1="240" y1="0" x2="240" y2="260" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
 
-      {/* Divider + conversion rate 1 */}
-      <circle cx="160" cy="87" r="4" fill="#334155" stroke="rgba(100,150,200,0.3)" strokeWidth="1">
-        <animate attributeName="r" values="3.5;5;3.5" dur="2s" repeatCount="indefinite"/>
+      {/* Stat chips no topo */}
+      <rect x="14" y="10" width="82" height="14" rx="7" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
+      <text x="55" y="20" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="7" fontFamily="sans-serif">14% conversão total</text>
+      <rect x="112" y="10" width="72" height="14" rx="7" fill="rgba(0,200,100,0.1)" stroke="rgba(0,200,100,0.25)" strokeWidth="0.5"/>
+      <text x="148" y="20" textAnchor="middle" fill="#00C864" fontSize="7" fontFamily="sans-serif">↑ 2.3× vs antes</text>
+      <rect x="200" y="10" width="92" height="14" rx="7" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
+      <text x="246" y="20" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="7" fontFamily="sans-serif">0 esforço manual</text>
+
+      {/* ETAPA 1 — trapézio largo */}
+      <path d="M 22,32 L 298,32 L 262,80 L 58,80 Z" fill="url(#stage1)" stroke="rgba(100,130,220,0.3)" strokeWidth="1"/>
+      <text x="55" y="50" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="sans-serif" fontWeight="600">ETAPA 01</text>
+      <text x="55" y="68" fill="white" fontSize="20" fontFamily="sans-serif" fontWeight="700">1.240</text>
+      <text x="220" y="50" fill="rgba(255,255,255,0.45)" fontSize="8" fontFamily="sans-serif">Leads captados</text>
+      <text x="220" y="62" fill="rgba(255,255,255,0.3)" fontSize="7" fontFamily="sans-serif">últimos 30 dias</text>
+      {/* Barra lateral progresso */}
+      <rect x="304" y="32" width="4" height="48" rx="2" fill="rgba(100,130,220,0.1)"/>
+      <rect x="304" y="32" width="4" height="48" rx="2" fill="rgba(100,150,255,0.55)"/>
+
+      {/* Divisor + taxa */}
+      <line x1="58" y1="85" x2="262" y2="85" stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
+      <circle cx="160" cy="85" r="5" fill="#1a2240">
+        <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
       </circle>
-      <text x="200" y="90" fill="rgba(255,255,255,0.35)" fontSize="7" fontFamily="sans-serif">Taxa: 48%</text>
+      <text x="160" y="101" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="sans-serif">Taxa: 48%</text>
 
-      {/* Stage 2 trapezoid */}
-      <polygon points="48,92 272,92 244,138 76,138" fill="#0D2235" stroke="rgba(50,100,200,0.3)" strokeWidth="1.2"/>
-      <text x="160" y="110" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600" letterSpacing="1">ETAPA 02</text>
-      <text x="160" y="128" textAnchor="middle" fill="white" fontSize="11" fontFamily="sans-serif" fontWeight="700">596 qualificados · IA Score ≥72</text>
+      {/* ETAPA 2 — trapézio médio */}
+      <path d="M 58,106 L 262,106 L 214,156 L 106,156 Z" fill="url(#stage2)" stroke="rgba(50,100,220,0.3)" strokeWidth="1"/>
+      <text x="70" y="124" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="sans-serif" fontWeight="600">ETAPA 02</text>
+      <text x="70" y="144" fill="white" fontSize="20" fontFamily="sans-serif" fontWeight="700">596</text>
+      <text x="194" y="124" fill="rgba(255,255,255,0.45)" fontSize="8" fontFamily="sans-serif">Qualificados</text>
+      <text x="194" y="136" fill="rgba(100,170,255,0.7)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">IA Score ≥ 72</text>
+      <rect x="304" y="106" width="4" height="50" rx="2" fill="rgba(50,100,220,0.1)"/>
+      <rect x="304" y="106" width="4" height="26" rx="2" fill="rgba(80,140,255,0.55)"/>
 
-      {/* Divider + conversion rate 2 */}
-      <circle cx="160" cy="143" r="4" fill="#334155" stroke="rgba(0,200,100,0.3)" strokeWidth="1">
-        <animate attributeName="r" values="3.5;5;3.5" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+      {/* Divisor + taxa */}
+      <line x1="106" y1="161" x2="214" y2="161" stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
+      <circle cx="160" cy="161" r="5" fill="#0d2235">
+        <animate attributeName="r" values="5;7;5" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0.5;1" dur="2s" begin="0.5s" repeatCount="indefinite"/>
       </circle>
-      <text x="200" y="146" fill="rgba(255,255,255,0.35)" fontSize="7" fontFamily="sans-serif">Taxa: 29%</text>
+      <text x="160" y="177" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="sans-serif">Taxa: 29%</text>
 
-      {/* Stage 3 trapezoid */}
-      <polygon points="76,148 244,148 220,190 100,190" fill="#003A30" stroke="rgba(0,200,100,0.35)" strokeWidth="1.2"/>
-      <text x="160" y="166" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600" letterSpacing="1">ETAPA 03</text>
-      <text x="160" y="184" textAnchor="middle" fill="#00FF85" fontSize="15" fontFamily="sans-serif" fontWeight="700">174 prontos para fechar</text>
+      {/* ETAPA 3 — trapézio pequeno */}
+      <path d="M 106,182 L 214,182 L 188,226 L 132,226 Z" fill="url(#stage3)" stroke="rgba(0,200,100,0.35)" strokeWidth="1"/>
+      <text x="160" y="200" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="sans-serif" fontWeight="600">ETAPA 03</text>
+      <text x="160" y="220" textAnchor="middle" fill="#00C864" fontSize="22" fontFamily="sans-serif" fontWeight="800">174</text>
+      <rect x="304" y="182" width="4" height="44" rx="2" fill="rgba(0,200,100,0.1)"/>
+      <rect x="304" y="182" width="4" height="13" rx="2" fill="#00C864"/>
 
-      {/* Side progress bar */}
-      <rect x="312" y="36" width="6" height="154" rx="3" fill="rgba(255,255,255,0.06)"/>
-      <rect x="312" y="36" width="6" height="60" rx="3" fill="#3B82F6" opacity="0.6"/>
-      <rect x="312" y="96" width="6" height="50" rx="3" fill="#6366F1" opacity="0.6"/>
-      <rect x="312" y="146" width="6" height="44" rx="3" fill="#00FF85" opacity="0.8"/>
-
-      {/* Badge footer */}
-      <rect x="90" y="200" width="160" height="18" rx="9" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.25)" strokeWidth="0.8"/>
-      <circle cx="104" cy="209" r="3" fill="#00FF85">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+      {/* Badge final */}
+      <rect x="106" y="234" width="108" height="18" rx="9" fill="rgba(0,200,100,0.1)" stroke="rgba(0,200,100,0.35)" strokeWidth="0.75"/>
+      <circle cx="120" cy="243" r="3.5" fill="#00C864">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
       </circle>
-      <text x="180" y="213" textAnchor="middle" fill="#00FF85" fontSize="7" fontFamily="sans-serif" fontWeight="600">Prontos p/ fechar</text>
+      <text x="130" y="247" fill="#00C864" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">Prontos p/ fechar</text>
     </svg>
   </ExampleCardWrapper>
 );
@@ -484,93 +533,88 @@ const ExampleCard3 = () => (
     description="Conectamos agentes a WhatsApp, Google Sheets, Calendar, Supabase e CRMs em tempo real."
     tags={['WhatsApp', 'Google', 'Supabase', 'CRM']}
   >
-    <svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
       <defs>
-        <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+        <radialGradient id="orb-bg" cx="50%" cy="50%" r="55%">
           <stop offset="0%" stopColor="#0E1520"/>
           <stop offset="100%" stopColor="#08090F"/>
         </radialGradient>
-        <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="rgba(0,255,133,0.12)"/>
-          <stop offset="100%" stopColor="transparent"/>
+        <radialGradient id="center-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(99,102,241,0.2)"/>
+          <stop offset="100%" stopColor="rgba(99,102,241,0)"/>
         </radialGradient>
       </defs>
-      <rect x="0" y="0" width="200" height="200" fill="url(#bgGrad)"/>
 
-      {/* Glow behind hub */}
-      <ellipse cx="100" cy="100" rx="48" ry="48" fill="url(#hubGlow)"/>
+      <rect width="320" height="260" fill="url(#orb-bg)"/>
 
-      {/* Orbital rings */}
-      <circle cx="100" cy="100" r="72" fill="none" stroke="rgba(0,255,133,0.06)" strokeWidth="1" strokeDasharray="4 6"/>
-      <circle cx="100" cy="100" r="48" fill="none" stroke="rgba(0,255,133,0.06)" strokeWidth="1" strokeDasharray="4 6"/>
+      {/* Glow central */}
+      <ellipse cx="160" cy="130" rx="85" ry="75" fill="url(#center-glow)"/>
 
-      {/* Connection lines with animation */}
-      {/* Hub to WhatsApp (top) */}
-      <line x1="100" y1="100" x2="100" y2="22" stroke="rgba(0,255,133,0.15)" strokeWidth="1" strokeDasharray="4 4">
-        <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.5s" repeatCount="indefinite"/>
+      {/* Anéis orbitais */}
+      <circle cx="160" cy="130" r="88" fill="none" stroke="rgba(99,102,241,0.08)" strokeWidth="1" strokeDasharray="4 6"/>
+      <circle cx="160" cy="130" r="55" fill="none" stroke="rgba(99,102,241,0.12)" strokeWidth="1" strokeDasharray="3 5"/>
+
+      {/* Linhas de conexão animadas */}
+      <line x1="52" y1="62" x2="128" y2="116" stroke="#25D366" strokeWidth="1.2" opacity="0.5" strokeDasharray="5 4">
+        <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.2s" repeatCount="indefinite"/>
       </line>
-      {/* Hub to Sheets (top-right) */}
-      <line x1="100" y1="100" x2="162" y2="38" stroke="rgba(100,200,100,0.12)" strokeWidth="1" strokeDasharray="4 4">
-        <animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite"/>
+      <line x1="268" y1="62" x2="192" y2="116" stroke="#0F9D58" strokeWidth="1.2" opacity="0.5" strokeDasharray="5 4">
+        <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.5s" repeatCount="indefinite"/>
       </line>
-      {/* Hub to Calendar (bottom-right) */}
-      <line x1="100" y1="100" x2="162" y2="162" stroke="rgba(66,133,244,0.15)" strokeWidth="1" strokeDasharray="4 4">
-        <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.8s" repeatCount="indefinite"/>
+      <line x1="52" y1="198" x2="128" y2="144" stroke="#F97316" strokeWidth="1.2" opacity="0.5" strokeDasharray="5 4">
+        <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1s" repeatCount="indefinite"/>
       </line>
-      {/* Hub to Supabase (bottom-left) */}
-      <line x1="100" y1="100" x2="38" y2="162" stroke="rgba(62,207,142,0.15)" strokeWidth="1" strokeDasharray="4 4">
-        <animate attributeName="stroke-dashoffset" values="0;-16" dur="2.2s" repeatCount="indefinite"/>
+      <line x1="268" y1="198" x2="192" y2="144" stroke="#4285F4" strokeWidth="1.2" opacity="0.5" strokeDasharray="5 4">
+        <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.3s" repeatCount="indefinite"/>
       </line>
-      {/* Hub to CRM (top-left) */}
-      <line x1="100" y1="100" x2="38" y2="38" stroke="rgba(249,115,22,0.15)" strokeWidth="1" strokeDasharray="4 4">
-        <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.6s" repeatCount="indefinite"/>
+      <line x1="160" y1="18" x2="160" y2="104" stroke="#3ECF8E" strokeWidth="1.2" opacity="0.45" strokeDasharray="5 4">
+        <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.6s" repeatCount="indefinite"/>
       </line>
 
-      {/* Central hub */}
-      <circle cx="100" cy="100" r="30" fill="#0A1A14" stroke="rgba(0,255,133,0.4)" strokeWidth="1.5"/>
-      {/* Lightning bolt icon */}
-      <path d="M104,87 L96,100 L103,100 L96,113 L108,97 L101,97 Z" fill="#00FF85"/>
-      <text x="100" y="120" textAnchor="middle" fill="rgba(0,255,133,0.7)" fontSize="6" fontFamily="sans-serif" fontWeight="700" letterSpacing="0.5">VISION AI</text>
+      {/* Hub central Vision AI */}
+      <circle cx="160" cy="130" r="34" fill="#0A0F1A" stroke="rgba(99,102,241,0.5)" strokeWidth="1.5"/>
+      <circle cx="160" cy="130" r="27" fill="rgba(99,102,241,0.08)"/>
+      <path d="M165,117 L153,131 L160,131 L153,145 L169,127 L162,127 Z" fill="#818CF8"/>
+      <text x="160" y="156" textAnchor="middle" fill="rgba(139,143,255,0.7)" fontSize="6.5" fontFamily="sans-serif" fontWeight="600">VISION AI</text>
 
-      {/* Satellite nodes */}
-      {/* WhatsApp — top */}
-      <circle cx="100" cy="18" r="18" fill="#0A1A0A" stroke="#25D366" strokeWidth="1.2"/>
-      <image href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" x="88" y="6" width="24" height="24"/>
-      <text x="100" y="42" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">WhatsApp</text>
-      {/* Ping on WhatsApp */}
-      <circle cx="100" cy="18" r="18" fill="none" stroke="#25D366" strokeWidth="1" opacity="0.5">
-        <animate attributeName="r" values="18;26;18" dur="2s" repeatCount="indefinite"/>
+      {/* NÓ 1 — WhatsApp (top-left) */}
+      <circle cx="52" cy="62" r="26" fill="#0D1F15" stroke="rgba(37,211,102,0.35)" strokeWidth="1"/>
+      <image href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" x="38" y="48" width="28" height="28"/>
+      <text x="52" y="96" textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="7.5" fontFamily="sans-serif" fontWeight="500">WhatsApp</text>
+      {/* Ping animado */}
+      <circle cx="72" cy="44" r="5" fill="rgba(37,211,102,0.3)">
+        <animate attributeName="r" values="5;10;5" dur="2s" repeatCount="indefinite"/>
         <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
       </circle>
+      <circle cx="72" cy="44" r="4" fill="#25D366"/>
 
-      {/* Google Sheets — top-right */}
-      <circle cx="166" cy="34" r="18" fill="#0A150A" stroke="#0F9D58" strokeWidth="1.2"/>
-      <image href="https://upload.wikimedia.org/wikipedia/commons/3/30/Google_Sheets_logo_%282014-2020%29.svg" x="154" y="22" width="24" height="24"/>
-      <text x="166" y="58" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">Sheets</text>
+      {/* NÓ 2 — Google Sheets (top-right) */}
+      <circle cx="268" cy="62" r="26" fill="#0D1F14" stroke="rgba(15,157,88,0.35)" strokeWidth="1"/>
+      <image href="https://upload.wikimedia.org/wikipedia/commons/3/30/Google_Sheets_logo_%282014-2020%29.svg" x="254" y="48" width="28" height="28"/>
+      <text x="268" y="96" textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="7.5" fontFamily="sans-serif" fontWeight="500">Sheets</text>
 
-      {/* Google Calendar — bottom-right */}
-      <circle cx="166" cy="166" r="18" fill="#0A0E1A" stroke="#4285F4" strokeWidth="1.2"/>
-      <image href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" x="154" y="154" width="24" height="24"/>
-      <text x="166" y="190" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">Calendar</text>
+      {/* NÓ 3 — CRM (bottom-left) */}
+      <circle cx="52" cy="198" r="26" fill="#1A1208" stroke="rgba(249,115,22,0.35)" strokeWidth="1"/>
+      <circle cx="52" cy="191" r="10" fill="#F97316" opacity="0.9"/>
+      <path d="M34,212 Q34,200 52,200 Q70,200 70,212" fill="#F97316" opacity="0.85"/>
+      <text x="52" y="232" textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="7.5" fontFamily="sans-serif" fontWeight="500">CRM</text>
 
-      {/* Supabase — bottom-left */}
-      <circle cx="34" cy="166" r="18" fill="#0A120F" stroke="#3ECF8E" strokeWidth="1.2"/>
-      <image href="https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg" x="22" y="154" width="24" height="24"/>
-      <text x="34" y="190" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">Supabase</text>
+      {/* NÓ 4 — Google Calendar (bottom-right) */}
+      <circle cx="268" cy="198" r="26" fill="#0D1525" stroke="rgba(66,133,244,0.35)" strokeWidth="1"/>
+      <image href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" x="254" y="184" width="28" height="28"/>
+      <text x="268" y="232" textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="7.5" fontFamily="sans-serif" fontWeight="500">Calendar</text>
 
-      {/* CRM — top-left */}
-      <circle cx="34" cy="34" r="18" fill="#1A0E0A" stroke="#F97316" strokeWidth="1.2"/>
-      {/* Person icon */}
-      <circle cx="34" cy="28" r="5.5" fill="#F97316" opacity="0.85"/>
-      <path d="M22,44 Q22,36 34,36 Q46,36 46,44" fill="#F97316" opacity="0.85"/>
-      <text x="34" y="58" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6" fontFamily="sans-serif">CRM</text>
+      {/* NÓ 5 — Supabase (top-center) */}
+      <circle cx="160" cy="18" r="18" fill="#0A1F16" stroke="rgba(62,207,142,0.35)" strokeWidth="1"/>
+      <image href="https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg" x="149" y="7" width="22" height="22"/>
+      <text x="160" y="44" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="6.5" fontFamily="sans-serif" fontWeight="500">Supabase</text>
 
-      {/* Status chip */}
-      <rect x="28" y="185" width="144" height="13" rx="6.5" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.2)" strokeWidth="0.7"/>
-      <circle cx="40" cy="191.5" r="2.5" fill="#00FF85">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+      {/* Badge de status */}
+      <rect x="72" y="245" width="176" height="16" rx="8" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.25)" strokeWidth="0.75"/>
+      <circle cx="86" cy="253" r="3" fill="#818CF8">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
       </circle>
-      <text x="102" y="195" textAnchor="middle" fill="#00FF85" fontSize="6" fontFamily="sans-serif" fontWeight="600">5 integrações ativas · Tempo real</text>
+      <text x="94" y="257" fill="rgba(139,143,255,0.8)" fontSize="7" fontFamily="sans-serif" fontWeight="500">5 integrações ativas · Tempo real</text>
     </svg>
   </ExampleCardWrapper>
 );
