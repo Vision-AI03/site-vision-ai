@@ -52,7 +52,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 // Substitua pela URL gerada no Google Apps Script após o deploy
-const GOOGLE_SCRIPT_URL = "COLE_AQUI_A_URL_DO_APPS_SCRIPT";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwrXEkshD4jdi-hsHJckgCfcqgy0iiw24KtwQLHEgHMVjwXI20XQERnC9IdqOVE2VddGQ/exec";
 
 // Mantém o Supabase como fallback secundário
 const WEBHOOK_URL = "https://sfezwprbanvxsnwgvkhh.supabase.co/functions/v1/capture-lead-website";
