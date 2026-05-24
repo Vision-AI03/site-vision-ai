@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoVisionAI from "@/assets/logo-vision-ai.png";
+import { WHATSAPP_URL } from "@/App";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,8 +71,8 @@ const Header = () => {
               </button>
             ))}
             
-            <Button 
-              onClick={() => scrollToSection('contact')} 
+            <Button
+              onClick={() => window.open(WHATSAPP_URL, "_blank")}
               className="ml-4 bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white btn-shimmer relative overflow-hidden"
             >
               <Sparkles className="h-4 w-4 mr-2" />
@@ -106,8 +107,8 @@ const Header = () => {
                   {item.label}
                 </button>
               ))}
-              <Button 
-                onClick={() => scrollToSection('contact')} 
+              <Button
+                onClick={() => window.open(WHATSAPP_URL, "_blank")}
                 className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white w-full"
               >
                 <Sparkles className="h-4 w-4 mr-2" />

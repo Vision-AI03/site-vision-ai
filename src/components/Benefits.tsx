@@ -1,5 +1,6 @@
 import { Clock, DollarSign, Users, TrendingUp, Shield, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { WHATSAPP_URL } from "@/App";
 
 interface AnimatedCounterProps {
   value: string;
@@ -196,7 +197,7 @@ const Benefits = () => {
             {/* CTA */}
             <div className="text-center mt-8">
               <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.open(WHATSAPP_URL, "_blank")}
                 style={{
                   background: '#00FF85',
                   color: '#0A0D0F',

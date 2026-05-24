@@ -1,4 +1,5 @@
 import { MessageCircle, Settings, Rocket, BarChart } from "lucide-react";
+import { WHATSAPP_URL } from "@/App";
 
 const HowItWorks = () => {
   const steps = [
@@ -144,7 +145,7 @@ const HowItWorks = () => {
                 Entre em contato conosco e descubra como podemos transformar seu negócio com inteligência artificial
               </p>
               <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.open(WHATSAPP_URL, "_blank")}
                 className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-2xl transform hover:scale-105"
               >
                 Quero Automatizar Meu Negócio

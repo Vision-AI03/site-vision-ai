@@ -1,4 +1,5 @@
 import { Bot, MessageSquare, Users, Zap, Settings, TrendingUp } from "lucide-react";
+import { WHATSAPP_URL } from "@/App";
 
 const Services = () => {
   const services = [
@@ -123,7 +124,7 @@ const Services = () => {
               Entre em contato e descubra como nossas soluções podem revolucionar seu negócio
             </p>
             <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => window.open(WHATSAPP_URL, "_blank")}
               className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Quero Automatizar Meu Negócio

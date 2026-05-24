@@ -285,6 +285,38 @@ const Contact = () => {
                   )}
                 </Button>
 
+                <div style={{ textAlign: "center", margin: "8px 0" }}>
+                  <span style={{ fontSize: "13px", color: "rgba(107,114,128,1)" }}>ou</span>
+                </div>
+
+                <a
+                  href="https://wa.me/5519997948118?text=Olá!%20Vim%20pelo%20site%20da%20Vision%20AI%20e%20gostaria%20de%20saber%20mais."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                    width: "100%",
+                    padding: "14px",
+                    borderRadius: "12px",
+                    background: "#25D366",
+                    color: "white",
+                    fontWeight: 600,
+                    fontSize: "15px",
+                    textDecoration: "none",
+                    transition: "opacity 0.2s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = "0.9"}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = "1"}
+                >
+                  <svg viewBox="0 0 48 48" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="white" d="M24 4C12.95 4 4 12.95 4 24c0 3.55.92 6.89 2.54 9.78L4 44l10.5-2.5A19.87 19.87 0 0024 44c11.05 0 20-8.95 20-20S35.05 4 24 4zm0 36c-3.07 0-5.97-.8-8.48-2.2l-.6-.36-6.23 1.48 1.52-6.06-.4-.63A15.93 15.93 0 018 24c0-8.82 7.18-16 16-16s16 7.18 16 16-7.18 16-16 16zm8.73-11.97c-.48-.24-2.83-1.4-3.27-1.56-.44-.16-.76-.24-1.08.24-.32.48-1.24 1.56-1.52 1.88-.28.32-.56.36-1.04.12-.48-.24-2.03-.75-3.87-2.39-1.43-1.28-2.4-2.85-2.68-3.33-.28-.48-.03-.74.21-.98.22-.22.48-.56.72-.84.24-.28.32-.48.48-.8.16-.32.08-.6-.04-.84-.12-.24-1.08-2.6-1.48-3.56-.38-.92-.78-.8-1.08-.82-.28-.02-.6-.02-.92-.02s-.84.12-1.28.6c-.44.48-1.68 1.64-1.68 4s1.72 4.64 1.96 4.96c.24.32 3.38 5.16 8.2 7.24 1.14.5 2.04.8 2.73 1.02 1.15.36 2.2.31 3.02.19.92-.14 2.83-1.16 3.23-2.28.4-1.12.4-2.08.28-2.28-.12-.2-.44-.32-.92-.56z"/>
+                  </svg>
+                  Falar pelo WhatsApp agora
+                </a>
+
                 <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   <span>Resposta em até 24 horas</span>

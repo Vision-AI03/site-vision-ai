@@ -1,13 +1,8 @@
 import { ArrowRight, Bot, Zap, Settings, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WHATSAPP_URL } from "@/App";
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const valueProps = [
     {
@@ -64,7 +59,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                onClick={scrollToContact}
+                onClick={() => window.open(WHATSAPP_URL, "_blank")}
                 className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white btn-shimmer h-14 px-8 text-lg"
               >
                 Quero Automatizar Meu Negócio
