@@ -10,6 +10,9 @@ import {
   Rocket,
   BarChart,
   CheckCircle,
+  Zap,
+  Clock,
+  Shield,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -158,292 +161,348 @@ const howItWorksSteps = [
 ];
 
 /* ──────────────────────────────────────────────────
-   SVG COMPONENTS
+   PHONE CAROUSEL
 ────────────────────────────────────────────────── */
-const WhatsAppHeroMockup = () => (
-  <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <defs>
-      <clipPath id="hero-screen-clip">
-        <rect x="55" y="8" width="210" height="244" rx="18" />
-      </clipPath>
-      <linearGradient id="hero-wpp-header" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#00875A" />
-        <stop offset="100%" stopColor="#00A36C" />
-      </linearGradient>
-      <linearGradient id="hero-msg-sent" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#005C4B" />
-        <stop offset="100%" stopColor="#017A62" />
-      </linearGradient>
-    </defs>
-    {/* Phone shell */}
-    <rect x="55" y="8" width="210" height="244" rx="18" fill="#1A1F2A" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-    <g clipPath="url(#hero-screen-clip)">
-      {/* Status bar */}
-      <rect x="55" y="8" width="210" height="20" fill="#0B1117" />
-      <text x="160" y="21" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontFamily="sans-serif">9:41</text>
-      {/* WhatsApp header */}
-      <rect x="55" y="28" width="210" height="38" fill="url(#hero-wpp-header)" />
-      <text x="68" y="50" fill="rgba(255,255,255,0.8)" fontSize="12" fontFamily="sans-serif">‹</text>
-      <circle cx="84" cy="47" r="12" fill="rgba(255,255,255,0.15)" />
-      <image href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" x="75" y="38" width="18" height="18" />
-      <text x="102" y="44" fill="white" fontSize="8.5" fontWeight="600" fontFamily="sans-serif">Assistente Vision AI</text>
-      <circle cx="103" cy="52" r="2.5" fill="#7FFFD4" />
-      <text x="108" y="55" fill="rgba(255,255,255,0.65)" fontSize="6.5" fontFamily="sans-serif">online</text>
-      {/* Chat bg */}
-      <rect x="55" y="66" width="210" height="160" fill="#0B1117" />
-      {/* Received msg */}
-      <rect x="63" y="74" width="118" height="30" rx="8" fill="#1E2733" />
-      <text x="72" y="86" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">Qual o prazo de entrega</text>
-      <text x="72" y="97" fill="rgba(255,255,255,0.85)" fontSize="7" fontFamily="sans-serif">para SP capital?</text>
-      <text x="172" y="101" fill="rgba(255,255,255,0.3)" fontSize="5.5" fontFamily="sans-serif">10:23</text>
-      {/* Sent msg */}
-      <rect x="95" y="112" width="160" height="46" rx="8" fill="url(#hero-msg-sent)" />
-      <text x="104" y="125" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">Olá! Para SP capital nosso</text>
-      <text x="104" y="136" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">prazo é 1–2 dias úteis. 🚀</text>
-      <text x="104" y="147" fill="rgba(255,255,255,0.92)" fontSize="7" fontFamily="sans-serif">Posso gerar um orçamento?</text>
-      <text x="237" y="154" fill="rgba(255,255,255,0.4)" fontSize="5.5" fontFamily="sans-serif">✓✓</text>
-      {/* Typing indicator */}
-      <rect x="63" y="166" width="56" height="20" rx="10" fill="#1E2733" />
-      <circle cx="77" cy="176" r="3.5" fill="rgba(255,255,255,0.3)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="89" cy="176" r="3.5" fill="rgba(255,255,255,0.3)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.3s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="101" cy="176" r="3.5" fill="rgba(255,255,255,0.3)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.6s" repeatCount="indefinite" />
-      </circle>
-      {/* Speed badge */}
-      <rect x="68" y="194" width="184" height="18" rx="9" fill="rgba(0,200,100,0.12)" stroke="rgba(0,200,100,0.4)" strokeWidth="0.75" />
-      <circle cx="81" cy="203" r="3.5" fill="#00C864">
-        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-      </circle>
-      <text x="89" y="207" fill="#00C864" fontSize="7" fontWeight="600" fontFamily="sans-serif">⚡ Respondido em 1.2 segundos</text>
-      {/* Input bar */}
-      <rect x="55" y="218" width="210" height="34" fill="#182026" />
-      <rect x="63" y="224" width="140" height="18" rx="9" fill="#252D35" />
-      <text x="72" y="235" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="sans-serif">Mensagem</text>
-      <circle cx="224" cy="233" r="9" fill="#00A36C" />
-      <text x="224" y="237" textAnchor="middle" fill="white" fontSize="10" fontWeight="700" fontFamily="sans-serif">↑</text>
-    </g>
-    <rect x="130" y="247" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.15)" />
-  </svg>
-);
+const phoneSlides = [
+  {
+    label: "Agente IA — Atendimento",
+    color: "#10B981",
+    contactName: "Assistente Vision AI",
+    messages: [
+      { from: "client", text: "Oi, vocês entregam para Campinas?" },
+      { from: "agent", text: "Olá! Sim, atendemos Campinas e toda região. Posso te passar os valores de frete e prazo agora mesmo. Qual produto você tem interesse?" },
+      { from: "client", text: "Quero saber sobre o produto X" },
+      { from: "agent", text: "Ótimo! O produto X custa R$ 297 com entrega em 2 dias úteis pra Campinas. Quer que eu reserve uma unidade para você? 😊" },
+    ],
+    badge: "⚡ Respondido em 1.4 segundos",
+  },
+  {
+    label: "Agente IA — Vendas",
+    color: "#6366F1",
+    contactName: "Assistente Vision AI",
+    messages: [
+      { from: "client", text: "Vi o anúncio de vocês, quanto custa?" },
+      { from: "agent", text: "Oi! Que bom que você viu 😊 Antes de te passar o valor, me conta: é pra uso pessoal ou empresa? Assim consigo te passar a opção certa." },
+      { from: "client", text: "É pra minha empresa, somos 8 pessoas" },
+      { from: "agent", text: "Perfeito! Para times de até 10 pessoas temos o Plano Pro por R$ 497/mês. Inclui onboarding e suporte prioritário. Posso agendar uma demo rápida com você?" },
+    ],
+    badge: "🎯 Lead qualificado automaticamente",
+  },
+  {
+    label: "Agente IA — Suporte",
+    color: "#F59E0B",
+    contactName: "Assistente Vision AI",
+    messages: [
+      { from: "client", text: "Meu pedido não chegou ainda, já faz 5 dias" },
+      { from: "agent", text: "Olá! Me passa o número do seu pedido que eu verifico agora mesmo 🔍" },
+      { from: "client", text: "Pedido #48291" },
+      { from: "agent", text: "Encontrei! Seu pedido #48291 está com a transportadora e chega hoje até as 18h. Você recebe uma notificação quando sair pra entrega. Posso te ajudar com mais alguma coisa?" },
+    ],
+    badge: "✅ Resolvido sem intervenção humana",
+  },
+  {
+    label: "Agente IA — Interno",
+    color: "#EC4899",
+    contactName: "Assistente Interno",
+    messages: [
+      { from: "client", text: "Resume a reunião de ontem pra mim" },
+      { from: "agent", text: "Claro! Reunião de 15/05 — Pontos principais:\n• Meta de vendas revista para R$ 85k\n• Lucas assume o cliente Acme a partir de hoje\n• Próxima reunião: 22/05 às 14h\n\nQuer que eu já coloque no calendário?" },
+      { from: "client", text: "Sim, coloca lá" },
+      { from: "agent", text: "✅ Reunião de 22/05 às 14h adicionada no calendário de todos os participantes. Notificações configuradas para 1h antes." },
+    ],
+    badge: "🤖 Produtividade interna automatizada",
+  },
+];
 
-/* Dark result card wrapper */
-const DarkResultCard = ({
-  label, title, description, tags, children,
-}: {
-  label: string;
+const PhoneCarousel = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setActiveSlide((prev) => (prev + 1) % phoneSlides.length);
+        setIsTransitioning(false);
+      }, 400);
+    }, 18000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = phoneSlides[activeSlide];
+
+  const goTo = (idx: number) => {
+    setIsTransitioning(true);
+    setTimeout(() => { setActiveSlide(idx); setIsTransitioning(false); }, 400);
+  };
+
+  return (
+    <div style={{ position: "relative", width: "280px", margin: "0 auto" }}>
+      {/* Slide label */}
+      <div style={{ textAlign: "center", marginBottom: "16px", transition: "opacity 0.4s", opacity: isTransitioning ? 0 : 1 }}>
+        <span style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "6px",
+          fontSize: "13px",
+          fontWeight: 600,
+          color: slide.color,
+          background: slide.color + "15",
+          border: `1px solid ${slide.color}30`,
+          borderRadius: "999px",
+          padding: "4px 14px",
+        }}>
+          {slide.label}
+        </span>
+      </div>
+
+      {/* Phone frame */}
+      <div style={{
+        background: "#1A1A2E",
+        borderRadius: "42px",
+        padding: "12px",
+        boxShadow: "0 30px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.08), inset 0 0 0 1px rgba(255,255,255,0.05)",
+        position: "relative",
+      }}>
+        {/* Notch */}
+        <div style={{
+          position: "absolute",
+          top: "12px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "90px",
+          height: "24px",
+          background: "#0D0D1A",
+          borderRadius: "0 0 16px 16px",
+          zIndex: 10,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "6px",
+        }}>
+          <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#2A2A4A" }} />
+          <div style={{ width: "32px", height: "4px", borderRadius: "2px", background: "#2A2A4A" }} />
+        </div>
+
+        {/* Screen */}
+        <div style={{
+          background: "#0B1117",
+          borderRadius: "32px",
+          overflow: "hidden",
+          height: "520px",
+          display: "flex",
+          flexDirection: "column" as const,
+          opacity: isTransitioning ? 0 : 1,
+          transition: "opacity 0.4s ease",
+        }}>
+          {/* Status bar */}
+          <div style={{ background: "#0B1117", padding: "28px 16px 4px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>9:41</span>
+            <div style={{ display: "flex", gap: "4px", alignItems: "center" }}>
+              <svg width="16" height="12" viewBox="0 0 16 12">
+                <rect x="0" y="6" width="3" height="6" rx="1" fill="rgba(255,255,255,0.8)" />
+                <rect x="4.5" y="4" width="3" height="8" rx="1" fill="rgba(255,255,255,0.8)" />
+                <rect x="9" y="2" width="3" height="10" rx="1" fill="rgba(255,255,255,0.8)" />
+                <rect x="13.5" y="0" width="2.5" height="12" rx="1" fill="rgba(255,255,255,0.8)" />
+              </svg>
+              <svg width="16" height="12" viewBox="0 0 16 12">
+                <path d="M8 9.5L10.5 7C9.8 6.4 8.9 6 8 6C7.1 6 6.2 6.4 5.5 7L8 9.5Z" fill="rgba(255,255,255,0.8)" />
+                <path d="M8 6.5L12 2.5C10.7 1.4 9.4 1 8 1C6.6 1 5.3 1.4 4 2.5L8 6.5Z" fill="rgba(255,255,255,0.4)" />
+              </svg>
+              <div style={{ display: "flex", alignItems: "center", gap: "1px" }}>
+                <div style={{ width: "22px", height: "11px", border: "1px solid rgba(255,255,255,0.5)", borderRadius: "3px", padding: "2px", display: "flex", alignItems: "center" }}>
+                  <div style={{ width: "75%", height: "100%", background: "rgba(255,255,255,0.8)", borderRadius: "1px" }} />
+                </div>
+                <div style={{ width: "2px", height: "5px", background: "rgba(255,255,255,0.4)", borderRadius: "0 1px 1px 0" }} />
+              </div>
+            </div>
+          </div>
+
+          {/* WhatsApp header */}
+          <div style={{ background: "linear-gradient(135deg, #00875A, #00A36C)", padding: "10px 14px 12px", display: "flex", alignItems: "center", gap: "10px" }}>
+            <span style={{ fontSize: "20px", color: "rgba(255,255,255,0.8)", lineHeight: 1 }}>‹</span>
+            <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style={{ width: "26px", height: "26px" }} />
+            </div>
+            <div>
+              <div style={{ fontSize: "13px", fontWeight: 700, color: "white" }}>{slide.contactName}</div>
+              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", gap: "4px" }}>
+                <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#7FFFD4" }} />
+                online
+              </div>
+            </div>
+            <div style={{ marginLeft: "auto", display: "flex", gap: "16px" }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="2"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></svg>
+            </div>
+          </div>
+
+          {/* Messages */}
+          <div style={{
+            flex: 1,
+            background: "#0B1117",
+            padding: "12px 10px",
+            overflowY: "auto" as const,
+            display: "flex",
+            flexDirection: "column" as const,
+            gap: "8px",
+            backgroundImage: "radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.04) 0%, transparent 60%)",
+          }}>
+            {slide.messages.map((msg, idx) => (
+              <div key={idx} style={{ display: "flex", justifyContent: msg.from === "client" ? "flex-start" : "flex-end" }}>
+                <div style={{
+                  maxWidth: "78%",
+                  padding: "8px 11px",
+                  borderRadius: msg.from === "client" ? "12px 12px 12px 2px" : "12px 12px 2px 12px",
+                  background: msg.from === "client" ? "#1E2733" : "linear-gradient(135deg, #005C4B, #017A62)",
+                  fontSize: "11.5px",
+                  color: "rgba(255,255,255,0.9)",
+                  lineHeight: 1.5,
+                  whiteSpace: "pre-line" as const,
+                }}>
+                  {msg.text}
+                  {msg.from === "agent" && (
+                    <div style={{ fontSize: "9px", color: "rgba(255,255,255,0.35)", textAlign: "right" as const, marginTop: "3px" }}>✓✓</div>
+                  )}
+                </div>
+              </div>
+            ))}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "4px" }}>
+              <span style={{ fontSize: "10px", fontWeight: 600, color: "#00C864", background: "rgba(0,200,100,0.1)", border: "1px solid rgba(0,200,100,0.3)", borderRadius: "999px", padding: "3px 10px" }}>
+                {slide.badge}
+              </span>
+            </div>
+          </div>
+
+          {/* Input bar */}
+          <div style={{ background: "#182026", padding: "8px 10px", display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ flex: 1, background: "#252D35", borderRadius: "20px", padding: "8px 14px", fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>
+              Mensagem
+            </div>
+            <div style={{ width: "34px", height: "34px", borderRadius: "50%", background: "#00A36C", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M2 21L23 12 2 3v7l15 2-15 2z" /></svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Home indicator */}
+        <div style={{ display: "flex", justifyContent: "center", paddingTop: "8px" }}>
+          <div style={{ width: "80px", height: "4px", background: "rgba(255,255,255,0.2)", borderRadius: "2px" }} />
+        </div>
+      </div>
+
+      {/* Navigation dots */}
+      <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "20px" }}>
+        {phoneSlides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => goTo(idx)}
+            style={{
+              width: idx === activeSlide ? "24px" : "8px",
+              height: "8px",
+              borderRadius: "4px",
+              background: idx === activeSlide ? slide.color : "rgba(0,0,0,0.15)",
+              border: "none",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              padding: 0,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* ──────────────────────────────────────────────────
+   BENEFIT CARD (section 5)
+────────────────────────────────────────────────── */
+interface BenefitItem {
+  icon: React.ElementType;
+  color: string;
   title: string;
-  description: string;
-  tags: string[];
-  children: React.ReactNode;
-}) => {
+  text: string;
+}
+
+const BenefitCardItem = ({ icon: Icon, color, title, text }: BenefitItem) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: "rgba(255,255,255,0.03)",
-        border: `1px solid ${hovered ? "rgba(0,255,133,0.2)" : "rgba(255,255,255,0.07)"}`,
-        borderRadius: "16px",
+        background: "#ffffff",
+        borderRadius: "20px",
+        padding: "36px",
+        border: "1px solid #F3F4F6",
+        position: "relative",
         overflow: "hidden",
-        transition: "border-color 0.3s, transform 0.3s",
-        transform: hovered ? "translateY(-4px)" : "translateY(0)",
+        transition: "box-shadow 0.3s, transform 0.3s",
+        boxShadow: hovered ? "0 20px 60px rgba(0,0,0,0.08)" : "0 2px 12px rgba(0,0,0,0.04)",
+        transform: hovered ? "translateY(-2px)" : "translateY(0)",
       }}
     >
-      <div style={{ padding: "14px 16px 8px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <span style={{ fontSize: "11px", fontWeight: 600, color: "#00FF85", textTransform: "uppercase" as const, letterSpacing: "0.06em" }}>
-          {label}
-        </span>
+      {/* Accent line top */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        height: "2px",
+        width: hovered ? "100%" : "0%",
+        background: color,
+        transition: "width 0.4s ease",
+        borderRadius: "20px 20px 0 0",
+      }} />
+      {/* Icon */}
+      <div style={{
+        width: 52,
+        height: 52,
+        borderRadius: "14px",
+        background: color + "18",
+        border: `1px solid ${color}33`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: "20px",
+      }}>
+        <Icon size={22} style={{ color }} />
       </div>
-      <div style={{ height: "230px", background: "rgba(0,0,0,0.25)", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-        {children}
-      </div>
-      <div style={{ padding: "20px" }}>
-        <h4 style={{ fontWeight: 700, fontSize: "1rem", color: "#ffffff", marginBottom: "8px" }}>{title}</h4>
-        <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.6, marginBottom: "12px" }}>{description}</p>
-        <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" as const }}>
-          {tags.map((tag) => (
-            <span key={tag} style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "999px", padding: "3px 10px" }}>
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
+      <h3 style={{ fontWeight: 700, fontSize: "1.15rem", color: "#111827", marginBottom: "12px" }}>
+        {title}
+      </h3>
+      <p style={{ fontSize: "0.95rem", color: "#6B7280", lineHeight: 1.7, margin: 0 }}>
+        {text}
+      </p>
     </div>
   );
 };
 
-/* Result Card 1 — Response Time Bar Chart */
-const ResultCard1 = () => (
-  <DarkResultCard
-    label="01 — Tempo de resposta"
-    title="De 4 horas para 3 segundos"
-    description="O agente responde instantaneamente qualquer hora do dia. Sem cliente esperando, sem venda perdida."
-    tags={["WhatsApp API", "24/7", "Resposta imediata"]}
-  >
-    <svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <defs>
-        <linearGradient id="rc1-bar-before" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#6366f1" />
-          <stop offset="100%" stopColor="#4f46e5" stopOpacity="0.6" />
-        </linearGradient>
-        <linearGradient id="rc1-bar-after" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#00FF85" />
-          <stop offset="100%" stopColor="#10b981" stopOpacity="0.7" />
-        </linearGradient>
-      </defs>
-      <rect width="320" height="230" fill="#0D0F14" />
-      <text x="160" y="28" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="sans-serif" fontWeight="600">Tempo médio de resposta</text>
-      {/* Antes bar */}
-      <text x="80" y="54" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="sans-serif">Antes</text>
-      <rect x="50" y="60" width="60" height="100" rx="6" fill="url(#rc1-bar-before)" />
-      <text x="80" y="178" textAnchor="middle" fill="#818cf8" fontSize="20" fontFamily="sans-serif" fontWeight="800">4h</text>
-      <text x="80" y="195" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="8" fontFamily="sans-serif">sem agente</text>
-      {/* Arrow */}
-      <text x="160" y="118" textAnchor="middle" fill="rgba(255,255,255,0.15)" fontSize="32" fontFamily="sans-serif">→</text>
-      <text x="160" y="138" textAnchor="middle" fill="#00FF85" fontSize="9" fontFamily="sans-serif" fontWeight="600">4800× mais rápido</text>
-      {/* Depois bar */}
-      <text x="240" y="54" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="sans-serif">Depois</text>
-      <rect x="210" y="142" width="60" height="18" rx="6" fill="url(#rc1-bar-after)" />
-      <text x="240" y="178" textAnchor="middle" fill="#00FF85" fontSize="20" fontFamily="sans-serif" fontWeight="800">3s</text>
-      <text x="240" y="195" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="8" fontFamily="sans-serif">com agente IA</text>
-      {/* Badge */}
-      <rect x="70" y="210" width="180" height="15" rx="7.5" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.25)" strokeWidth="0.75" />
-      <circle cx="86" cy="217.5" r="3" fill="#00FF85">
-        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-      </circle>
-      <text x="94" y="221" fill="#00FF85" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">Resposta instantânea · 24/7</text>
-    </svg>
-  </DarkResultCard>
-);
-
-/* Result Card 2 — Donut Chart */
-const ResultCard2 = () => (
-  <DarkResultCard
-    label="02 — Carga da equipe"
-    title="80% dos chamados resolvidos sem você"
-    description="Sua equipe só recebe os casos que realmente precisam de atenção humana. O resto o agente resolve."
-    tags={["Triagem automática", "Escalação inteligente", "Produtividade"]}
-  >
-    <svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <defs>
-        <linearGradient id="rc2-agent" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#00FF85" />
-          <stop offset="100%" stopColor="#10b981" />
-        </linearGradient>
-        <linearGradient id="rc2-human" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#6366f1" />
-          <stop offset="100%" stopColor="#818cf8" />
-        </linearGradient>
-      </defs>
-      <rect width="320" height="230" fill="#0D0F14" />
-      {/* Donut — circumference of r=70: 2π×70 ≈ 439.8 */}
-      {/* Track */}
-      <circle cx="160" cy="108" r="70" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="28" />
-      {/* 80% green: 439.8×0.8=351.8, gap=88 */}
-      <circle cx="160" cy="108" r="70" fill="none" stroke="url(#rc2-agent)" strokeWidth="28"
-        strokeDasharray="351.8 88" strokeLinecap="round" transform="rotate(-90 160 108)" />
-      {/* 20% indigo: length=87.96, offset back so it starts after green */}
-      <circle cx="160" cy="108" r="70" fill="none" stroke="url(#rc2-human)" strokeWidth="26"
-        strokeDasharray="79 360.8" strokeDashoffset="-355.8" strokeLinecap="round" transform="rotate(-90 160 108)" />
-      {/* Center text */}
-      <text x="160" y="100" textAnchor="middle" fill="#00FF85" fontSize="28" fontFamily="sans-serif" fontWeight="800">80%</text>
-      <text x="160" y="118" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="sans-serif">pelo agente</text>
-      {/* Legend */}
-      <rect x="42" y="192" width="10" height="10" rx="3" fill="#00FF85" />
-      <text x="56" y="201" fill="rgba(255,255,255,0.55)" fontSize="8" fontFamily="sans-serif">Resolvido pelo agente (80%)</text>
-      <rect x="190" y="192" width="10" height="10" rx="3" fill="#6366f1" />
-      <text x="204" y="201" fill="rgba(255,255,255,0.55)" fontSize="8" fontFamily="sans-serif">Humanos (20%)</text>
-      {/* Badge */}
-      <rect x="68" y="214" width="184" height="14" rx="7" fill="rgba(0,255,133,0.08)" stroke="rgba(0,255,133,0.2)" strokeWidth="0.75" />
-      <circle cx="82" cy="221" r="3" fill="#00FF85">
-        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-      </circle>
-      <text x="90" y="225" fill="#00FF85" fontSize="7" fontFamily="sans-serif" fontWeight="600">Equipe foca no que realmente importa</text>
-    </svg>
-  </DarkResultCard>
-);
-
-/* Result Card 3 — Lead Funnel */
-const ResultCard3 = () => (
-  <DarkResultCard
-    label="03 — Leads qualificados"
-    title="Leads quentes direto no seu CRM"
-    description="O agente coleta dados, qualifica por interesse e só passa para você quem está pronto para comprar."
-    tags={["Qualificação IA", "Pipeline", "Conversão"]}
-  >
-    <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <defs>
-        <linearGradient id="rc3-stage1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1a2240" />
-          <stop offset="100%" stopColor="#1e2850" />
-        </linearGradient>
-        <linearGradient id="rc3-stage2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0d2235" />
-          <stop offset="100%" stopColor="#0f2d50" />
-        </linearGradient>
-        <linearGradient id="rc3-stage3" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#003a28" />
-          <stop offset="100%" stopColor="#005c3a" />
-        </linearGradient>
-      </defs>
-      <rect width="320" height="260" fill="#0D0F14" />
-      <line x1="0" y1="65" x2="320" y2="65" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      <line x1="0" y1="130" x2="320" y2="130" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      <line x1="0" y1="195" x2="320" y2="195" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      <line x1="80" y1="0" x2="80" y2="260" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      <line x1="160" y1="0" x2="160" y2="260" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      <line x1="240" y1="0" x2="240" y2="260" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      {/* Stat chips */}
-      <rect x="14" y="10" width="82" height="14" rx="7" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-      <text x="55" y="20" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="7" fontFamily="sans-serif">14% conversão total</text>
-      <rect x="112" y="10" width="72" height="14" rx="7" fill="rgba(0,200,100,0.1)" stroke="rgba(0,200,100,0.25)" strokeWidth="0.5" />
-      <text x="148" y="20" textAnchor="middle" fill="#00C864" fontSize="7" fontFamily="sans-serif">↑ 2.3× vs antes</text>
-      <rect x="200" y="10" width="92" height="14" rx="7" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-      <text x="246" y="20" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="7" fontFamily="sans-serif">0 esforço manual</text>
-      {/* Stage 1 */}
-      <path d="M 22,32 L 298,32 L 262,80 L 58,80 Z" fill="url(#rc3-stage1)" stroke="rgba(100,130,220,0.3)" strokeWidth="1" />
-      <text x="55" y="50" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="sans-serif" fontWeight="600">ETAPA 01</text>
-      <text x="55" y="68" fill="white" fontSize="20" fontFamily="sans-serif" fontWeight="700">1.240</text>
-      <text x="220" y="50" fill="rgba(255,255,255,0.45)" fontSize="8" fontFamily="sans-serif">Leads captados</text>
-      <text x="220" y="62" fill="rgba(255,255,255,0.3)" fontSize="7" fontFamily="sans-serif">últimos 30 dias</text>
-      <rect x="304" y="32" width="4" height="48" rx="2" fill="rgba(100,150,255,0.55)" />
-      <line x1="58" y1="85" x2="262" y2="85" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-      <circle cx="160" cy="85" r="5" fill="#1a2240">
-        <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-      </circle>
-      <text x="160" y="101" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="sans-serif">Taxa: 48%</text>
-      {/* Stage 2 */}
-      <path d="M 58,106 L 262,106 L 214,156 L 106,156 Z" fill="url(#rc3-stage2)" stroke="rgba(50,100,220,0.3)" strokeWidth="1" />
-      <text x="70" y="124" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="sans-serif" fontWeight="600">ETAPA 02</text>
-      <text x="70" y="144" fill="white" fontSize="20" fontFamily="sans-serif" fontWeight="700">596</text>
-      <text x="194" y="124" fill="rgba(255,255,255,0.45)" fontSize="8" fontFamily="sans-serif">Qualificados</text>
-      <text x="194" y="136" fill="rgba(100,170,255,0.7)" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">IA Score ≥ 72</text>
-      <rect x="304" y="106" width="4" height="26" rx="2" fill="rgba(80,140,255,0.55)" />
-      <line x1="106" y1="161" x2="214" y2="161" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-      <circle cx="160" cy="161" r="5" fill="#0d2235">
-        <animate attributeName="r" values="5;7;5" dur="2s" begin="0.5s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="1;0.5;1" dur="2s" begin="0.5s" repeatCount="indefinite" />
-      </circle>
-      <text x="160" y="177" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="sans-serif">Taxa: 29%</text>
-      {/* Stage 3 */}
-      <path d="M 106,182 L 214,182 L 188,226 L 132,226 Z" fill="url(#rc3-stage3)" stroke="rgba(0,200,100,0.35)" strokeWidth="1" />
-      <text x="160" y="200" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="sans-serif" fontWeight="600">ETAPA 03</text>
-      <text x="160" y="220" textAnchor="middle" fill="#00C864" fontSize="22" fontFamily="sans-serif" fontWeight="800">174</text>
-      <rect x="304" y="182" width="4" height="13" rx="2" fill="#00C864" />
-      <rect x="106" y="234" width="108" height="18" rx="9" fill="rgba(0,200,100,0.1)" stroke="rgba(0,200,100,0.35)" strokeWidth="0.75" />
-      <circle cx="120" cy="243" r="3.5" fill="#00C864">
-        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-      </circle>
-      <text x="130" y="247" fill="#00C864" fontSize="7.5" fontFamily="sans-serif" fontWeight="600">Prontos p/ fechar</text>
-    </svg>
-  </DarkResultCard>
-);
+const benefitItems: BenefitItem[] = [
+  {
+    icon: Zap,
+    color: "#6366F1",
+    title: "Responde antes da concorrência",
+    text: "Enquanto seu concorrente ainda está digitando, seu agente já enviou a resposta, coletou os dados e agendou o próximo passo.",
+  },
+  {
+    icon: Clock,
+    color: "#10B981",
+    title: "Sua equipe foca no que gera dinheiro",
+    text: "Perguntas repetitivas, confirmações e triagem ficam com o agente. Sua equipe só entra quando o cliente já está pronto para fechar.",
+  },
+  {
+    icon: TrendingUp,
+    color: "#F59E0B",
+    title: "Nenhum lead esfria na fila de espera",
+    text: "O agente responde em segundos, qualquer hora do dia. Cliente que recebe atenção imediata compra mais e reclama menos.",
+  },
+  {
+    icon: Shield,
+    color: "#EC4899",
+    title: "Você mantém controle total",
+    text: "Acompanha todas as conversas, ajusta respostas quando quiser e decide quando entrar na conversa. O agente trabalha para você, não no lugar de você.",
+  },
+];
 
 /* ──────────────────────────────────────────────────
    MAIN COMPONENT
@@ -626,7 +685,7 @@ const AgentesIA = () => {
               </p>
 
               <div className="flex flex-wrap gap-4 text-sm text-gray-700">
-                {["Setup em até 7 dias", "Sem TI necessário", "Integrado ao seu processo"].map((item) => (
+                {["Setup em até 7 dias", "Integrado ao seu processo", "Treinado com seus dados"].map((item) => (
                   <span key={item} className="flex items-center gap-1.5 font-medium">
                     <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
                     {item}
@@ -653,16 +712,13 @@ const AgentesIA = () => {
               </div>
             </div>
 
-            {/* Right — mockup + stats */}
+            {/* Right — phone carousel + 2 stat cards */}
             <div className="animate-scale-in">
-              <div className="w-full max-w-sm mx-auto">
-                <WhatsAppHeroMockup />
-              </div>
-              <div className="grid grid-cols-3 gap-3 mt-6">
+              <PhoneCarousel />
+              <div className="grid grid-cols-2 gap-3 mt-6 max-w-xs mx-auto">
                 {[
                   { value: "< 3s", label: "tempo de resposta", color: "#F59E0B" },
                   { value: "24/7", label: "sem interrupção", color: "#6366F1" },
-                  { value: "0", label: "sem TI necessário", color: "#10B981" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-white rounded-2xl p-4 shadow-md border border-gray-100 text-center">
                     <div style={{ fontSize: "1.75rem", fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
@@ -752,7 +808,6 @@ const AgentesIA = () => {
           </div>
 
           <div className="relative max-w-6xl mx-auto">
-            {/* Central timeline line */}
             <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-200 via-purple-300 to-pink-200" />
 
             <div className="space-y-24">
@@ -796,7 +851,6 @@ const AgentesIA = () => {
                       </div>
                     </div>
 
-                    {/* Timeline node */}
                     <div className="hidden lg:flex w-24 h-24 relative z-20">
                       <div className={`w-full h-full rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-2xl animate-pulse-glow`}>
                         <span className="text-white font-bold text-2xl">{step.number}</span>
@@ -812,67 +866,29 @@ const AgentesIA = () => {
         </div>
       </section>
 
-      {/* ── 5. DARK RESULTS SECTION ── */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "#0A0D0F" }}>
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-        <div
-          className="absolute top-0 left-0 w-96 h-72 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top left, rgba(0,255,133,0.08) 0%, transparent 70%)" }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-96 h-72 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at bottom right, rgba(0,196,255,0.07) 0%, transparent 70%)" }}
-        />
+      {/* ── 5. BENEFÍCIOS ── */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <div
-              className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold mb-6"
-              style={{ background: "rgba(0,255,133,0.1)", border: "1px solid rgba(0,255,133,0.25)", color: "#00FF85" }}
-            >
-              Resultados reais
+          <div className="text-center mb-16 animate-fade-in-up">
+            <div className="inline-flex items-center bg-gradient-to-r from-indigo-100 to-cyan-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              ✨ Por que funciona
             </div>
-            <h3 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-              O que muda depois de 30 dias com o agente
-            </h3>
-            <p className="text-lg" style={{ color: "rgba(255,255,255,0.45)" }}>
-              Dados reais de negócios que implementaram agentes de IA no WhatsApp
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              O que muda quando seu WhatsApp trabalha por você
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Sem contratar ninguém. Sem complicação técnica. Só resultado.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <ResultCard1 />
-            <ResultCard2 />
-            <ResultCard3 />
-          </div>
-
-          <div className="text-center">
-            <button
-              onClick={() => window.open(WHATSAPP_URL, "_blank")}
-              style={{
-                background: "#00FF85",
-                color: "#0A0D0F",
-                fontWeight: 700,
-                fontSize: "1rem",
-                padding: "14px 32px",
-                borderRadius: "12px",
-                border: "none",
-                cursor: "pointer",
-                letterSpacing: "-0.01em",
-                transition: "opacity 0.2s",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = "0.88"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = "1"; }}
-            >
-              Quero ver uma demonstração
-            </button>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {benefitItems.map((item, index) => (
+              <div key={index} className="animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+                <BenefitCardItem {...item} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -909,9 +925,30 @@ const AgentesIA = () => {
               </p>
               <button
                 onClick={() => window.open(WHATSAPP_URL, "_blank")}
-                className="w-full h-14 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl flex items-center justify-center gap-3 transition-colors text-lg"
+                style={{
+                  width: "100%",
+                  height: "56px",
+                  background: "#25D366",
+                  color: "white",
+                  fontWeight: 700,
+                  fontSize: "16px",
+                  borderRadius: "12px",
+                  border: "none",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "10px",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#128C7E"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#25D366"; }}
               >
-                <MessageCircle className="h-5 w-5" />
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                  alt="WhatsApp"
+                  style={{ width: "24px", height: "24px" }}
+                />
                 Chamar no WhatsApp agora
               </button>
               <div className="flex items-center gap-4 my-6">
@@ -939,7 +976,7 @@ const AgentesIA = () => {
               <div className="relative glass rounded-3xl p-8 border border-white/50 shadow-2xl">
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-gray-700">Nome *</label>
+                    <label className="block text-sm font-semibold text-gray-700">Nome</label>
                     <Input
                       type="text"
                       name="name"
@@ -953,7 +990,7 @@ const AgentesIA = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-gray-700">WhatsApp *</label>
+                    <label className="block text-sm font-semibold text-gray-700">WhatsApp</label>
                     <Input
                       type="tel"
                       name="phone"
@@ -988,7 +1025,7 @@ const AgentesIA = () => {
 
                   <div className="space-y-2">
                     <label className="block text-sm font-semibold text-gray-700">
-                      Qual é o maior problema no seu atendimento hoje? *
+                      Qual é o maior problema no seu atendimento hoje?
                     </label>
                     <Textarea
                       name="message"
