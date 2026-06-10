@@ -7,14 +7,14 @@ const Services = () => {
       icon: MessageSquare,
       title: "Agentes de Atendimento",
       description: "Seu negócio atendendo 24/7, sem equipe adicional",
-      features: ["Responde dúvidas automaticamente", "Agenda reuniões e consultas", "Integra com WhatsApp,CRM,Site e etc"],
+      features: ["Responde dúvidas automaticamente", "Agenda reuniões e consultas", "Integra com WhatsApp, CRM e Site"],
       gradient: "from-blue-500 to-indigo-600"
     },
     {
       icon: TrendingUp,
       title: "Agentes de Vendas",
       description: "IA que aborda, qualifica e encaminha leads para você fechar",
-      features: ["Qualificação automática de prospects", "Follow-up sem esforço manual", "Integração com seu CRM" "Relatórios Semanais"],
+      features: ["Qualificação automática de prospects", "Follow-up sem esforço manual", "Integração com seu CRM", "Relatórios Semanais"],
       gradient: "from-indigo-500 to-purple-600"
     },
     {
