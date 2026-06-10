@@ -14,14 +14,14 @@ const Services = () => {
       icon: TrendingUp,
       title: "Agentes de Vendas",
       description: "IA que aborda, qualifica e encaminha leads para você fechar",
-      features: ["Qualificação automática de prospects", "Follow-up sem esforço manual", "Integração com seu CRM"],
+      features: ["Qualificação automática de prospects", "Follow-up sem esforço manual", "Integração com seu CRM" "Relatórios Semanais"],
       gradient: "from-indigo-500 to-purple-600"
     },
     {
       icon: Users,
       title: "Agentes de Suporte",
-      description: "Resolva 80% dos chamados sem intervenção humana",
-      features: ["Base de conhecimento personalizada", "Escalação inteligente para humanos", "Histórico de atendimentos"],
+      description: "Resolva 90% dos chamados sem intervenção humana",
+      features: ["Base de conhecimento personalizada", "Escalação inteligente para humanos", "Histórico de atendimentos", "Integração com seu Site, WhatsApp e etc" ],
       gradient: "from-purple-500 to-pink-600"
     },
     {
