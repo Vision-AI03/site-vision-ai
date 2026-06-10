@@ -7,20 +7,20 @@ const Hero = () => {
   const valueProps = [
     {
       icon: Bot,
-      title: "Agentes que trabalham por você",
-      description: "Atendimento, vendas e suporte rodando 24/7 sem intervenção humana",
+      title: "Entendemos antes de automatizar",
+      description: "A gente mapeia os seus processos primeiro. Sem processo definido, a IA só acelera a bagunça.",
       gradient: "from-indigo-500 to-indigo-600"
     },
     {
-      icon: Zap,
-      title: "Automações que eliminam retrabalho",
-      description: "Processos repetitivos automatizados para sua equipe focar no que importa",
+      icon: Settings,
+      title: "Construímos sistema de verdade",
+      description: "Nada de caixa-preta. Sistemas e agentes feitos sob medida pra sua operação, que você entende e controla.",
       gradient: "from-cyan-500 to-cyan-600"
     },
     {
-      icon: Settings,
-      title: "Integrado ao seu negócio",
-      description: "Conectamos IA aos sistemas que você já usa: WhatsApp, CRM, planilhas e mais",
+      icon: Zap,
+      title: "Você ganha, a gente ganha",
+      description: "Quanto mais a sua operação economiza e fatura, mais sentido faz seguir junto.",
       gradient: "from-purple-500 to-purple-600"
     }
   ];
@@ -40,20 +40,19 @@ const Hero = () => {
           <div className="space-y-8 animate-fade-in-up">
             <div className="inline-flex items-center bg-gradient-to-r from-indigo-100 to-cyan-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
               <Sparkles className="h-4 w-4 mr-2" />
-              Powered by Artificial Intelligence
+              IA aplicada à operação de PMEs
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Transforme seu negócio com{" "}
+              Primeiro entendemos a sua{" "}
               <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
-                Agentes de IA
+                operação
               </span>
-              {" "}e Automações
+              . Depois automatizamos só o que dá resultado.
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed">
-              Criamos agentes de IA personalizados para atendimento, vendas, suporte e qualificação de leads.
-              Além de automações inteligentes que otimizam seus processos e aumentam sua produtividade.
+              Nada de jogar chatbot em cima da bagunça. A gente senta, entende os seus processos — atendimento, vendas, financeiro — e constrói a automação certa pro seu negócio. Sem firula e sem promessa vazia.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -62,16 +61,16 @@ const Hero = () => {
                 onClick={() => window.open(WHATSAPP_URL, "_blank")}
                 className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white btn-shimmer h-14 px-8 text-lg"
               >
-                Quero Automatizar Meu Negócio
+                Falar no WhatsApp
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="border-2 border-indigo-600 text-indigo-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-cyan-50 h-14 px-8 text-lg"
               >
-                Ver Serviços
+                Quero um diagnóstico
               </Button>
             </div>
           </div>

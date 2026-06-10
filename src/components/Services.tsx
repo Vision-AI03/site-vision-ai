@@ -57,14 +57,13 @@ const Services = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-flex items-center bg-gradient-to-r from-indigo-100 to-cyan-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            ⚡ Nossas Soluções
+            ⚡ Soluções
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
-            Nossos Serviços
+            O que a gente constrói
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Oferecemos uma gama completa de soluções de IA para transformar a forma como 
-            você se relaciona com seus clientes e otimiza seus processos
+            Cada solução nasce de um processo seu. Aqui está o que a gente costuma construir — sempre depois de entender onde dói.
           </p>
         </div>
 
@@ -118,16 +117,16 @@ const Services = () => {
         <div className="mt-20 text-center animate-fade-in-up">
           <div className="inline-flex flex-col items-center bg-gradient-to-br from-indigo-50 to-cyan-50 rounded-3xl p-12 border border-indigo-100">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              Pronto para começar sua transformação digital?
+              Não sabe por onde começar?
             </h3>
             <p className="text-gray-600 mb-8 max-w-2xl">
-              Entre em contato e descubra como nossas soluções podem revolucionar seu negócio
+              Conta pra gente como funciona a sua operação hoje. A gente te diz, de forma honesta, o que vale a pena automatizar — e o que ainda não vale.
             </p>
             <button
               onClick={() => window.open(WHATSAPP_URL, "_blank")}
               className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              Quero Automatizar Meu Negócio
+              Falar no WhatsApp
             </button>
           </div>
         </div>

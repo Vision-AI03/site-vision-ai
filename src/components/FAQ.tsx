@@ -8,13 +8,13 @@ const FAQ = () => {
   const faqData = [
     {
       question: "Posso substituir totalmente minha equipe de vendas e atendimento por Agentes de IA?",
-      answer: "Embora seja possível, recomendamos usar a IA para otimizar seus atendimentos e vendas, sem substituir totalmente a equipe humana. O equilíbrio entre agentes IA e humanos geralmente oferece os melhores resultados. A IA cuida das consultas iniciais, qualificação de leads e atendimento 24/7, enquanto humanos focam em negociações complexas e relacionamentos estratégicos.",
+      answer: "Dá pra fazer, mas a gente recomenda usar a IA pra otimizar atendimento e vendas sem substituir 100% o humano. O equilíbrio entre agente e gente costuma render mais. A IA cuida das consultas iniciais, qualificação e plantão 24/7, enquanto o humano foca em negociação complexa e relacionamento estratégico.",
       icon: <Users className="h-5 w-5" />,
       gradient: "from-blue-500 to-indigo-600"
     },
     {
       question: "Quem configura e treina o Agente de IA para o meu negócio?",
-      answer: "A Vision AI é responsável por todo o processo. Nós entendemos seu negócio, seu funil e seu atendimento, e entregamos um Agente de IA já treinado para falar com seus clientes e vender do jeito certo.",
+      answer: "A gente cuida de todo o processo. Entendemos o seu negócio, seu funil e seu atendimento, e entregamos um agente já treinado pra falar com os seus clientes do jeito certo.",
       icon: <Bot className="h-5 w-5" />,
       gradient: "from-indigo-500 to-purple-600"
     },
@@ -26,13 +26,13 @@ const FAQ = () => {
     },
     {
       question: "Vou precisar mexer em sistemas, tecnologia ou integrações?",
-      answer: "Não. Todas as integrações, como WhatsApp, site, agenda e outros canais, são feitas pela Vision AI. Você não precisa lidar com ferramentas técnicas.",
+      answer: "Não. Todas as integrações — WhatsApp, site, agenda e outros canais — a gente cuida. Você não precisa lidar com ferramentas técnicas.",
       icon: <Sparkles className="h-5 w-5" />,
       gradient: "from-cyan-500 to-blue-600"
     },
     {
       question: "Meu processo de vendas é complexo. O Agente de IA consegue aprender e se adaptar?",
-      answer: "Sim! Nossos agentes IA são desenvolvidos para lidar com vendas complexas e processos específicos de cada negócio. Eles aprendem com cada interação e podem ser treinados com cenários específicos do seu setor. Para situações muito complexas, o agente pode transferir automaticamente para um especialista humano.",
+      answer: "Sim. A gente constrói o agente pra lidar com vendas complexas e processos específicos do seu setor. Ele aprende com cada interação e é treinado com cenários reais do seu dia a dia. Em situações que fogem do escopo, transfere automaticamente pra um humano da sua equipe.",
       icon: <BarChart className="h-5 w-5" />,
       gradient: "from-emerald-500 to-teal-600"
     },
@@ -66,8 +66,8 @@ const FAQ = () => {
             <span className="text-gradient-purple">Dúvidas Frequentes</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Esclarecemos as principais questões sobre agentes de IA e automações. 
-            Ainda tem dúvidas? Nossa equipe está pronta para ajudar!
+            As perguntas que a gente mais ouve antes de começar.
+            Se a sua não está aqui, chama a gente no WhatsApp.
           </p>
         </div>
 
@@ -133,19 +133,18 @@ const FAQ = () => {
               Ainda tem dúvidas?
             </h3>
             <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto leading-relaxed">
-              Nossa equipe especializada está pronta para esclarecer todas as suas questões 
-              sobre agentes de IA e mostrar como eles podem transformar seu negócio.
+              Chama a gente no WhatsApp que respondemos na hora — sem robô, é gente de verdade do outro lado.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
                 onClick={() => window.open(WHATSAPP_URL, "_blank")}
                 className="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-lg"
               >
-                Quero Automatizar Meu Negócio
+                Falar no WhatsApp
               </button>
               <p className="text-sm text-gray-500">
-                Atendimento personalizado • Consultoria gratuita
+                Diagnóstico sem compromisso
               </p>
             </div>
           </div>

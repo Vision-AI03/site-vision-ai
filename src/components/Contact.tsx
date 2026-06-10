@@ -208,13 +208,13 @@ const Contact = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 animate-fade-in-up">
             <div className="inline-flex items-center bg-gradient-to-r from-indigo-100 to-cyan-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              💬 Entre em Contato
+              💬 Diagnóstico sem compromisso
             </div>
             <h2 className="text-5xl font-bold mb-6">
-              <span className="text-gradient">Fale Conosco</span>
+              <span className="text-gradient">Bora conversar sobre a sua operação?</span>
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              Nossa equipe de especialistas está pronta para ajudar você a implementar soluções de IA que realmente fazem a diferença no seu negócio.
+              Chama a gente no WhatsApp ou preenche o formulário com um resumo da sua operação. A gente te retorna com um diagnóstico honesto do que dá pra automatizar — sem compromisso.
             </p>
           </div>
 

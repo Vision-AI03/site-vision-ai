@@ -6,33 +6,33 @@ const HowItWorks = () => {
     {
       icon: MessageCircle,
       number: "01",
-      title: "Consultoria e Análise",
-      description: "Analisamos suas necessidades específicas e identificamos as melhores oportunidades para implementar IA em seu negócio.",
-      details: ["Mapeamento de processos atuais", "Identificação de pontos de melhoria", "Definição de objetivos e KPIs"],
+      title: "Entendemos a sua operação",
+      description: "Mapeamento dos processos atuais, onde dói e o que te trava. Antes de qualquer linha de código, a gente precisa saber como o seu negócio funciona de verdade.",
+      details: ["Mapeamento dos processos atuais", "Onde a operação dói hoje", "O que te trava no dia a dia"],
       gradient: "from-blue-500 to-indigo-600"
     },
     {
       icon: Settings,
       number: "02",
-      title: "Desenvolvimento Personalizado",
-      description: "Criamos e treinamos seus agentes IA com base nas suas especificações, garantindo máxima eficiência e personalização.",
-      details: ["Treinamento com seus dados", "Configuração de fluxos de trabalho", "Integração com sistemas existentes"],
+      title: "Construímos sob medida",
+      description: "Agentes e sistema treinados com os seus dados, seus fluxos e a forma como você fala com cliente. Nada de template pronto.",
+      details: ["Treinamento com os seus dados", "Fluxos desenhados pro seu processo", "Integração com o que você já usa"],
       gradient: "from-indigo-500 to-purple-600"
     },
     {
       icon: Rocket,
       number: "03",
-      title: "Implementação e Testes",
-      description: "Implementamos gradualmente a solução, realizando testes extensivos para garantir performance e qualidade.",
-      details: ["Deploy em ambiente controlado", "Testes de carga e performance", "Ajustes finos baseados em feedback"],
+      title: "Implementamos e testamos",
+      description: "Entra gradual, testado, sem quebrar o que já funciona. A gente acompanha cada etapa de perto pra você não ficar no escuro.",
+      details: ["Deploy gradual e controlado", "Teste em cenário real", "Ajuste fino com feedback seu"],
       gradient: "from-purple-500 to-pink-600"
     },
     {
       icon: BarChart,
       number: "04",
-      title: "Monitoramento e Otimização",
-      description: "Acompanhamos continuamente o desempenho e otimizamos os agentes para garantir resultados cada vez melhores.",
-      details: ["Monitoramento em tempo real", "Relatórios de performance", "Otimizações contínuas"],
+      title: "Acompanhamos e otimizamos",
+      description: "Monitoramento contínuo do que está rodando e ajuste constante pra operação seguir melhorando — não é entregar e sumir.",
+      details: ["Monitoramento em tempo real", "Relatórios do que está rodando", "Otimizações contínuas"],
       gradient: "from-pink-500 to-red-600"
     }
   ];
@@ -47,13 +47,13 @@ const HowItWorks = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 animate-fade-in-up">
           <div className="inline-flex items-center bg-gradient-to-r from-indigo-100 to-cyan-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            📋 Nosso Processo
+            📋 Método Vision AI
           </div>
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
-            Como Funciona
+            Como a gente trabalha: <span className="text-gradient">processo antes de promessa</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Um processo simples e eficiente para transformar seu negócio com inteligência artificial
+            A maioria das agências chega com chatbot pronto antes de entender o seu negócio. A gente faz o contrário: primeiro mergulha na sua operação, vê onde você perde tempo e dinheiro, e só então decide o que vale a pena automatizar.
           </p>
         </div>
 
@@ -139,16 +139,16 @@ const HowItWorks = () => {
           <div className="relative glass rounded-3xl p-12 text-center border border-white/50 shadow-2xl">
             <div className="max-w-3xl mx-auto">
               <h3 className="text-4xl font-bold mb-6">
-                <span className="text-gradient">Pronto para começar?</span>
+                <span className="text-gradient">Quer ver o que dá pra automatizar no seu caso?</span>
               </h3>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Entre em contato conosco e descubra como podemos transformar seu negócio com inteligência artificial
+                Fala com a gente no WhatsApp. Sem compromisso — só uma conversa pra entender a sua operação.
               </p>
-              <button 
+              <button
                 onClick={() => window.open(WHATSAPP_URL, "_blank")}
                 className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-2xl transform hover:scale-105"
               >
-                Quero Automatizar Meu Negócio
+                Falar no WhatsApp
               </button>
             </div>
           </div>

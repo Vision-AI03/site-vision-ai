@@ -34,8 +34,7 @@ const Footer = () => {
               </div>
               
               <p className="text-gray-300 text-lg leading-relaxed mb-6 max-w-md">
-                Transformamos negócios com inteligência artificial. Criamos agentes IA personalizados 
-                e automações inteligentes que otimizam processos e aumentam resultados.
+                A gente entende a sua operação antes de automatizar. Constrói sistemas e agentes sob medida que fazem o seu negócio rodar melhor — sem firula.
               </p>
               
               <div className="flex items-center gap-3 px-4 py-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 w-fit">
