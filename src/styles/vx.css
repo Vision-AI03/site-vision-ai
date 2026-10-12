@@ -1,0 +1,313 @@
+/* Vision AI — sistema visual da home (escopado em .vx para não afetar /agentes) */
+
+.vx {
+  --vx-bg: #08090c;
+  --vx-bg-2: #0d0f14;
+  --vx-bg-3: #13161d;
+  --vx-line: rgba(236, 232, 223, 0.09);
+  --vx-line-2: rgba(236, 232, 223, 0.16);
+  --vx-ink: #ece8df;
+  --vx-ink-2: rgba(236, 232, 223, 0.66);
+  --vx-ink-3: rgba(236, 232, 223, 0.4);
+  --vx-blue: #3d4bff;
+  --vx-blue-hi: #8a93ff;
+  --vx-blue-glow: rgba(61, 75, 255, 0.35);
+  --vx-signal: #ffb23e;
+  --vx-bone: #ece8df;
+  --vx-bone-2: #e2ddd1;
+  --vx-coal: #0b0c10;
+
+  --vx-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  background: var(--vx-bg);
+  color: var(--vx-ink);
+  font-family: var(--vx-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.vx ::selection {
+  background: var(--vx-blue);
+  color: #fff;
+}
+
+/* Grão sutil sobre a página inteira */
+.vx-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Tipografia: uma família só (Inter); destaque vem da cor, não de outra fonte */
+.vx-serif {
+  font-weight: inherit;
+}
+.vx-mono {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+.vx-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vx-ink-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.vx-eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+.vx-display {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+.vx-h2 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  font-size: clamp(2rem, 4.2vw, 3.5rem);
+}
+
+.vx-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+  .vx-container {
+    padding: 0 2.5rem;
+  }
+}
+
+/* Botões */
+.vx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  height: 3.25rem;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.25s, color 0.25s, border-color 0.25s,
+    box-shadow 0.25s;
+  white-space: nowrap;
+}
+.vx-btn:active {
+  transform: scale(0.98);
+}
+.vx-btn-primary {
+  background: var(--vx-blue);
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12) inset, 0 10px 40px -10px var(--vx-blue-glow);
+}
+.vx-btn-primary:hover {
+  background: #5260ff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 14px 50px -8px rgba(61, 75, 255, 0.6);
+}
+.vx-btn-ghost {
+  border: 1px solid var(--vx-line-2);
+  color: var(--vx-ink);
+}
+.vx-btn-ghost:hover {
+  border-color: var(--vx-ink-2);
+  background: rgba(236, 232, 223, 0.04);
+}
+.vx-btn .vx-arrow {
+  transition: transform 0.25s;
+}
+.vx-btn:hover .vx-arrow {
+  transform: translateX(3px);
+}
+
+/* Revelação por scroll */
+.vx [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.vx [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Entrada do hero */
+@keyframes vx-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+.vx-rise {
+  opacity: 0;
+  animation: vx-rise 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Pulso "ao vivo" */
+@keyframes vx-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 178, 62, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 178, 62, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 178, 62, 0);
+  }
+}
+.vx-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--vx-signal);
+  animation: vx-pulse 1.8s infinite;
+}
+
+/* Linhas do console */
+@keyframes vx-log-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    background: rgba(61, 75, 255, 0.16);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    background: transparent;
+  }
+}
+.vx-log-in {
+  animation: vx-log-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Olho / órbita */
+@keyframes vx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.vx-spin-slow {
+  animation: vx-spin 60s linear infinite;
+  transform-origin: center;
+}
+.vx-spin-rev {
+  animation: vx-spin 90s linear infinite reverse;
+  transform-origin: center;
+}
+@keyframes vx-scan {
+  0%,
+  100% {
+    transform: translateY(-40%);
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(40%);
+  }
+}
+
+/* Marquee */
+@keyframes vx-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.vx-marquee {
+  display: flex;
+  width: max-content;
+  animation: vx-marquee 60s linear infinite;
+}
+.vx-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Grade técnica de fundo */
+.vx-grid-bg {
+  background-image: linear-gradient(var(--vx-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vx-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+/* Cartão com borda luminosa no hover */
+.vx-card {
+  position: relative;
+  border: 1px solid var(--vx-line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0));
+  border-radius: 1.25rem;
+  transition: border-color 0.3s, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.vx-card:hover {
+  border-color: var(--vx-line-2);
+}
+
+/* Barra animada de dashboard */
+@keyframes vx-grow {
+  from {
+    transform: scaleY(0);
+  }
+}
+.vx-bar {
+  transform-origin: bottom;
+  animation: vx-grow 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Fluxo de pontos nas conexões */
+@keyframes vx-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+.vx-flow {
+  stroke-dasharray: 4 6;
+  animation: vx-dash 1.4s linear infinite;
+}
+
+/* FAQ */
+.vx details summary::-webkit-details-marker {
+  display: none;
+}
+.vx details summary {
+  list-style: none;
+}
+.vx details[open] .vx-plus {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx *,
+  .vx *::before,
+  .vx *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .vx [data-reveal],
+  .vx-rise {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
