@@ -65,15 +65,15 @@ export const SectionHead = ({
   title: React.ReactNode;
   aside?: React.ReactNode;
 }) => (
-  <div className="grid gap-8 lg:grid-cols-12 lg:items-end mb-14 md:mb-20">
+  <div className="grid gap-5 md:gap-8 lg:grid-cols-12 lg:items-end mb-10 md:mb-20">
     <div className="lg:col-span-8" data-reveal>
-      <div className="vx-eyebrow mb-6">
+      <div className="vx-eyebrow mb-4 md:mb-6">
         <span className="text-[var(--vx-blue-hi)]">{index}</span> {eyebrow}
       </div>
       <h2 className="vx-h2">{title}</h2>
     </div>
     {aside && (
-      <p className="lg:col-span-4 text-[var(--vx-ink-2)] text-lg leading-relaxed" data-reveal style={{ ["--d" as string]: "120ms" }}>
+      <p className="lg:col-span-4 text-[var(--vx-ink-2)] text-base md:text-lg leading-relaxed" data-reveal style={{ ["--d" as string]: "120ms" }}>
         {aside}
       </p>
     )}

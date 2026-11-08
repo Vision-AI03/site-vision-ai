@@ -23,7 +23,24 @@
   color: var(--vx-ink);
   font-family: var(--vx-sans);
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
   overflow-x: clip;
+}
+
+/* Carrossel com snap (mobile): cards lado a lado em vez de empilhados */
+.vx-snap {
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.vx-snap::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 767px) {
+  /* fora da tela na horizontal o observer não dispara; no carrossel o card já entra visível */
+  .vx-snap > [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .vx ::selection {

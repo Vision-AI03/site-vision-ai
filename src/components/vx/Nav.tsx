@@ -55,7 +55,7 @@ const Nav = () => {
           <PrimaryCta label="Diagnóstico gratuito" className="!h-10 !px-5 !text-sm" />
         </div>
 
-        <button className="md:hidden p-2 text-[var(--vx-ink)]" onClick={() => setOpen(!open)} aria-label="Menu">
+        <button className="md:hidden p-2.5 -mr-1.5 text-[var(--vx-ink)]" onClick={() => setOpen(!open)} aria-label="Menu">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>

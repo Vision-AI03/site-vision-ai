@@ -11,6 +11,8 @@ import WhatsappFloat from "@/components/WhatsappFloat";
 const ConditionalWhatsappFloat = () => {
   const { pathname } = useLocation();
   if (pathname === "/agentes") return null;
+  // Na home, o mobile usa a barra fixa de CTA (que já tem o WhatsApp)
+  if (pathname === "/") return <div className="hidden md:block"><WhatsappFloat /></div>;
   return <WhatsappFloat />;
 };
 

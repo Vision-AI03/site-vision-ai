@@ -14,7 +14,7 @@ const NICHOS = [
 const Nichos = () => {
   const [hover, setHover] = useState<number | null>(null);
   return (
-    <section className="py-24 md:py-36 border-t border-[var(--vx-line)]">
+    <section className="py-16 md:py-36 border-t border-[var(--vx-line)]">
       <div className="vx-container">
         <SectionHead
           index="05"
@@ -34,7 +34,7 @@ const Nichos = () => {
               data-reveal
               style={{ ["--d" as string]: `${i * 60}ms` }}
               onMouseEnter={() => setHover(i)}
-              className="group border-b border-[var(--vx-line)] grid md:grid-cols-12 items-baseline gap-2 md:gap-6 py-6 md:py-7 cursor-default"
+              className="group border-b border-[var(--vx-line)] grid md:grid-cols-12 items-baseline gap-2 md:gap-6 py-5 md:py-7 cursor-default"
             >
               <span className="hidden md:block md:col-span-1 vx-mono text-xs text-[var(--vx-ink-3)]">0{i + 1}</span>
               <span

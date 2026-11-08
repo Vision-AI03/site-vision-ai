@@ -494,7 +494,7 @@ const Solucoes = () => {
   };
 
   return (
-    <section id="solucoes" className="py-24 md:py-32 scroll-mt-20">
+    <section id="solucoes" className="py-16 md:py-32 scroll-mt-20">
       <div className="vx-container">
         <SectionHead
           index="02"
@@ -517,21 +517,21 @@ const Solucoes = () => {
               <button
                 key={s.id}
                 onClick={() => trocarAba(i)}
-                className={`text-left rounded-2xl border px-4 py-4 md:px-5 md:py-5 transition-all duration-300 ${
+                className={`text-left rounded-2xl border px-3 py-3 md:px-5 md:py-5 transition-all duration-300 ${
                   on ? "border-[var(--vx-blue)] bg-[rgba(61,75,255,0.1)]" : "border-[var(--vx-line)] hover:border-[var(--vx-line-2)]"
                 }`}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5 md:gap-3">
                   <span
-                    className={`h-9 w-9 shrink-0 rounded-xl flex items-center justify-center ${
+                    className={`h-8 w-8 md:h-9 md:w-9 shrink-0 rounded-xl flex items-center justify-center ${
                       on ? "bg-[var(--vx-blue)] text-white" : "bg-[var(--vx-bg-3)] text-[var(--vx-ink-3)]"
                     }`}
                   >
                     <Icon className="h-4 w-4" />
                   </span>
                   <div className="min-w-0">
-                    <div className={`font-semibold leading-tight ${on ? "text-[var(--vx-ink)]" : "text-[var(--vx-ink-2)]"}`}>{s.nome}</div>
-                    <div className="text-xs text-[var(--vx-ink-3)] mt-0.5">{s.resumo}</div>
+                    <div className={`text-[0.9rem] md:text-base font-semibold leading-tight ${on ? "text-[var(--vx-ink)]" : "text-[var(--vx-ink-2)]"}`}>{s.nome}</div>
+                    <div className="hidden sm:block text-xs text-[var(--vx-ink-3)] mt-0.5">{s.resumo}</div>
                   </div>
                 </div>
               </button>
@@ -551,7 +551,7 @@ const Solucoes = () => {
             {/* Lista de exemplos */}
             <div className="min-w-0 lg:col-span-3 border-b lg:border-b-0 lg:border-r border-[var(--vx-line)] p-4 md:p-5">
               <div className="vx-eyebrow !text-[0.68rem] px-2 mb-3">{S.rotulo}</div>
-              <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible -mx-1 px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible -mx-1 px-1 pr-10 lg:pr-1 pb-1 [mask-image:linear-gradient(to_right,#000_78%,transparent)] lg:[mask-image:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {S.exemplos.map((x, i) => {
                   const on = i === ex;
                   return (
@@ -604,7 +604,7 @@ const Solucoes = () => {
             </div>
 
             {/* Visual */}
-            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-[var(--vx-line)] bg-[var(--vx-bg-2)] min-h-[380px] flex items-center">
+            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-[var(--vx-line)] bg-[var(--vx-bg-2)] min-h-[320px] md:min-h-[380px] flex items-center">
               {E.chat ? <Chat key={`${ativo}-${ex}`} msgs={E.chat} status={E.status} /> : Visual ? <Visual /> : null}
             </div>
           </div>

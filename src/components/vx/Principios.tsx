@@ -25,7 +25,7 @@ const PRINCIPIOS = [
 ];
 
 const Principios = () => (
-  <section className="py-24 md:py-36 bg-[var(--vx-bg-2)] border-t border-[var(--vx-line)] relative overflow-hidden">
+  <section className="py-16 md:py-36 bg-[var(--vx-bg-2)] border-t border-[var(--vx-line)] relative overflow-hidden">
     <div
       className="absolute -right-40 top-1/2 -translate-y-1/2 h-[520px] w-[520px] rounded-full blur-[140px] opacity-25"
       style={{ background: "radial-gradient(closest-side, #3d4bff, transparent)" }}
@@ -41,15 +41,15 @@ const Principios = () => (
           </>
         }
       />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="vx-snap -mx-5 px-5 sm:mx-0 sm:px-0 flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-px-5">
         {PRINCIPIOS.map((p, i) => {
           const Icon = p.icon;
           return (
-            <div key={p.t} className="vx-card p-7 hover:-translate-y-1" data-reveal style={{ ["--d" as string]: `${i * 100}ms` }}>
+            <div key={p.t} className="vx-card p-6 md:p-7 hover:-translate-y-1 w-[80%] shrink-0 snap-start sm:w-auto" data-reveal style={{ ["--d" as string]: `${i * 100}ms` }}>
               <div className="h-11 w-11 rounded-xl border border-[var(--vx-line-2)] flex items-center justify-center text-[var(--vx-blue-hi)]">
                 <Icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-8 text-xl font-semibold tracking-[-0.02em] leading-snug">{p.t}</h3>
+              <h3 className="mt-6 md:mt-8 text-xl font-semibold tracking-[-0.02em] leading-snug">{p.t}</h3>
               <p className="mt-3 text-[var(--vx-ink-2)] leading-relaxed text-[0.95rem]">{p.d}</p>
             </div>
           );

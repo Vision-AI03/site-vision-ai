@@ -92,7 +92,7 @@ const Contato = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-36 border-t border-[var(--vx-line)] overflow-hidden scroll-mt-20">
+    <section id="contact" className="relative py-16 md:py-36 border-t border-[var(--vx-line)] overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 vx-grid-bg opacity-60" aria-hidden="true" />
       <div
         className="absolute left-1/2 bottom-0 h-[500px] w-[1000px] -translate-x-1/2 translate-y-1/2 rounded-full blur-[140px] opacity-40"
@@ -100,7 +100,7 @@ const Contato = () => {
         aria-hidden="true"
       />
 
-      <div className="vx-container relative grid lg:grid-cols-12 gap-14">
+      <div className="vx-container relative grid lg:grid-cols-12 gap-10 lg:gap-14">
         <div className="lg:col-span-5" data-reveal>
           <div className="vx-eyebrow mb-6">
             <span className="text-[var(--vx-blue-hi)]">08</span> Diagnóstico gratuito
@@ -119,13 +119,13 @@ const Contato = () => {
               </li>
             ))}
           </ul>
-          <button onClick={() => openWhatsapp(DIAGNOSTICO_URL)} className="vx-btn vx-btn-ghost mt-10">
+          <button onClick={() => openWhatsapp(DIAGNOSTICO_URL)} className="vx-btn vx-btn-ghost mt-8 md:mt-10 w-full sm:w-auto">
             <MessageCircle className="h-4 w-4" /> Prefiro falar no WhatsApp
           </button>
         </div>
 
         <div className="lg:col-span-7" data-reveal style={{ ["--d" as string]: "120ms" }}>
-          <div className="rounded-[1.5rem] border border-[var(--vx-line-2)] bg-[rgba(13,15,20,0.85)] backdrop-blur-xl p-7 md:p-10">
+          <div className="rounded-[1.5rem] border border-[var(--vx-line-2)] bg-[rgba(13,15,20,0.85)] backdrop-blur-xl p-6 md:p-10">
             {enviado ? (
               <div className="min-h-[460px] flex flex-col items-center justify-center text-center">
                 <div className="h-16 w-16 rounded-full bg-[var(--vx-blue)] flex items-center justify-center">
@@ -142,19 +142,20 @@ const Contato = () => {
             ) : (
               <form onSubmit={enviar} className="space-y-7">
                 <div className="grid md:grid-cols-2 gap-7">
-                  <Campo label="Seu nome" required value={form.nome} onChange={set("nome")} placeholder="Como te chamamos" />
-                  <Campo label="Empresa" required value={form.empresa} onChange={set("empresa")} placeholder="Nome da empresa" />
+                  <Campo label="Seu nome" required autoComplete="name" value={form.nome} onChange={set("nome")} placeholder="Como te chamamos" />
+                  <Campo label="Empresa" required autoComplete="organization" value={form.empresa} onChange={set("empresa")} placeholder="Nome da empresa" />
                   <Campo
                     label="WhatsApp"
                     required
                     inputMode="tel"
+                    autoComplete="tel-national"
                     value={form.telefone}
                     onChange={set("telefone")}
                     placeholder="(19) 99999-9999"
                     pattern="\(\d{2}\) \d{4,5}-\d{4}"
                     title="Informe DDD e número"
                   />
-                  <Campo label="E-mail" type="email" required value={form.email} onChange={set("email")} placeholder="voce@empresa.com.br" />
+                  <Campo label="E-mail" type="email" inputMode="email" autoComplete="email" required value={form.email} onChange={set("email")} placeholder="voce@empresa.com.br" />
                 </div>
 
                 <div>
@@ -170,7 +171,7 @@ const Contato = () => {
                           key={d}
                           onClick={() => toggle(d)}
                           aria-pressed={on}
-                          className={`rounded-full border px-4 py-2 text-sm transition-all ${
+                          className={`rounded-full border px-4 min-h-[44px] text-sm transition-all ${
                             on
                               ? "border-[var(--vx-blue)] bg-[var(--vx-blue)] text-white"
                               : "border-[var(--vx-line-2)] text-[var(--vx-ink-2)] hover:border-[var(--vx-ink-3)]"

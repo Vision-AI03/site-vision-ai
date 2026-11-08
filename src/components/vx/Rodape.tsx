@@ -3,7 +3,7 @@ import { Wordmark, scrollToId } from "./shared";
 const Rodape = () => {
   const ano = new Date().getFullYear();
   return (
-    <footer className="relative border-t border-[var(--vx-line)] pt-20 pb-10 overflow-hidden">
+    <footer className="relative border-t border-[var(--vx-line)] pt-14 md:pt-20 pb-10 overflow-hidden">
       <div className="vx-container">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">

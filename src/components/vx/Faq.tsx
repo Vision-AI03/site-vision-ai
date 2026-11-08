@@ -33,8 +33,8 @@ const PERGUNTAS = [
 ];
 
 const Faq = () => (
-  <section id="faq" className="py-24 md:py-36 scroll-mt-20 border-t border-[var(--vx-line)]">
-    <div className="vx-container grid lg:grid-cols-12 gap-12">
+  <section id="faq" className="py-16 md:py-36 scroll-mt-20 border-t border-[var(--vx-line)]">
+    <div className="vx-container grid lg:grid-cols-12 gap-2 lg:gap-12">
       <div className="lg:col-span-5">
         <div className="lg:sticky lg:top-32">
           <SectionHead
@@ -51,7 +51,7 @@ const Faq = () => (
       <div className="lg:col-span-7 border-t border-[var(--vx-line)]">
         {PERGUNTAS.map((p, i) => (
           <details key={p.q} className="group border-b border-[var(--vx-line)]" data-reveal style={{ ["--d" as string]: `${i * 50}ms` }}>
-            <summary className="flex cursor-pointer items-center justify-between gap-6 py-6 md:py-7">
+            <summary className="flex cursor-pointer items-center justify-between gap-6 py-5 md:py-7">
               <span className="text-lg md:text-xl font-medium tracking-[-0.01em] group-hover:text-[var(--vx-blue-hi)] transition-colors">
                 {p.q}
               </span>
@@ -59,7 +59,7 @@ const Faq = () => (
                 <Plus className="h-4 w-4" />
               </span>
             </summary>
-            <p className="pb-7 pr-14 text-[var(--vx-ink-2)] leading-relaxed">{p.a}</p>
+            <p className="pb-6 md:pb-7 md:pr-14 text-[var(--vx-ink-2)] leading-relaxed">{p.a}</p>
           </details>
         ))}
       </div>

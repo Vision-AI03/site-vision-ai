@@ -10,13 +10,15 @@ import Principios from "@/components/vx/Principios";
 import Faq from "@/components/vx/Faq";
 import Contato from "@/components/vx/Contato";
 import Rodape from "@/components/vx/Rodape";
+import MobileCta from "@/components/vx/MobileCta";
 import { useReveal } from "@/components/vx/shared";
 
 const Index = () => {
   useReveal();
   return (
     <div className="vx min-h-screen">
-      <div className="vx-grain" aria-hidden="true" />
+      {/* Grão só no desktop: overlay fixo com filtro SVG pesa no scroll do celular */}
+      <div className="vx-grain hidden md:block" aria-hidden="true" />
       <Nav />
       <main>
         <Hero />
@@ -30,6 +32,7 @@ const Index = () => {
         <Contato />
       </main>
       <Rodape />
+      <MobileCta />
     </div>
   );
 };

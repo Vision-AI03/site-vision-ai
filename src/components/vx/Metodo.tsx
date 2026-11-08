@@ -29,7 +29,7 @@ const ETAPAS = [
 ];
 
 const Metodo = () => (
-  <section id="metodo" className="py-24 md:py-36 scroll-mt-20 border-t border-[var(--vx-line)] relative overflow-hidden">
+  <section id="metodo" className="py-16 md:py-36 scroll-mt-20 border-t border-[var(--vx-line)] relative overflow-hidden">
     <div className="vx-container">
       <SectionHead
         index="04"
@@ -48,10 +48,10 @@ const Metodo = () => (
             key={e.n}
             data-reveal
             style={{ ["--d" as string]: `${i * 110}ms` }}
-            className="group relative bg-[var(--vx-bg)] p-7 md:p-8 min-h-[360px] flex flex-col hover:bg-[var(--vx-bg-2)] transition-colors"
+            className="group relative bg-[var(--vx-bg)] p-6 md:p-8 md:min-h-[360px] flex flex-col hover:bg-[var(--vx-bg-2)] transition-colors"
           >
             <div className="flex items-center justify-between">
-              <span className="vx-display text-[4.5rem] text-transparent [-webkit-text-stroke:1px_rgba(236,232,223,0.25)] group-hover:[-webkit-text-stroke:1px_#8a93ff] transition-all">
+              <span className="vx-display text-[3rem] md:text-[4.5rem] text-transparent [-webkit-text-stroke:1px_rgba(236,232,223,0.25)] group-hover:[-webkit-text-stroke:1px_#8a93ff] transition-all">
                 {e.n}
               </span>
               {e.tag && (
@@ -60,9 +60,9 @@ const Metodo = () => (
                 </span>
               )}
             </div>
-            <h3 className="mt-6 text-2xl font-semibold tracking-[-0.02em]">{e.t}</h3>
+            <h3 className="mt-3 md:mt-6 text-2xl font-semibold tracking-[-0.02em]">{e.t}</h3>
             <p className="mt-3 text-[var(--vx-ink-2)] leading-relaxed text-[0.95rem]">{e.d}</p>
-            <div className="mt-auto pt-8">
+            <div className="mt-auto pt-5 md:pt-8">
               <div className="vx-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--vx-ink-3)] mb-2">Você recebe</div>
               <p className="text-sm text-[var(--vx-ink)]">{e.e}</p>
             </div>
