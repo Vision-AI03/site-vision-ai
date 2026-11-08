@@ -18,7 +18,7 @@ const Casos = () => (
             Não é promessa. <span className="vx-serif text-[var(--vx-blue-hi)]">Está rodando.</span>
           </>
         }
-        aside="Alguns dos sistemas que estão em produção hoje. Nomes de clientes preservados; números medidos na operação deles."
+        aside="Sistemas que estão em produção hoje, com resultados medidos na operação real de cada cliente."
       />
 
       <div className="grid gap-5 lg:grid-cols-12">
@@ -60,7 +60,7 @@ const Casos = () => (
               {[
                 { n: "884", u: "horas/ano", l: "devolvidas ao time administrativo" },
                 { n: "86%", u: "", l: "menos esforço manual no controle de fretes" },
-                { n: "R$ 20 mil", u: "/ano", l: "em custo de pessoal evitado" },
+                { n: "4×", u: "→ 1×", l: "o frete que era digitado até quatro vezes agora entra uma só" },
               ].map((m) => (
                 <div key={m.l}>
                   <div className="vx-display text-[2.5rem] md:text-6xl">

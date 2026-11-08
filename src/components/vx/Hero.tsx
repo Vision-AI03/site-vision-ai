@@ -30,7 +30,7 @@ const Hero = () => (
           style={{ ["--d" as string]: "400ms" }}
         >
           Primeiro a gente enxerga onde a sua operação trava. Depois construímos a inteligência que falta: agentes de IA,
-          automações e sistemas sob medida para empresas que cresceram mais rápido que os próprios processos.
+          automações e sistemas sob medida para que a sua operação cresça sem depender de mais trabalho manual.
         </p>
 
         <div
